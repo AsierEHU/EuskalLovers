@@ -1,5 +1,0 @@
-<%-- any content can be specified here e.g.: --%>
-<%@page pageEncoding="UTF-8" %>
-<script src="js/chat.js"></script>
-<link rel="stylesheet" type="text/css" href="css/chat.css">
-<h2>Hello Chat!</h2>

@@ -1,18 +1,13 @@
-<%-- 
-    Document   : index
-    Created on : 05-nov-2015, 7:45:16
-    Author     : docencia
---%>
+<jsp:include page="framework/cabeza.jsp">
+    <jsp:param name="title" value="Bienvenido"/>
+    <jsp:param name="include" value="header"/>
+    <jsp:param name="include" value="footer"/>
+</jsp:include>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        <%@include file="jspf/chat.jspf" %>
-    </body>
-</html>
+<jsp:include page="jsp/header.jsp"/>
+
+<h1>Body!</h1>
+
+<jsp:include page="jsp/footer.jsp"/>
+
+<jsp:include page="framework/pie.jsp"/>
