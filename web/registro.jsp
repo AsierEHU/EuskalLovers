@@ -1,5 +1,5 @@
 <jsp:include page="framework/cabeza.jsp">
-    <jsp:param name="title" value="Bienvenido a EuskalLovers"/>
+    <jsp:param name="title" value="Regístrate en EuskalLovers"/>
     <jsp:param name="include" value="header"/>
     <jsp:param name="include" value="footer"/>
 </jsp:include>
