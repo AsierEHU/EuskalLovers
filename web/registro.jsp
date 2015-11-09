@@ -1,5 +1,6 @@
 <jsp:include page="framework/cabeza.jsp">
     <jsp:param name="title" value="Regístrate en EuskalLovers"/>
+    <jsp:param name="include" value="registro"/>
 </jsp:include>
 
 <h1>Body!</h1>
