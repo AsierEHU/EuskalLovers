@@ -3,12 +3,9 @@
     <jsp:param name="include" value="index"/>
 </jsp:include>
 
-
-<h1>Body!</h1>
-<p id="index_text"> texto </p>
-<p>texto2</p>
-boton login -> muestra la capa de login -> principal
-boton registro -> te lleva a registro
-
-
+<div>
+<img id="index_IMGFondo" src="imagenes/fondo.png"  alt="background" />
+<img id="index_Logo" src="imagenes/LOVERS.png"  alt="background" />
+</div>
+                
 <jsp:include page="framework/pie.jsp"/>

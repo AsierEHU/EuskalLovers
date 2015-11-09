@@ -8,5 +8,20 @@ and open the template in the editor.
     Author     : docencia
 */
 
-#index_text{color:green}
-p {color:blue}
+#index_IMGFondo{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 1500px;
+    height: 800px;
+    z-index:-1;
+}
+
+#index_Logo{
+    position:fixed;
+    width: 350px;
+    left: 480px;
+    top: 0px;
+    height: 350px;
+    z-index:-1;
+}
