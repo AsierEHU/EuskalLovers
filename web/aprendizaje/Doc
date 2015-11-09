@@ -16,11 +16,13 @@ Estrcutura del proyecto
 Estructura de css
     Comun.css -> css siempre incluido en todas las páginas.
                 solo contiene estilos de etiquetas y clases, no contiene ids
+                (p, body .rojo)
     el resto de css -> css especifico para cada segmento o página
-                [nombreSegmento]_id o [nombreSegmento]_clase o etiqueta(pisa al del comun)
-                (#footer_colorRojo o .index_algo o p)
+                [nombreSegmento]_id o [nombreSegmento]_clase , no contiene etiquetas ejemplo: p,body...
+                (#footer_colorRojo o .index_algo)
 
 Que hacemos cada uno
     Registro.jsp|.css|.js -> Adrian
     Index.jsp|.css|.js -> Asier Ro  
     comun.css|.js ->Asier Ro
+    Principal.jsp|.css|.js -> Asier Lo
