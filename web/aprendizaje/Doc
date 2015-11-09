@@ -1,0 +1,26 @@
+Git
+
+    Clone  -> Clonar el proyecto
+    Pull   -> Traer el proyecto. Lo hacemos siempre antes de empezar a trabajar.
+    Commit -> Asentar cambios. Te pide una descripcion de los cambios.
+    Push -> Subir los cambios.
+
+Estrcutura del proyecto
+
+    aprendizaje -> ficheros para nuestro aprendizaje
+    css -> todos los css
+    framework -> ficheros para ayuda al trabajo
+    js -> javascript
+    jsp -> segmentos de html
+    
+Estructura de css
+    Comun.css -> css siempre incluido en todas las páginas.
+                solo contiene estilos de etiquetas y clases, no contiene ids
+    el resto de css -> css especifico para cada segmento o página
+                [nombreSegmento]_id o [nombreSegmento]_clase o etiqueta(pisa al del comun)
+                (#footer_colorRojo o .index_algo o p)
+
+Que hacemos cada uno
+    Registro.jsp|.css|.js -> Adrian
+    Index.jsp|.css|.js -> Asier Ro  
+    comun.css|.js ->Asier Ro

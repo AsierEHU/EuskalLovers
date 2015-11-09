@@ -1,13 +1,14 @@
 <jsp:include page="framework/cabeza.jsp">
     <jsp:param name="title" value="Bienvenido a EuskalLovers"/>
-    <jsp:param name="include" value="header"/>
-    <jsp:param name="include" value="footer"/>
+    <jsp:param name="include" value="index"/>
 </jsp:include>
 
-<jsp:include page="jsp/header.jsp"/>
 
 <h1>Body!</h1>
+<p id="index_text"> texto </p>
+<p>texto2</p>
+boton login -> muestra la capa de login -> principal
+boton registro -> te lleva a registro
 
-<jsp:include page="jsp/footer.jsp"/>
 
 <jsp:include page="framework/pie.jsp"/>
