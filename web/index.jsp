@@ -4,8 +4,8 @@
 </jsp:include>
 
 <div>
-<img id="index_IMGFondo" src="imagenes/fondo.png"  alt="background" />
-<img id="index_Logo" src="imagenes/LOVERS.png"  alt="background" />
+<img id="index_IMGFondo" src="img/fondo.png"  alt="background" />
+<img id="index_Logo" src="img/logo.png"  alt="logo" />
 </div>
                 
 <jsp:include page="/comun/pie.jsp"/>

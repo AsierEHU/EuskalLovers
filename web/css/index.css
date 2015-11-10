@@ -9,13 +9,11 @@ and open the template in the editor.
 */
 
 #index_IMGFondo{
-    position:fixed;
-    top:0;
-    left:0;
-    width: 1500px;
-    height: 800px;
+    max-width: 100%;
+    height: auto;
     z-index:-1;
 }
+
 
 #index_Logo{
     position:fixed;
@@ -23,5 +21,5 @@ and open the template in the editor.
     left: 480px;
     top: 0px;
     height: 350px;
-    z-index:-1;
+    z-index:1;
 }
