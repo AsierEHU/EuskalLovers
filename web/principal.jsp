@@ -13,8 +13,7 @@
     <jsp:include page="jsp/header.jsp"/>
     <jsp:include page="jsp/menu.jsp"/>
     <section>
-        
-        <jsp:include page="jsp/chat.jsp"/>
+        <h1>Contenido dinámico</h1>
     </section>
     <jsp:include page="jsp/footer.jsp"/>
 </div>

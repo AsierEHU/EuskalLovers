@@ -1,3 +1,3 @@
 <footer>
-    <h2>Footer!</h2>
+    <h4>EuskalLovers</h4>
 </footer>

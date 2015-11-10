@@ -1,3 +1,7 @@
 <header>
-    <h2>Header!</h2>
+    <img id="header_logo" src="img/logo.png"/>
+    <div id="header_user">
+        <h4>Info usuario</h4>
+    </div>
+    
 </header>

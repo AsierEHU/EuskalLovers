@@ -1,9 +1,2 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 05-nov-2015, 8:19:43
-    Author     : docencia
-*/
+nav{border:1px solid green; height: 50px;}
+ul#nav_listaMenu li{display:block; float:left; padding:5px; margin:10px; border:1px solid orange;}
