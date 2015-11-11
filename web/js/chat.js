@@ -1,23 +1,40 @@
 window.onload = init;
-var socket = new WebSocket("ws://localhost:8080/EuskalLovers/actions");
+var socket = new WebSocket("ws://localhost:8080/EuskalLovers/chatSocket");
 socket.onmessage = onMessage;
+socket.onopen = onOpen;
+socket.onclose = onClose;
+socket.onerror = onError;
+
+function onOpen(event){
+    console.log('Conexión establecida');
+}
+
+function onError(error){
+    console.log('Error de conexión : '+error.data);
+}
+
+function onClose() { 
+    console.log('Desconectado');
+}
 
 function onMessage(event) {
-    var device = JSON.parse(event.data);
-    if (device.action === "add") {
-        printDeviceElement(device);
-    }
-    if (device.action === "remove") {
-        document.getElementById(device.id).remove();
-        //device.parentNode.removeChild(device);
-    }
-    if (device.action === "toggle") {
-        var node = document.getElementById(device.id);
-        var statusText = node.children[2];
-        if (device.status === "On") {
-            statusText.innerHTML = "Status: " + device.status + " (<a href=\"#\" OnClick=toggleDevice(" + device.id + ")>Turn off</a>)";
-        } else if (device.status === "Off") {
-            statusText.innerHTML = "Status: " + device.status + " (<a href=\"#\" OnClick=toggleDevice(" + device.id + ")>Turn on</a>)";
+    if (event.data!=='established'){
+            var device = JSON.parse(event.data);
+        if (device.action === "add") {
+            printDeviceElement(device);
+        }
+        if (device.action === "remove") {
+            document.getElementById(device.id).remove();
+            //device.parentNode.removeChild(device);
+        }
+        if (device.action === "toggle") {
+            var node = document.getElementById(device.id);
+            var statusText = node.children[2];
+            if (device.status === "On") {
+                statusText.innerHTML = "Status: " + device.status + " (<a href=\"#\" OnClick=toggleDevice(" + device.id + ")>Turn off</a>)";
+            } else if (device.status === "Off") {
+                statusText.innerHTML = "Status: " + device.status + " (<a href=\"#\" OnClick=toggleDevice(" + device.id + ")>Turn on</a>)";
+            }
         }
     }
 }

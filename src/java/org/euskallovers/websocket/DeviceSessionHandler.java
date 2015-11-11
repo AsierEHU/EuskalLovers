@@ -1,21 +1,27 @@
-
 package org.euskallovers.websocket;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import javax.enterprise.context.ApplicationScoped;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.enterprise.context.ApplicationScoped;
+import javax.json.JsonObject;
+import javax.json.spi.JsonProvider;
 import javax.websocket.Session;
 import org.euskallovers.model.Device;
 
 @ApplicationScoped
 public class DeviceSessionHandler {
+
     private int deviceId = 0;
-    private final Set sessions = new HashSet<>();
-    private final Set devices = new HashSet<>();
-    
+    private final Set<Session> sessions = new HashSet<>();
+    private final Set<Device> devices = new HashSet<>();
+
     public void addSession(Session session) {
+        //sendToSession(session, "established"); //Es necesario contestar la primera conexion ??
         sessions.add(session);
         for (Device device : devices) {
             JsonObject addMessage = createAddMessage(device);
@@ -26,7 +32,7 @@ public class DeviceSessionHandler {
     public void removeSession(Session session) {
         sessions.remove(session);
     }
-    
+
     public List getDevices() {
         return new ArrayList<>(devices);
     }
@@ -53,7 +59,7 @@ public class DeviceSessionHandler {
     }
 
     public void toggleDevice(int id) {
-                JsonProvider provider = JsonProvider.provider();
+        JsonProvider provider = JsonProvider.provider();
         Device device = getDeviceById(id);
         if (device != null) {
             if ("On".equals(device.getStatus())) {
@@ -93,18 +99,26 @@ public class DeviceSessionHandler {
     }
 
     private void sendToAllConnectedSessions(JsonObject message) {
-                for (Session session : sessions) {
+        for (Session session : sessions) {
             sendToSession(session, message);
         }
     }
 
     private void sendToSession(Session session, JsonObject message) {
-                try {
+        try {
             session.getBasicRemote().sendText(message.toString());
         } catch (IOException ex) {
             sessions.remove(session);
             Logger.getLogger(DeviceSessionHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void sendToSession(Session session, String message) {
+        try {
+            session.getBasicRemote().sendText(message);
+        } catch (IOException ex) {
+            sessions.remove(session);
+            Logger.getLogger(DeviceSessionHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
-

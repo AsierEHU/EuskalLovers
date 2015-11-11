@@ -1,6 +1,8 @@
 package org.euskallovers.websocket;
 
 import java.io.StringReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -15,30 +17,31 @@ import javax.json.JsonReader;
 import org.euskallovers.model.Device;
 
 @ApplicationScoped
-@ServerEndpoint("/actions")
+@ServerEndpoint("/chatSocket")
 public class DeviceWebSocketServer {
 
     @Inject
     private DeviceSessionHandler sessionHandler;
     
     @OnOpen
-        public void open(Session session) {
-            sessionHandler.addSession(session);
+    public void open(Session session) {
+        sessionHandler.addSession(session);
     }
+    
 
     @OnClose
-        public void close(Session session) {
-            sessionHandler.removeSession(session);
+    public void close(Session session) {
+        sessionHandler.removeSession(session);
     }
 
     @OnError
-        public void onError(Throwable error) {
-            Logger.getLogger(DeviceWebSocketServer.class.getName()).log(Level.SEVERE, null, error);
+    public void onError(Throwable error) {
+        Logger.getLogger(DeviceWebSocketServer.class.getName()).log(Level.SEVERE, null, error);
     }
 
     @OnMessage
-        public void handleMessage(String message, Session session) {
-            try (JsonReader reader = Json.createReader(new StringReader(message))) {
+    public void handleMessage(String message, Session session) {
+        try (JsonReader reader = Json.createReader(new StringReader(message))) {
             JsonObject jsonMessage = reader.readObject();
 
             if ("add".equals(jsonMessage.getString("action"))) {
@@ -61,5 +64,5 @@ public class DeviceWebSocketServer {
             }
         }
     }
-    
+
 }

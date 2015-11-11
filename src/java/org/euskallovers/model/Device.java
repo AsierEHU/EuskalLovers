@@ -1,5 +1,3 @@
-
-
 package org.euskallovers.model;
 
 public class Device {
@@ -12,11 +10,11 @@ public class Device {
 
     public Device() {
     }
-    
+
     public int getId() {
         return id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -28,7 +26,7 @@ public class Device {
     public String getType() {
         return type;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -36,7 +34,7 @@ public class Device {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -48,7 +46,7 @@ public class Device {
     public void setType(String type) {
         this.type = type;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
