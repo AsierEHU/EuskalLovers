@@ -8,14 +8,11 @@ and open the template in the editor.
     Author     : docencia
 */
 
-#index_IMGFondo{
-      
-        background-image: url("img/fondo.png");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover; 
-}
+body{
+      background-image: url("../img/fondo.png"); background-position: center; background-size: cover;
+      background-repeat: no-repeat; background-color: black; background-size: 80%;
+          }
+
 
 /*#index_CAJAInicial{
     z-index:3;
