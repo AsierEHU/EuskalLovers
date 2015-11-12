@@ -11,7 +11,15 @@
 <div> 
     <section id="index_CajaPrincipal">
         <table border="2">
-       <a class="index.Clase" href="registro.jsp">CREAR MI PERFIL</a>
+             <caption>ÚNETE A EUSKALRENT</caption>
+          <tr>
+        <td colspan="1"><a class="index.Clase" href="registro.jsp">CREAR MI PERFIL</a></td>
+    </tr>
+    <tr>
+        <td><a class="index.Clase" href="principal.jsp">¿Ya estás registrado? <b>Inicia sesión!</b></a></td>
+    </tr>
+
+<!--       -->
         </table>
     </section>
 </div>
