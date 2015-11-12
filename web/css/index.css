@@ -3,14 +3,39 @@
       background-image: url("../img/fondo.png"); background-position: center; background-size: cover;
       background-repeat: no-repeat; background-color: black; background-size: 80%;
           }*/
-/*#index_CajaPrincipal{
-   border:1px solid black;
-   margin: auto;
-   margin-top: 450px;
-}*/
 
-index.Clase text{
+.index_TABLA{
+    top: 1500px; 
+    left: 150px;
+    background: #F781F3;  
+    border-radius: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    
+}
+.index_ENLACES
+{   
+ text-decoration:none; 
+ color: black;
+}   
+
+.index_TABLA tr td {
+    text-decoration-color: white;
+    height: 40px;
     text-align: center;
+    border-style: inset;
+    border: 1px solid black;
+    color: white;
+    font-size: 22px; 
+    font-family: "Homer Simpson", cursive; 
+    
+}
+
+#index_CAPTION{
+    background: white;
+    font-family: fantasy;
+    font-size: 20px;
 }
 
 #index_Logo{
