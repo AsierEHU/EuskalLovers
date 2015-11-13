@@ -5,13 +5,16 @@
           }*/
 
 .index_SECTION{
-    width: 50px;
+    margin-top:400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
 }
 
 .index_TABLA{
     top: 1500px; 
     left: 150px;
-    background: #F781F3;  
+    background: #d42456;  
     border-radius: 10px;
     width: 100%;
     border-collapse: collapse;
@@ -25,6 +28,9 @@
 }   
 
 .index_TABLA tr td {
+    -webkit-box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
+    -moz-box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
+    box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
     text-decoration-color: white;
     height: 40px;
     text-align: center;
@@ -36,10 +42,11 @@
     
 }
 
+
 #index_CAPTION{
     background: white;
     font-family: fantasy;
-    font-size: 20px;
+    font-size: 40px;
 }
 
 #index_Logo{
@@ -50,3 +57,4 @@
     height: 350px;
     z-index:1;
 }
+
