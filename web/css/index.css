@@ -14,7 +14,7 @@
 .index_TABLA{
     top: 1500px; 
     left: 150px;
-    background: #d42456;  
+    background: #FF2626;  
     border-radius: 10px;
     width: 100%;
     border-collapse: collapse;
@@ -28,7 +28,7 @@
 }   
 
 .index_TABLA tr td {
-    -webkit-box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
+    -webkit-box-shadow: 15px 10px 37px 1px;
     -moz-box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
     box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
     text-decoration-color: white;
@@ -38,10 +38,9 @@
     border: 1px solid black;
     color: white;
     font-size: 22px; 
-    font-family: "Homer Simpson", cursive; 
+    font-family: "Tahoma", "Geneva", sans-serif; 
     
 }
-
 
 #index_CAPTION{
     background: white;
@@ -50,11 +49,12 @@
 }
 
 #index_Logo{
-    position:fixed;
-    width: 350px;
-    left: 480px;
-    top: 0px;
+    position: absolute;
+    margin-top: 70px;
+    left: 730px;
+    top: 10px;
     height: 350px;
+    width: 350px;
     z-index:1;
 }
 

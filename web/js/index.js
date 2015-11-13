@@ -4,6 +4,5 @@
  * and open the template in the editor.
  */
 
-function ActivarIniciarSesion(){
-        document.getElementById("index_INICIAR").style.display = "block";
-    }
+
+     

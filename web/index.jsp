@@ -3,10 +3,10 @@
     <jsp:param name="include" value="index"/>
 </jsp:include>
 
-<!--
+
     <div>
         <img id="index_Logo" src="img/logo.png"  alt="logo" />
-    </div>-->
+    </div>
 
 
 
@@ -19,11 +19,13 @@
         <td colspan="1"> <a class="index_ENLACES" href="registro.jsp">Crear mi perfil</a> </td>
     </tr>
     <tr>
-        <td><a class="index_ENLACES" href="javascript:ActivarIniciarSesion();">¿Ya estás registrado? <b>Inicia sesión!</b></a></td>
+        <td><a class="index_ENLACES" href="principal.jsp">¿Ya estás registrado? <b>¡Inicia sesión!</b></a></td>
        
     </tr>
         </table>
     </section>
+
+<button onclick="ActivarIniciarSesion()">Click me</button>
 
 <div id="index_INICIAR" style="display:none;">
     <form>
@@ -35,5 +37,11 @@ Contraseña: <input type="password" name="email_control" required />
         </p>
     </form>
 </div>
-                
+
+<script>
+function ActivarIniciarSesion(){
+        document.getElementById("index_INICIAR").style.display = "block";
+    }
+     
+</script>
 <jsp:include page="/comun/pie.jsp"/>
