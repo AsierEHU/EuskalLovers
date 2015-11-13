@@ -9,7 +9,7 @@
     </div>-->
 
 
-    <section class="index_TABLA">
+    <section class="index_SECTION">
         <table class="index_TABLA">
              <caption id="index_CAPTION">ÚNETE A EUSKALLOVERS</caption>
           <tr>
@@ -18,8 +18,6 @@
     <tr>
         <td><a class="index_ENLACES" href= "principal.jsp">¿Ya estás registrado? <b>Inicia sesión!</b></a></td>
     </tr>
-
-<!--       -->
         </table>
     </section>
 
