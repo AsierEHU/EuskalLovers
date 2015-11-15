@@ -15,24 +15,21 @@
         <td colspan="1"> <a class="index_ENLACES" href="registro.jsp">Crear mi perfil</a> </td>
     </tr>
     <tr>
-        <td><a class="index_ENLACES" onclick="ActivarIniciarSesion()">¿Ya estás registrado? <b>¡Inicia sesión!</b></a></td>
+        <td><a class="index_ENLACES" onclick="ActivarIniciarSesion();DesactivarPrincipal()">¿Ya estás registrado? <b>¡Inicia sesión!</b></a></td>
     </tr>
         </table>
     </section>
 
-<button onclick="DesactivarPrincipal()">desactivarPRINCIPAL</button>
-<button onclick="DesactivarIniciarSesion()()">desactivarIniciar</button>
-<button onclick="ActivarPrincipal()">activarPRINCIPAL</button>
-<button onclick="ActivarIniciarSesion()">ActivarINICIAL</button>
-
 <div id="index_INICIAR" style="display:none;">
     <form>
         <p>
-Correo Electrónico: <input type="email" name="email_control" autofocus required />
+            <b>Correo electrónico: </b> <input type="email" name="email_control" autofocus required />
 <br />
-Contraseña: <input type="password" name="email_control" required />
+<b>Contraseña: </b><input type="password" name="email_control" required />
 <br />
         </p>
+        <input class="index_btn" type="submit" value="Iniciar sesión">
+        <input class="index_btn" type="button" value="Volver al menú" onclick="DesactivarIniciarSesion();ActivarPrincipal()">
     </form>
 </div>
 <jsp:include page="/comun/pie.jsp"/>

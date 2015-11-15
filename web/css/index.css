@@ -19,6 +19,7 @@
     width: 100%;
     border-collapse: collapse;
     overflow: hidden;
+    z-index: 3;
     
 }
 .index_ENLACES
@@ -41,6 +42,29 @@
     font-family: "Tahoma", "Geneva", sans-serif; 
     
 }
+
+input.index_btn{
+width:90px; 
+height: 25px;
+font-family: "Tahoma", "Geneva", sans-serif;
+}
+
+#index_INICIAR{
+    border: 10px;
+    top: 400px;
+    left: 670px;
+    background: #FF2626;  
+    border-radius: 10px;
+    width: 500px;
+    height: 100px;
+    z-index: 4;
+    position: relative;
+    font-size: 18px;
+    font-family: "Tahoma", "Geneva", sans-serif;
+    
+}
+
+
 
 #index_CAPTION{
     background: white;
