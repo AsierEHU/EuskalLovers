@@ -1,8 +1,8 @@
 
-/*body{
-      background-image: url("../img/fondo.png"); background-position: center; background-size: cover;
-      background-repeat: no-repeat; background-color: black; background-size: 80%;
-          }*/
+body{
+      background-image: url("../img/f3.png"); background-size: cover;
+      background-repeat: no-repeat; background-size: 100%;
+          }
 
 .index_SECTION{
     margin-top:400px;
@@ -50,8 +50,8 @@ font-family: "Tahoma", "Geneva", sans-serif;
 }
 
 #index_INICIAR{
-    border: 10px;
-    top: 400px;
+    border: 10px black;
+    top: 420px;
     left: 670px;
     background: #FF2626;  
     border-radius: 10px;
@@ -67,9 +67,10 @@ font-family: "Tahoma", "Geneva", sans-serif;
 
 
 #index_CAPTION{
-    background: white;
+    background: transparent;
     font-family: fantasy;
     font-size: 40px;
+    text-shadow: 0.01em 0.01em #333;
 }
 
 #index_Logo{
