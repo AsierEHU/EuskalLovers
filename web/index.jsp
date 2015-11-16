@@ -1,6 +1,7 @@
 <jsp:include page="/comun/cabeza.jsp">
     <jsp:param name="title" value="Bienvenido a EuskalLovers"/>
     <jsp:param name="include" value="index"/>
+    <jsp:param name="includeLib" value="webstorage"/>
 </jsp:include>
 
 
