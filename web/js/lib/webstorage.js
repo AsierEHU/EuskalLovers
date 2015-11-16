@@ -117,7 +117,7 @@ function BD(storageSelection) {
     /**
      * Carga los carácteres de un usuario
      * @param {String} nick
-     * @returns {AficionesJSON}
+     * @returns {CaracteresJSON}
      */
     this.cargarCaracteresUsuario = function (nick) {
         return cargarDeBD("caracteres", nick);
@@ -145,7 +145,7 @@ function BD(storageSelection) {
     /**
      * 
      * @param {String} nick
-     * @returns {Intereses JSON}
+     * @returns {InteresesJSON}
      */
     this.cargarInteresesUsuario = function (nick) {
         return cargarDeBD("intereses", nick);
