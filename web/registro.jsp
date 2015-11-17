@@ -24,6 +24,35 @@
      <br />
      Edad:  <input type="number" name="registro_edad" min="18" max="100" required="">
      <br />
-
+     <fieldset id="registro_caracteristicas">
+         <legend>¿Cómo eres?</legend>
+         <form>
+        <input type="checkbox" name="registro_carac" value="Simpatico"> Simpático
+        <input type="checkbox" name="registro_carac" value="Divertido"> Divertido
+        <br>
+        <input type="checkbox" name="registro_carac" value="Generoso"> Alegre
+        <input type="checkbox" name="registro_carac" value="Alegre"> Generoso
+        <br>
+        <input type="checkbox" name="registro_carac" value="Atrevido"> Atrevido
+        <input type="checkbox" name="registro_carac" value="Romantico"> Romantico
+</form>
+     </fieldset>
+     <br />
+     <fieldset id="registro_gustos">
+         <legend>¿Cuáles son tus gustos?</legend>
+         <form>
+        <input type="checkbox" name="registro_gustos" value="Deportes"> Deportes
+        <input type="checkbox" name="registro_gustos" value="Lectura"> Lectura
+        <br>
+        <input type="checkbox" name="registro_gustos" value="Cine"> Televisión
+        <input type="checkbox" name="registro_gustos" value="Musica"> Música
+        <br>
+        <input type="checkbox" name="registro_gustos" value="OcioNoc"> Ocio nocturno
+        <input type="checkbox" name="registro_gustos" value="Romantico"> Tecnología
+</form>
+     </fieldset>
+     
+     Faltan CP, Constitución, altura peso y foto
+</form>
 
 <jsp:include page="/comun/pie.jsp"/>
