@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Prueba</title>
+        <style>
+            #caja {
+            margin: 10px;
+            width: 350px;
+            height: 350px;
+            border: 5px dashed gray;
+            border-radius: 8px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: black;
+            background-attachment: fixed;
+            }
+        </style>
+        <script src="js/lib/formularios.js"></script>
+        <script>
+            window.addEventListener('load', function(){
+                addDragAndDrop("caja");
+            }, false);
+        </script>
+    </head>
+
+    <body>
+        <p>Arrastrar una imagen desde el escritorio.</p>
+        <div id="caja">
+        </div>
+    </body>
+</html>
