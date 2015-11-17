@@ -33,4 +33,9 @@
         <input class="index_btn" type="button" value="Volver al menú" onclick="DesactivarIniciarSesion();ActivarPrincipal()">
     </form>
 </div>
+
+<footer id="comun_AUTORES">
+    © ADSI-2015/2016 Euskal Lovers | Created and developed by: Adrián Vazquez, Asier López & Asier Rodríguez. | UPV-EHU
+</footer>
+
 <jsp:include page="/comun/pie.jsp"/>

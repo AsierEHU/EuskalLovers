@@ -1,6 +1,6 @@
 
 body{
-      background-image: url("../img/f3.png"); background-size: cover;
+      background-image: url("../img/f4.png"); background-size: cover;
       background-repeat: no-repeat; background-size: 100%;
           }
 
@@ -83,3 +83,11 @@ font-family: "Tahoma", "Geneva", sans-serif;
     z-index:1;
 }
 
+footer#comun_AUTORES{
+    bottom: 45px;
+    color: white;
+    z-index: 10;
+    position: absolute;
+    left: 510px;
+    text-shadow: #555 2px 2px 3px;
+}
