@@ -1,9 +1,13 @@
 
-//Estructura de almacenaje
-
+//Mejor usar BDS, puntuará más
 BDL = new BD(0);
 BDS = new BD(1);
 
+/**
+ * Clase que maneja el guardado de datos en local
+ * @param {boolean} storageSelection 0=localStorage, 1=sessionStorage
+ * @returns {BD}
+ */
 function BD(storageSelection) {
 
     var tipoStorage = ["localStorage", "sessionStorage"];
@@ -36,7 +40,7 @@ function BD(storageSelection) {
     }
 
     //publicos
-    //
+    
     //funciones usuario
 
     /**

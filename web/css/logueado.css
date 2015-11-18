@@ -12,7 +12,7 @@ body{
     background-repeat: no-repeat;
     background-color: black;
     background-attachment: fixed;
-    background-size: 80%
+    background-size:cover;
 }
 section{
     border:1px solid magenta;
