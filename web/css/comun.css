@@ -10,7 +10,7 @@ body{
     background-size:cover;
 }
 
-div#comun_AUTORES{
+footer#comun_footer{
     margin-top: 20px;
     color: white;
     z-index: 10;
