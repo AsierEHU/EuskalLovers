@@ -8,6 +8,7 @@ window.addEventListener("load",function(){
     document.getElementById("index_ENLACEINICIAR").addEventListener("click",DesactivarPrincipal);
     document.getElementById("index_ENLACEVOLVER").addEventListener("click",DesactivarIniciarSesion);
     document.getElementById("index_ENLACEVOLVER").addEventListener("click",ActivarPrincipal);
+    addValidarEmail("index_Email");
 });
 
 
@@ -23,3 +24,5 @@ function ActivarIniciarSesion(){
  function ActivarPrincipal(){
      document.getElementById("index_TABLA").style.display ="table";
  }
+ 
+ 

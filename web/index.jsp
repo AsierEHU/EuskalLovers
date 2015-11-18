@@ -2,6 +2,7 @@
     <jsp:param name="title" value="Bienvenido a EuskalLovers"/>
     <jsp:param name="include" value="index"/>
     <jsp:param name="includeLib" value="webstorage"/>
+    <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 
 <div id="index_SECTIONID">
@@ -23,7 +24,8 @@
             <b>Contraseña: </b><input type="password" name="email_control" required />
             <br />
         </p>
-        <input id="index_Submit" class="index_btn" type="submit" value="Iniciar sesión">
+        <br />
+        <input id="index_Submit" class="index_btn" type="submit" value="Iniciar sesión"> <n/>
         <input id="index_ENLACEVOLVER" class="index_btn" type="button" value="Volver al menú">
     </form>
 </div>
