@@ -29,13 +29,13 @@
      <br>
      Edad: * <input type="number" name="registro_edad" min="18" max="100" required>
      <br>
-     Altura: <input type="number" name="registro_peso" step="0.01">
+     Altura: <input type="number" name="registro_altura" step="0.01">
      <br>
-     Peso: <input type="number" max="100" name="registro_altura">
+     Peso: <input type="number" max="100" name="registro_peso">
      <br>
      <fieldset id="registro_constitucion">
          <legend>¿Qué aspecto tienes?</legend>
-         <input type="radio" name="registro_const" value="Delgado" checked> Delgad@
+         <input type="radio" name="registro_const" value="Delgado" required checked> Delgad@
          <input type="radio" name="registro_const" value="Fornido"> Fornid@
          <br>
          <input type="radio" name="registro_const" value="Musculoso"> Musculos@
