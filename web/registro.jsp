@@ -47,8 +47,8 @@
         <input type="checkbox" name="registro_carac" value="Simpatico"> Simpátic@
         <input type="checkbox" name="registro_carac" value="Divertido"> Divertid@
         <br>
-        <input type="checkbox" name="registro_carac" value="Generoso"> Alegre
-        <input type="checkbox" name="registro_carac" value="Alegre"> Generos@
+        <input type="checkbox" name="registro_carac" value="Alegre"> Alegre
+        <input type="checkbox" name="registro_carac" value="Generoso"> Generos@
         <br>
         <input type="checkbox" name="registro_carac" value="Atrevido"> Atrevid@
         <input type="checkbox" name="registro_carac" value="Romantico"> Romántic@
@@ -59,11 +59,11 @@
         <input type="checkbox" name="registro_gustos" value="Deportes"> Deportes
         <input type="checkbox" name="registro_gustos" value="Lectura"> Lectura
         <br>
-        <input type="checkbox" name="registro_gustos" value="Cine"> Televisión
+        <input type="checkbox" name="registro_gustos" value="Television"> Televisión
         <input type="checkbox" name="registro_gustos" value="Musica"> Música
         <br>
         <input type="checkbox" name="registro_gustos" value="OcioNoc"> Ocio nocturno
-        <input type="checkbox" name="registro_gustos" value="Romantico"> Tecnología
+        <input type="checkbox" name="registro_gustos" value="Tecnologia"> Tecnología
      </fieldset>
      <br>
      <h2>Indica tus preferencias de búsqueda básicas: * </h2>
