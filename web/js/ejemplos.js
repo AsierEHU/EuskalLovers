@@ -28,6 +28,7 @@ window.addEventListener('load', function(){
 
     //Ejemplo validacion
     FV.addValidarEmail("ejemplo_Email");
+    FV.addValidarDNI("ejemplo_DNI");
 }, false);
 
 

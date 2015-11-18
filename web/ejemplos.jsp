@@ -14,8 +14,12 @@
 </div>
 <br>
 <h3>Ejemplo validacion dinamica</h3>
-<p><b>Correo electrónico: </b> </p>
-<input id="ejemplo_Email" type="email" name="email_control" autofocus required />
 
+<form>
+    <p><b>Correo electrónico: </b> </p>
+    <input id="ejemplo_Email" type="text" name="email_control" required />
+    <p><b>DNI</b></p>
+    <input id="ejemplo_DNI" type="text" name="dni_control" required />
+</form>
 
 <jsp:include page="/comun/pie.jsp"/>

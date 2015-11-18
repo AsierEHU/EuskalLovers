@@ -1,3 +1,7 @@
+body{
+    background-image: url('../img/fondo.png');
+}
+
 div#logueado_center{
     margin:auto;
     width:800px; 
@@ -6,10 +10,47 @@ div#logueado_center{
     border:1px solid black; 
     background-color: white;
 }
-body{
-    background-image: url('../img/fondo.png');
+
+header#logueado_header{
+    border:1px solid pink; 
+    position:relative;
 }
-section{
+
+div#logueado_header_user{
+    border:1px solid blue; 
+    width:200px; 
+    height:80px; 
+    bottom:0px; 
+    right:0px; 
+    position:absolute; 
+    margin:10px;
+}
+
+img#logueado_header_logo{
+    border:1px solid red; 
+    width:100px; 
+    height:100px; 
+    margin:10px;
+}
+
+section#logueado_section{
     border:1px solid magenta;
     height: 500px;
+}
+
+nav#logueado_nav{
+    border:1px solid green; 
+    height: 50px;
+}
+
+nav#logueado_nav ul li{
+    display:block; 
+    float:left; 
+    padding:5px; 
+    margin:10px; 
+    border:1px solid orange;
+}
+
+footer#logueado_footer{
+    border: 1px solid yellow;
 }

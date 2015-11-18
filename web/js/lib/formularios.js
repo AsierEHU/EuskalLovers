@@ -1,33 +1,43 @@
 
-FV=new formValidator(
-        function(campo){
-            campo.style.borderColor = "green";
-        },
-        function(campo){
-            campo.style.borderColor = "red";
-        }
-);
+FV=new formValidator();
 
 /**
  * Clase con distintos metodos de ayuda de validación de formularios
- * @param {function(campo)} funcionCorrecta
- * @param {function(campo)} funcionIncorrecta
+ * Solo aplica los patrones y funciones, no aplica el estilo.
+ * El estilo se aplica en CSS3 (Ej: input:valid{})
  * @returns {formValidator}
  */
-function formValidator(funcionCorrecta, funcionIncorrecta) {
+function formValidator() {
 
     //privados
 
-    function addValidacionTR(id, expresion) {
+    /**
+     * Atraves del patron ya nos encargamos que HTML5 lo valide automaticamente
+     * @param {String} id 
+     * @param {String} expresion 
+     * @returns {undefined}
+     */
+    function addValidacionExpress(id, expresion) {
         var campo = document.getElementById(id);
-        campo.addEventListener("input", function () {
-            if (expresion.test(campo.value)) {
-                funcionCorrecta(campo);
-            } else {
-                funcionIncorrecta(campo);
+        campo.pattern=expresion;
+    }
+    
+    /**
+     * Para campos que no tienen patrones
+     * @param {String} id
+     * @param {function (Input)} funcion Function que devulve true
+     * en caso de estar correcto el campo y false en caso contrario
+     * @returns {undefined}
+     */
+    function addValidacionFuncion(id,funcion){
+         var campo = document.getElementById(id);
+         campo.addEventListener("input",function(){
+            if(funcion(campo)){
+                campo.validity="true";
+            }else{
+                campo.validity="false";
             }
-        });
-        
+         });
     }
 
     //publicos
@@ -38,8 +48,30 @@ function formValidator(funcionCorrecta, funcionIncorrecta) {
      * @returns {undefined}
      */
     this.addValidarEmail = function (id) {
-        addValidacionTR(id, /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/);
+        addValidacionExpress(id, "^\\w+([/\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+$");
     };
+    
+    /**
+     * Añade una validacion a un campo de tipo dni
+     * @param {String} id
+     * @returns {undefined}
+     */
+    this.addValidarDNI = function(id) {
+        addValidacionFuncion(id,function(campo){
+            var dni=campo.value;
+            var numero = dni.substr(0,dni.length-1);
+            var let = dni.substr(dni.length-1,1);
+            numero = numero % 23;
+            var letra='TRWAGMYFPDXBNJZSQVHLCKET';
+            letra=letra.substring(numero,numero+1);
+            if (letra!==let){
+                return false;
+            }else{
+                return true;
+            }
+        });
+        //addValidacionExpress(id,"(\d{8})([-]?)([A-Z]{1})");
+      };
 }
 
 /**

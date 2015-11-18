@@ -10,10 +10,18 @@ body{
     background-size:cover;
 }
 
-div#comun_AUTORES{
+footer#comun_footer{
     margin-top: 20px;
     color: white;
     z-index: 10;
     text-align: center;
     text-shadow: #555 2px 2px 3px;
+}
+
+input:focus:invalid {
+    border-color: red;
+}
+
+input:valid {
+    border-color: green;
 }
