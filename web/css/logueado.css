@@ -8,11 +8,6 @@ div#logueado_center{
 }
 body{
     background-image: url('../img/fondo.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: black;
-    background-attachment: fixed;
-    background-size:cover;
 }
 section{
     border:1px solid magenta;

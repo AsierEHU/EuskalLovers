@@ -1,47 +1,49 @@
 
 body{
-      background-image: url("../img/f4.png"); background-size: cover;
-      background-repeat: no-repeat; background-size: 100%;
-          }
-
-.index_SECTION{
-    margin-top:400px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 500px;
+      background-image: url("../img/f4.png");
 }
 
-.index_TABLA{
-    top: 1500px; 
-    left: 150px;
+#index_SECTIONID{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:90px;
+    width: 500px;
+    padding:20px;
+    border-radius: 8px;
+    border:1px solid grey;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#index_TABLA{
     background: #FF2626;  
     border-radius: 10px;
     width: 100%;
     border-collapse: collapse;
     overflow: hidden;
     z-index: 3;
+}
+
+#index_TABLA tr td {
+    box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
+    height: 40px;
+    text-align: center;
+    border-style: inset;
+    border: 1px solid black;
+    font-size: 22px; 
+    font-family: "Tahoma", "Geneva", sans-serif; 
     
 }
+
 .index_ENLACES
 {   
  text-decoration:none; 
  color: black;
 }   
 
-.index_TABLA tr td {
-    -webkit-box-shadow: 15px 10px 37px 1px;
-    -moz-box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
-    box-shadow: 15px 10px 37px 1px rgba(150,145,150,0.64);
-    text-decoration-color: white;
-    height: 40px;
-    text-align: center;
-    border-style: inset;
-    border: 1px solid black;
-    color: white;
-    font-size: 22px; 
-    font-family: "Tahoma", "Geneva", sans-serif; 
-    
+.index_ENLACES:hover{
+    color:white;
 }
+
 
 input.index_btn{
 width:90px; 
@@ -49,16 +51,15 @@ height: 25px;
 font-family: "Tahoma", "Geneva", sans-serif;
 }
 
-#index_INICIAR{
+#index_infoSesion{
+    display:none;
     border: 10px black;
-    top: 420px;
-    left: 670px;
     background: #FF2626;  
     border-radius: 10px;
     width: 500px;
     height: 100px;
     z-index: 4;
-    position: relative;
+    //position: relative;
     font-size: 18px;
     font-family: "Tahoma", "Geneva", sans-serif;
     
@@ -74,20 +75,10 @@ font-family: "Tahoma", "Geneva", sans-serif;
 }
 
 #index_Logo{
-    position: absolute;
-    margin-top: 70px;
-    left: 730px;
-    top: 10px;
-    height: 350px;
-    width: 350px;
+    margin:auto;
+    //margin-top: 70px;
+    display:block;
+    height: 390px;
+    width:390px;
     z-index:1;
-}
-
-footer#comun_AUTORES{
-    bottom: 45px;
-    color: white;
-    z-index: 10;
-    position: absolute;
-    left: 510px;
-    text-shadow: #555 2px 2px 3px;
 }
