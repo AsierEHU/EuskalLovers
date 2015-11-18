@@ -66,6 +66,14 @@
         <input type="checkbox" name="registro_gustos" value="Romantico"> Tecnología
      </fieldset>
      <br>
+     <h2>Indica tus preferencias de búsqueda básicas: * </h2>
+     <br>
+     Busco: <br> <input type="radio" name="registro_genero_busqueda" value="Hombre" checked required > Hombres
+                 <input type="radio" name="registro_genero_busqueda" value="Mujeres" > Mujeres
+     <br>
+     Con una edad mínima de: <input type="number" name="registro_edad_busqueda" min="18" max="100" required>
+     <br>
+     <br>
      <h5>Los campos marcados con * son obligatorios</h5>
      <br>
      <input type="submit" value="Terminar Registro">
