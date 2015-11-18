@@ -1,2 +1,11 @@
-nav{border:1px solid green; height: 50px;}
-ul#nav_listaMenu li{display:block; float:left; padding:5px; margin:10px; border:1px solid orange;}
+nav{
+    border:1px solid green; 
+    height: 50px;
+}
+ul#nav_listaMenu li{
+    display:block; 
+    float:left; 
+    padding:5px; 
+    margin:10px; 
+    border:1px solid orange;
+}

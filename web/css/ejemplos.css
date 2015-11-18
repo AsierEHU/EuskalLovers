@@ -1,0 +1,8 @@
+div#ejemplos_caja {
+    margin: 10px;
+    width: 350px;
+    height: 350px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
