@@ -15,18 +15,42 @@ function BD(storageSelection) {
 
     //privados
 
+    /**
+     * Guarda en el storage seleccionado
+     * @param {String} prefijo
+     * @param {String} id
+     * @param {String} cadena
+     * @returns {undefined}
+     */
     function guardarEnBD(prefijo, id, cadena) {
         storage.setItem(prefijo + "_" + id, cadena);
     }
 
+    /**
+     * Carga en forma JSON del storage seleccionado
+     * @param {String} prefijo
+     * @param {String} id
+     * @returns {JSON}
+     */
     function cargarDeBD(prefijo, id) {
         return JSON.parse(storage.getItem(prefijo + "_" + id));
     }
 
+    /**
+     * Elimina el objeto seleccionado del storage seleccionado
+     * @param {String} prefijo
+     * @param {String} id
+     * @returns {undefined}
+     */
     function eliminarDeBD(prefijo, id) {
         storage.removeItem(prefijo + "_" + id);
     }
 
+    /**
+     * Convierte un array de strings a formato String JSON
+     * @param {array String} arrayString
+     * @returns {String}
+     */
     function convertirArrayEnStringJSON(arrayString) {
         var arrayJSON = '[';
         for (var i = 0; i < arrayString.length; i++) {

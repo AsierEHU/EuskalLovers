@@ -5,19 +5,3 @@ div#ejemplos_caja {
     border: 1px solid gray;
     border-radius: 8px;
 }
-
-input:invalid {
-    border-color: red;
-}
-
-input:valid {
-    border-color: green;
-}
- 
-/*input:required:invalid {
-   border-color:grey;
-}
- 
-input:required {
-    border-color: yellow;
-}*/

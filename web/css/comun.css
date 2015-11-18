@@ -17,3 +17,11 @@ div#comun_AUTORES{
     text-align: center;
     text-shadow: #555 2px 2px 3px;
 }
+
+input:focus:invalid {
+    border-color: red;
+}
+
+input:valid {
+    border-color: green;
+}
