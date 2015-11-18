@@ -81,6 +81,7 @@ function BD(storageSelection) {
         eliminarDeBD("usuario", nick);
         eliminarDeBD("aficiones", nick);
         eliminarDeBD("caracteres", nick);
+        eliminarDeBD("intereses", nick);
     };
 
     //funciones aficiones de usuario
