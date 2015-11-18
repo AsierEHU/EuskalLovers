@@ -1,11 +1,11 @@
 
 FV=new formValidator(
-        function(campo){
+        /*function(campo){
             campo.style.borderColor = "green";
         },
         function(campo){
             campo.style.borderColor = "red";
-        }
+        }*/
 );
 
 /**
@@ -14,19 +14,20 @@ FV=new formValidator(
  * @param {function(campo)} funcionIncorrecta
  * @returns {formValidator}
  */
-function formValidator(funcionCorrecta, funcionIncorrecta) {
+function formValidator(/*funcionCorrecta, funcionIncorrecta*/) {
 
     //privados
 
     function addValidacionTR(id, expresion) {
         var campo = document.getElementById(id);
-        campo.addEventListener("input", function () {
+        campo.pattern=expresion;
+        /*campo.addEventListener("input", function () {
             if (expresion.test(campo.value)) {
                 funcionCorrecta(campo);
             } else {
                 funcionIncorrecta(campo);
             }
-        });
+        });*/
         
     }
 
@@ -38,7 +39,8 @@ function formValidator(funcionCorrecta, funcionIncorrecta) {
      * @returns {undefined}
      */
     this.addValidarEmail = function (id) {
-        addValidacionTR(id, /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/);
+        //addValidacionTR(id, /^\w+([/\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/);
+        addValidacionTR(id, "^\\w+([/\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+$");
     };
 }
 
