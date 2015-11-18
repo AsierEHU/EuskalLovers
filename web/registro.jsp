@@ -3,41 +3,51 @@
     <jsp:param name="include" value="registro"/>
 </jsp:include>
  <h1> ¡Regístrate en Euskal Lovers! </h1>
-<form class="registro_FORMULARIO">
+ <form class="registro_FORMULARIO" action="principal.jsp">
     
-    Nombre de usuario: <input type="text" name="registro_nick" required autofocus >
+    Nombre de usuario: * <input type="text" name="registro_nick" required autofocus >
     <br>
-    Contraseña:  <input type="password" name="registro_password" required >
+    Contraseña: * <input type="password" name="registro_password" required >
     <br>
-    Email: <input type="email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required>
+    Email: * <input type="email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required>
     <br>
-    Género: <br> <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
+    Género: * <br> <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
                  <input type="radio" name="registro_genero" value="Femenino" > Femenino
-     Ciudad
+    <br>
+    Ciudad: * 
      <select name="registro_ciudad" required>
          <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
          <option value="Bilbao">Bilbao</option>
          <option value="San Sebastian">San Sebastian</option>
      </select>
      <br>
-     Edad:  <input type="range" name="registro_edad" min="18" max="100" required>
+     Código Postal: * <input type="number" name="registro_cp" placeholder="00000" required>
      <br>
-     Altura: <input type="text" name="registro_peso">
+     Edad: * <input type="number" name="registro_edad" min="18" max="100" required>
      <br>
-     Peso: <input type="number" name="registro_altura">
+     Altura: <input type="number" name="registro_peso" step="0.01">
      <br>
-     Código Postal: <input type="number" name="registro_cp" placeholder="00000">
+     Peso: <input type="number" max="100" name="registro_altura">
+     <br>
+     <fieldset id="registro_constitucion">
+         <legend>¿Qué aspecto tienes?</legend>
+         <input type="radio" name="registro_const" value="Delgado" checked> Delgad@
+         <input type="radio" name="registro_const" value="Fornido"> Fornid@
+         <br>
+         <input type="radio" name="registro_const" value="Musculoso"> Musculos@
+         <input type="radio" name="registro_const" value="">
+     </fieldset>
      <br>
      <fieldset id="registro_caracteristicas">
          <legend>¿Cómo eres?</legend>
-        <input type="checkbox" name="registro_carac" value="Simpatico"> Simpático
-        <input type="checkbox" name="registro_carac" value="Divertido"> Divertido
+        <input type="checkbox" name="registro_carac" value="Simpatico"> Simpátic@
+        <input type="checkbox" name="registro_carac" value="Divertido"> Divertid@
         <br>
         <input type="checkbox" name="registro_carac" value="Generoso"> Alegre
-        <input type="checkbox" name="registro_carac" value="Alegre"> Generoso
+        <input type="checkbox" name="registro_carac" value="Alegre"> Generos@
         <br>
-        <input type="checkbox" name="registro_carac" value="Atrevido"> Atrevido
-        <input type="checkbox" name="registro_carac" value="Romantico"> Romantico
+        <input type="checkbox" name="registro_carac" value="Atrevido"> Atrevid@
+        <input type="checkbox" name="registro_carac" value="Romantico"> Romántic@
      </fieldset>
      <br>
      <fieldset id="registro_gustos">
@@ -51,8 +61,13 @@
         <input type="checkbox" name="registro_gustos" value="OcioNoc"> Ocio nocturno
         <input type="checkbox" name="registro_gustos" value="Romantico"> Tecnología
      </fieldset>
+     <br>
+     <h5>Los campos marcados con * son obligatorios</h5>
+     <br>
+     <input type="submit" value="Terminar Registro">
      
-     Faltan Constitución, y foto
+     
+     Falta foto
 </form>
 
 <jsp:include page="/comun/pie.jsp"/>
