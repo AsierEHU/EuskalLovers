@@ -72,6 +72,11 @@ font-family: "Tahoma", "Geneva", sans-serif;
 
 }
 
+.index_cajasForm{
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
 #index_infoSesion{
     display:none;
     border: 10px black;

@@ -19,9 +19,9 @@
     
     <form name="index_infoSesion" id="index_infoSesion" method="get">
         <p>
-            <b>Correo electrónico: </b> <input id="index_Email" type="email" name="email_control" autofocus required />
+            <b class="index_cajasForm"> Email/Nick: </b> <input  id="index_Email" type="email" name="email_control" autofocus required />
             <br />
-            <b>Contraseña: </b><input type="password" name="email_control" required />
+            <b class="index_cajasForm"> Contraseña: </b><input  type="password" name="email_control" required />
             <br />
         </p>
         <br />
