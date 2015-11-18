@@ -22,7 +22,7 @@
      <select name="registro_ciudad" required>
          <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
          <option value="Bilbao">Bilbao</option>
-         <option value="San Sebastian">San Sebastian</option>
+         <option value="San Sebastian">San Sebastián</option>
      </select>
      <br>
      Código Postal: * <input type="number" name="registro_cp" placeholder="00000" required>
@@ -43,7 +43,7 @@
      </fieldset>
      <br>
      <fieldset id="registro_caracteristicas">
-         <legend>¿Cómo eres?</legend>
+         <legend>¿Cómo te definirías?</legend>
         <input type="checkbox" name="registro_carac" value="Simpatico"> Simpátic@
         <input type="checkbox" name="registro_carac" value="Divertido"> Divertid@
         <br>
@@ -68,7 +68,7 @@
      <br>
      <h2>Indica tus preferencias de búsqueda básicas: * </h2>
      <br>
-     Busco: <br> <input type="radio" name="registro_genero_busqueda" value="Hombre" checked required > Hombres
+     Busco: <br> <input type="radio" name="registro_genero_busqueda" value="Hombres" checked required > Hombres
                  <input type="radio" name="registro_genero_busqueda" value="Mujeres" > Mujeres
      <br>
      Con una edad mínima de: <input type="number" name="registro_edad_busqueda" min="18" max="100" required>
