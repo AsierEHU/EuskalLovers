@@ -3,9 +3,7 @@
 window.addEventListener('load', function(){
     
     //Ejemplo para dragAndDrop
-    var validator=new validaForm();
-    validator.addDragAndDropImage("ejemplos_caja");
-    
+    addDragAndDropImage("ejemplos_caja");
     
     //Ejemplo datos en sesion
     var datosUsuario=document.getElementById("ejemplos_usuario");
@@ -29,7 +27,7 @@ window.addEventListener('load', function(){
     datosUsuario.innerHTML+=intereses.ciudad+"<br>";;
 
     //Ejemplo validacion
-    validator.addValidarEmail("ejemplo_Email");
+    FV.addValidarEmail("ejemplo_Email");
 }, false);
 
 

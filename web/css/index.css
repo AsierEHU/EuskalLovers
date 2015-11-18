@@ -59,7 +59,6 @@ font-family: "Tahoma", "Geneva", sans-serif;
     width: 500px;
     height: 100px;
     z-index: 4;
-    //position: relative;
     font-size: 18px;
     font-family: "Tahoma", "Geneva", sans-serif;
     
@@ -76,7 +75,6 @@ font-family: "Tahoma", "Geneva", sans-serif;
 
 #index_Logo{
     margin:auto;
-    //margin-top: 70px;
     display:block;
     height: 390px;
     width:390px;
