@@ -7,6 +7,13 @@ and open the template in the editor.
     Created on : 05-nov-2015, 8:19:43
     Author     : docencia
 */
+div#caja_foto{
+    margin: 10px;
+    width: 350px;
+    height: 350px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
 
 #index_text{color:green}
 p {color:blue}

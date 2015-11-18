@@ -4,6 +4,10 @@
 </jsp:include>
  <h1> ¡Regístrate en Euskal Lovers! </h1>
  <form class="registro_FORMULARIO" action="principal.jsp">
+     
+     <h3>Pon tu foto de perfil aquí</h3>
+     <div id="caja_foto">
+     </div>
     
     Nombre de usuario: * <input type="text" name="registro_nick" required autofocus >
     <br>
@@ -66,8 +70,6 @@
      <br>
      <input type="submit" value="Terminar Registro">
      
-     
-     Falta foto
 </form>
 
 <jsp:include page="/comun/pie.jsp"/>
