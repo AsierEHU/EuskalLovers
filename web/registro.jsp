@@ -35,23 +35,23 @@
      <br>
      <fieldset id="registro_constitucion">
          <legend>¿Qué aspecto tienes?</legend>
-         <input type="radio" name="registro_const" value="Delgado" required checked> Delgad@
-         <input type="radio" name="registro_const" value="Fornido"> Fornid@
+         <input type="radio" name="registro_const" value="Delgado" required checked> Delgado/Delgada
+         <input type="radio" name="registro_const" value="Fornido"> Fornido/Fornida
          <br>
-         <input type="radio" name="registro_const" value="Musculoso"> Musculos@
+         <input type="radio" name="registro_const" value="Musculoso"> Musculoso/Musculosa
          <input type="radio" name="registro_const" value="">
      </fieldset>
      <br>
      <fieldset id="registro_caracteristicas">
          <legend>¿Cómo te definirías?</legend>
-        <input type="checkbox" name="registro_carac" value="Simpatico"> Simpátic@
-        <input type="checkbox" name="registro_carac" value="Divertido"> Divertid@
+        <input type="checkbox" name="registro_carac" value="Simpatico"> Simpático/Simpática
+        <input type="checkbox" name="registro_carac" value="Divertido"> Divertido/Divertida
         <br>
         <input type="checkbox" name="registro_carac" value="Alegre"> Alegre
-        <input type="checkbox" name="registro_carac" value="Generoso"> Generos@
+        <input type="checkbox" name="registro_carac" value="Generoso"> Generoso/Generosa
         <br>
-        <input type="checkbox" name="registro_carac" value="Atrevido"> Atrevid@
-        <input type="checkbox" name="registro_carac" value="Romantico"> Romántic@
+        <input type="checkbox" name="registro_carac" value="Atrevido"> Atrevido/Atrevida
+        <input type="checkbox" name="registro_carac" value="Romantico"> Romántico/Romántica
      </fieldset>
      <br>
      <fieldset id="registro_gustos">
