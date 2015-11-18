@@ -2,31 +2,34 @@
     <jsp:param name="title" value="Regístrate en EuskalLovers"/>
     <jsp:param name="include" value="registro"/>
 </jsp:include>
-<h1> ¡Regístrate en Euskal Lovers! </h1>
+ <h1> ¡Regístrate en Euskal Lovers! </h1>
 <form class="registro_FORMULARIO">
     
-     Nombre de usuario: <input type="text" name="registro_nick" required autofocus >
-    <br />
+    Nombre de usuario: <input type="text" name="registro_nick" required autofocus >
+    <br>
     Contraseña:  <input type="password" name="registro_password" required >
-     <br />
-     Email: <input type="email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required>
-    <br />
-     <form>
-         Género: <br> <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
-                  <input type="radio" name="registro_genero" value="Femenino" > Femenino
-     </form>
+    <br>
+    Email: <input type="email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required>
+    <br>
+    Género: <br> <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
+                 <input type="radio" name="registro_genero" value="Femenino" > Femenino
      Ciudad
      <select name="registro_ciudad" required>
          <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
          <option value="Bilbao">Bilbao</option>
          <option value="San Sebastian">San Sebastian</option>
      </select>
-     <br />
-     Edad:  <input type="number" name="registro_edad" min="18" max="100" required="">
-     <br />
+     <br>
+     Edad:  <input type="range" name="registro_edad" min="18" max="100" required>
+     <br>
+     Altura: <input type="text" name="registro_peso">
+     <br>
+     Peso: <input type="number" name="registro_altura">
+     <br>
+     Código Postal: <input type="number" name="registro_cp" placeholder="00000">
+     <br>
      <fieldset id="registro_caracteristicas">
          <legend>¿Cómo eres?</legend>
-         <form>
         <input type="checkbox" name="registro_carac" value="Simpatico"> Simpático
         <input type="checkbox" name="registro_carac" value="Divertido"> Divertido
         <br>
@@ -35,12 +38,10 @@
         <br>
         <input type="checkbox" name="registro_carac" value="Atrevido"> Atrevido
         <input type="checkbox" name="registro_carac" value="Romantico"> Romantico
-</form>
      </fieldset>
-     <br />
+     <br>
      <fieldset id="registro_gustos">
          <legend>¿Cuáles son tus gustos?</legend>
-         <form>
         <input type="checkbox" name="registro_gustos" value="Deportes"> Deportes
         <input type="checkbox" name="registro_gustos" value="Lectura"> Lectura
         <br>
@@ -49,10 +50,9 @@
         <br>
         <input type="checkbox" name="registro_gustos" value="OcioNoc"> Ocio nocturno
         <input type="checkbox" name="registro_gustos" value="Romantico"> Tecnología
-</form>
      </fieldset>
      
-     Faltan CP, Constitución, altura peso y foto
+     Faltan Constitución, y foto
 </form>
 
 <jsp:include page="/comun/pie.jsp"/>
