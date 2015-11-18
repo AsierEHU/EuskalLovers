@@ -4,7 +4,7 @@
 </jsp:include>
  <h1> ¡Regístrate en Euskal Lovers! </h1>
  <form class="registro_FORMULARIO" action="principal.jsp">
-     
+     <br>
      <h3>Pon tu foto de perfil aquí</h3>
      <div id="caja_foto">
      </div>
