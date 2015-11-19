@@ -1,12 +1,14 @@
 <jsp:include page="/comun/cabeza.jsp">
     <jsp:param name="title" value="Regístrate en EuskalLovers"/>
     <jsp:param name="include" value="registro"/>
+    <jsp:param name="includeLib" value="webstorage"/>
+    <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
  <h1> ¡Regístrate en Euskal Lovers! </h1>
  <form class="registro_FORMULARIO" action="principal.jsp">
      <br>
      <h3>Pon tu foto de perfil aquí</h3>
-     <div id="caja_foto">
+     <div id="registro_foto">
      </div>
     
     Nombre de usuario: * <input type="text" name="registro_nick" required autofocus >

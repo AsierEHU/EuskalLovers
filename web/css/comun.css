@@ -20,8 +20,13 @@ footer#comun_footer{
 
 input:focus:invalid {
     border-color: red;
+    background-color: coral;
 }
 
 input:valid {
     border-color: green;
+}
+
+input:optional:valid{
+    border-color: inherit;
 }

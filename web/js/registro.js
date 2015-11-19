@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 window.addEventListener('load', function(){
-    
-    //Ejemplo para dragAndDrop
-    addDragAndDropImage("ejemplos_caja");
+    addDragAndDropImage("registro_foto");
     
 }, false);
