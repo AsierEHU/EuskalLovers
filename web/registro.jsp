@@ -22,7 +22,7 @@
                 </tr>
                 <tr>
                     <td>Email: * </td>
-                    <td><input type="email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required></td>
+                    <td><input type="email" id="registro_email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required></td>
                 </tr>
                 <tr>
                     <td>Género: * </td>
@@ -43,7 +43,7 @@
                 </tr>
                 <tr>
                     <td>Código Postal: * </td>
-                    <td><input type="text" name="registro_cp" placeholder="00000" minlength="5" maxlength="5" required></td>
+                    <td><input type="text" id="registro_cp" name="registro_cp" placeholder="00000" minlength="5" maxlength="5" required></td>
                 </tr>
                 <tr>
                     <td>Edad: * </td>

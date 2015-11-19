@@ -23,7 +23,8 @@ function formValidator() {
     }
     
     /**
-     * Para campos que no tienen patrones
+     * (No funciona todavia)
+     * Para campos que no tienen patrones 
      * @param {String} id
      * @param {function (Input)} funcion Function que devulve true
      * en caso de estar correcto el campo y false en caso contrario
@@ -44,7 +45,7 @@ function formValidator() {
 
     /**
      * Añade una validacion en linea a un campo de tipo email
-     * @param {type} id Id del imput Email
+     * @param {String} id Id del imput Email
      * @returns {undefined}
      */
     this.addValidarEmail = function (id) {
@@ -52,7 +53,35 @@ function formValidator() {
     };
     
     /**
-     * Añade una validacion a un campo de tipo dni
+     * Añade una validacion en lidea a un campo de Codigo Postal
+     * @param {String} id
+     * @returns {undefined}
+     */
+    this.addValidarCP = function(id){
+        addValidacionExpress(id, "^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
+    };
+    
+    /**
+     * Añade una validacion en lidea a un campo de teléfono
+     * @param {String} id
+     * @returns {undefined}
+     */
+    this.addValidarTelf = function(id){
+        addValidacionExpress(id ,"^\\+?\\d{1,3}?[- .]?\\(?(?:\\d{2,3})\\)?[- .]?\\d\\d\\d[- .]?\\d\\d\\d\\d$");
+    };
+    
+    /**
+     * Añade una validacion en lidea a un campo de Tarjeta de crédito
+     * @param {String} id
+     * @returns {undefined}
+     */
+    this.addValidarCreditCard = function(id){
+        addValidacionExpress(id, "^((67\\d{2})|(4\\d{3})|(5[1-5]\\d{2})|(6011))(-?\\s?\\d{4}){3}|(3[4,7])\\ d{2}-?\\s?\\d{6}-?\\s?\\d{5}$");
+    };
+    
+    /**
+     * (No funciona todavia)
+     * Añade una validacion a un campo de tipo dni 
      * @param {String} id
      * @returns {undefined}
      */

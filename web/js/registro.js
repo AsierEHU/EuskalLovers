@@ -5,5 +5,6 @@
  */
 window.addEventListener('load', function(){
     addDragAndDropImage("registro_foto");
-    
+    FV.addValidarCP("registro_cp");
+    FV.addValidarEmail("registro_email");
 }, false);
