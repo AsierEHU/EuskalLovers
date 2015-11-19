@@ -1,7 +1,30 @@
+
+body{
+      background-image: url("../img/f4.png");
+}
+
+div#registro_center{
+    margin:auto;
+    width:800px; 
+    margin-top:50px; 
+    padding:10px; 
+    border-radius: 8px;
+    border:1px solid grey; 
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
 div#registro_foto{
     margin: 10px;
-    width: 120px;
-    height: 140px;
+    width: 140px;
+    height: 165px;
     border: 1px solid gray;
     border-radius: 8px;
+    float:left;
+    text-align: center;
 }
+
+/*div#registro_foto input{
+    width: 0px;
+}*/
+
+
