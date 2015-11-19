@@ -22,6 +22,7 @@ function BD(storageSelection) {
      * @param {String} cadena
      * @returns {undefined}
      */
+    
     function guardarEnBD(prefijo, id, cadena) {
         storage.setItem(prefijo + "_" + id, cadena);
     }

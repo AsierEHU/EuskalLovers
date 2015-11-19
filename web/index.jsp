@@ -17,13 +17,16 @@
         </tr>
     </table>
     
-    <form name="index_infoSesion" id="index_infoSesion" method="get">
-        <p>
-            <b class="index_cajasForm"> Email/Nick: </b> <input  id="index_Email" type="email" name="email_control" autofocus required />
-            <br />
-            <b class="index_cajasForm"> Contraseña: </b><input  type="password" name="email_control" required />
-            <br />
-        </p>
+    <form name="index_infoSesion" id="index_infoSesion" method="post">
+        <table>
+            <tr>
+                <td> <b class="index_cajasForm">Email: </b> </td> <td><input  id="index_Email" type="email" name="email_control" autofocus required /></td>
+            </tr>
+            <tr>
+                <td>
+                    <b class="index_cajasForm">Contraseña: </b></td><td><input  type="password" name="email_control" required /></td>
+            </tr>
+        </table>
         <br />
         <input id="index_Submit" class="index_btn" type="submit" value="Iniciar sesión"> <n/>
         <input id="index_ENLACEVOLVER" class="index_btn" type="button" value="Volver al menú">

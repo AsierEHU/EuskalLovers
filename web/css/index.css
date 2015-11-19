@@ -51,7 +51,7 @@ font-family: "Tahoma", "Geneva", sans-serif;
 
 .index_btn {
     margin-left: 80px;
-    margin-bottom: 100px;
+    margin-top: 10px;
     border: 1px solid #DBE1EB;
     font-size: 18px;
     font-family: Arial, Verdana;
@@ -64,6 +64,7 @@ font-family: "Tahoma", "Geneva", sans-serif;
     background: -webkit-linear-gradient(left, #4972B5, #618ACB);
     color: #FFFFFF;
 }
+
 .index_btn:hover {
   background: #365D9D;
   background: -webkit-linear-gradient(left, #365D9D, #436CAD);

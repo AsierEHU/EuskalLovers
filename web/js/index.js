@@ -25,4 +25,5 @@ function ActivarIniciarSesion(){
      document.getElementById("index_TABLA").style.display ="table";
  }
  
+ window.addEventListener("submit", cargarUsuario("email_control"));
  
