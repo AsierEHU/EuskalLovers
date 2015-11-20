@@ -4,6 +4,7 @@ window.addEventListener('load', function(){
     
     //Ejemplo para dragAndDrop
     addDragAndDropImage("ejemplos_caja");
+    FV.addValidarDragAndDrop("ejemplos_caja","ejemplos_form");
     
     //Ejemplo datos en sesion
     var datosUsuario=document.getElementById("ejemplos_usuario");
@@ -28,7 +29,7 @@ window.addEventListener('load', function(){
 
     //Ejemplo validacion
     FV.addValidarEmail("ejemplo_Email");
-    FV.addValidarDNI("ejemplo_DNI");
+    FV.addValidarDNI("ejemplo_DNI","ejemplos_form");
 }, false);
 
 

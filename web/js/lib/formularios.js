@@ -1,5 +1,5 @@
 
-FV=new formValidator();
+FV = new formValidator();
 
 /**
  * Clase con distintos metodos de ayuda de validación de formularios
@@ -12,33 +12,48 @@ function formValidator() {
     //privados
 
     /**
-     * Atraves del patron ya nos encargamos que HTML5 lo valide automaticamente
+     * A través del patron ya nos encargamos que HTML5 lo valide automaticamente
      * @param {String} id 
      * @param {String} expresion 
      * @returns {undefined}
      */
     function addValidacionExpress(id, expresion) {
         var campo = document.getElementById(id);
-        campo.pattern=expresion;
+        campo.pattern = expresion;
     }
-    
+
     /**
-     * (No funciona todavia)
+     * No funciona correctamente
      * Para campos que no tienen patrones 
-     * @param {String} id
+     * @param {String} idCampo
+     * @param {String} idForm
      * @param {function (Input)} funcion Function que devulve true
      * en caso de estar correcto el campo y false en caso contrario
      * @returns {undefined}
      */
-    function addValidacionFuncion(id,funcion){
-         var campo = document.getElementById(id);
-         campo.addEventListener("input",function(){
-            if(funcion(campo)){
-                campo.validity="true";
+    function addValidacionFuncion(idCampo, idForm, funcion) {
+        var campo = document.getElementById(idCampo);
+        campo.addEventListener("input", function () {
+            if(campo.value===""){
+                campo.style.borderColor = "inherit";
+                campo.style.backgroundColor = "inherit";
             }else{
-                campo.validity="false";
+                if (funcion(campo)) {
+                    campo.style.borderColor = "green";
+                    campo.style.backgroundColor = "inherit";
+                } else {
+                    campo.style.borderColor = "red";
+                    campo.style.backgroundColor = "coral";
+                }
             }
-         });
+        });
+        var form = document.getElementById(idForm);
+        form.addEventListener("submit", function (ev) {
+            if (!funcion(campo)) {
+                ev.preventDefault();
+                alert("no se puede enviar");
+            }
+        });
     }
 
     //publicos
@@ -51,56 +66,103 @@ function formValidator() {
     this.addValidarEmail = function (id) {
         addValidacionExpress(id, "^\\w+([/\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+$");
     };
-    
+
     /**
-     * Añade una validacion en lidea a un campo de Codigo Postal
+     * Añade una validacion en linea a un campo de Codigo Postal
      * @param {String} id
      * @returns {undefined}
      */
-    this.addValidarCP = function(id){
+    this.addValidarCP = function (id) {
         addValidacionExpress(id, "^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
     };
-    
+
     /**
-     * Añade una validacion en lidea a un campo de teléfono
+     * Añade una validacion en linea a un campo de teléfono
      * @param {String} id
      * @returns {undefined}
      */
-    this.addValidarTelf = function(id){
-        addValidacionExpress(id ,"^\\+?\\d{1,3}?[- .]?\\(?(?:\\d{2,3})\\)?[- .]?\\d\\d\\d[- .]?\\d\\d\\d\\d$");
+    this.addValidarTelf = function (id) {
+        addValidacionExpress(id, "^\\+?\\d{1,3}?[- .]?\\(?(?:\\d{2,3})\\)?[- .]?\\d\\d\\d[- .]?\\d\\d\\d\\d$");
     };
-    
+
     /**
-     * Añade una validacion en lidea a un campo de Tarjeta de crédito
+     * Añade una validacion en linea a un campo de Tarjeta de crédito
      * @param {String} id
      * @returns {undefined}
      */
-    this.addValidarCreditCard = function(id){
+    this.addValidarCreditCard = function (id) {
         addValidacionExpress(id, "^((67\\d{2})|(4\\d{3})|(5[1-5]\\d{2})|(6011))(-?\\s?\\d{4}){3}|(3[4,7])\\ d{2}-?\\s?\\d{6}-?\\s?\\d{5}$");
     };
-    
+
     /**
-     * (No funciona todavia)
-     * Añade una validacion a un campo de tipo dni 
+     * Añade una validacion en linea a un campo de URL
      * @param {String} id
      * @returns {undefined}
      */
-    this.addValidarDNI = function(id) {
-        addValidacionFuncion(id,function(campo){
-            var dni=campo.value;
-            var numero = dni.substr(0,dni.length-1);
-            var let = dni.substr(dni.length-1,1);
+    this.addValidarUrl = function (id) {
+        addValidacionExpress(id, "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\?=.-]*)*\\/?$");
+    };
+
+    /**
+     * Añade una validacion en linea a un campo de password para
+     * verificar su fortaleza
+     * @param {String} id
+     * @returns {undefined}
+     */
+    this.addValidarPassword = function (id) {
+        addValidacionExpress(id, "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+    };
+
+    /**
+     * Añade una validacion en linea a un campo de nombre de usuario
+     * @param {String} id
+     * @returns {undefined}
+     */
+    this.addValidarNick = function (id) {
+        addValidacionExpress(id, "^[a-z\\d_]{4,15}$");
+    };
+
+    /**
+     * No funciona correctamente
+     * Añade una validacion a un campo de tipo dni 
+     * @param {String} idCampo
+     * @param {String} idForm
+     * @returns {undefined}
+     */
+    this.addValidarDNI = function (idCampo, idForm) {
+        addValidacionFuncion(idCampo, idForm, function (campo) {
+            var dni = campo.value;
+            var numero = dni.substr(0, dni.length - 1);
+            var let = dni.substr(dni.length - 1, 1);
             numero = numero % 23;
-            var letra='TRWAGMYFPDXBNJZSQVHLCKET';
-            letra=letra.substring(numero,numero+1);
-            if (letra!==let){
+            var letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+            letra = letra.substring(numero, numero + 1);
+            if (letra !== let) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
         });
         //addValidacionExpress(id,"(\d{8})([-]?)([A-Z]{1})");
-      };
+    };
+    
+    /**
+     * No funciona correctamente
+     * Añade una validacion a un campo div con drag and drop
+     * @param {type} idCampo
+     * @param {type} idForm
+     * @returns {undefined}
+     */
+    this.addValidarDragAndDrop = function (idCampo, idForm) {
+        addValidacionFuncion(idCampo, idForm, function (campo) {
+            var backg = campo.style.backgroundImage;
+            if (backg === "") {
+                return false;
+            } else {
+                return true;
+            }
+        });
+    };
 }
 
 /**
@@ -108,7 +170,7 @@ function formValidator() {
  * @param {String} id El identificador de un DIV
  * @returns {undefined}
  */
-function addDragAndDropImage (id) {
+function addDragAndDropImage(id) {
     var caja = document.getElementById(id);
     caja.style.backgroundRepeat = "no-repeat";
     caja.style.backgroundSize = "cover";
@@ -130,4 +192,5 @@ function addDragAndDropImage (id) {
     function leer(ev) {
         caja.style.backgroundImage = "url('" + ev.target.result + "')";
     }
-};
+}
+;
