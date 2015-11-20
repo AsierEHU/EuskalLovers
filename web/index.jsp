@@ -17,7 +17,7 @@
         </tr>
     </table>
     
-    <form name="index_infoSesion" id="index_infoSesion" method="post">
+    <form name="index_infoSesion" id="index_infoSesion" method="post" action="principal.jsp">
         <table>
             <tr>
                 <td> <b class="index_cajasForm">Email: </b> </td> <td><input  id="index_Email" type="email" name="email_control" autofocus required /></td>

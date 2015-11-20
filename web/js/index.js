@@ -9,6 +9,20 @@ window.addEventListener("load",function(){
     document.getElementById("index_ENLACEVOLVER").addEventListener("click",DesactivarIniciarSesion);
     document.getElementById("index_ENLACEVOLVER").addEventListener("click",ActivarPrincipal);
     FV.addValidarEmail("index_Email");
+    
+     var datosUsuario = document.getElementById("index_infoSesion");
+     datosUsuario.addEventListener("submit",function(event){
+         if(BDS.esUsuarioCorrecto("","")){
+             
+         }
+         else{
+             event.preventDefault();
+             alert("Email o contraseña de inicio incorrectas");
+         }
+     
+ }, false);
+ 
+    
 });
 
 
@@ -25,5 +39,4 @@ function ActivarIniciarSesion(){
      document.getElementById("index_TABLA").style.display ="table";
  }
  
- window.addEventListener("submit", cargarUsuario("email_control"));
- 
+
