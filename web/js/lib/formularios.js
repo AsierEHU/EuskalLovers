@@ -149,8 +149,8 @@ function formValidator() {
     /**
      * No funciona correctamente
      * Añade una validacion a un campo div con drag and drop
-     * @param {type} idCampo
-     * @param {type} idForm
+     * @param {String} idCampo
+     * @param {String} idForm
      * @returns {undefined}
      */
     this.addValidarDragAndDrop = function (idCampo, idForm) {
