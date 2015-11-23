@@ -85,7 +85,7 @@ function BD(storageSelection) {
      */
     this.guardarUsuario = function (nick, password, email, edad, altura, peso, genero, ciudad, cp, constitucion, foto) {
         var usuarioStringJSON = '{' + '"nick":"' + nick + '","password":"' + password + '","email":"' + email + '","edad":' + edad + ',"altura":' + altura + ',"peso":' + peso + ',"genero":' + genero + ',"ciudad":"' + ciudad + '","cp":' + cp + ',"constitucion":"' + constitucion + '","foto":"' + foto + '"' + '}';
-        guardarEnBD("usuario", nick, usuarioStringJSON);
+        guardarEnBD("usuario", email, usuarioStringJSON);
     };
 
     /**
@@ -93,71 +93,71 @@ function BD(storageSelection) {
      * @param {String} nick
      * @returns {UsuarioJSON}
      */
-    this.cargarUsuario = function (nick) {
-        return cargarDeBD("usuario", nick);
+    this.cargarUsuario = function (email) {
+        return cargarDeBD("usuario", email);
     };
 
     /**
      * Elimina un usuario y todo lo asociado con él
-     * @param {String} nick
+     * @param {String} email
      * @returns {undefined}
      */
-    this.eliminarUsuario = function (nick) {
-        eliminarDeBD("usuario", nick);
-        eliminarDeBD("aficiones", nick);
-        eliminarDeBD("caracteres", nick);
-        eliminarDeBD("intereses", nick);
+    this.eliminarUsuario = function (email) {
+        eliminarDeBD("usuario", email);
+        eliminarDeBD("aficiones", email);
+        eliminarDeBD("caracteres", email);
+        eliminarDeBD("intereses", email);
     };
 
     //funciones aficiones de usuario
 
     /**
      * Guarda el array de aficiones asociado al usuario
-     * @param {String} nick
+     * @param {String} email
      * @param {array Strings} aficiones
      * @returns {undefined}
      */
-    this.guardarAficionesUsuario = function (nick, aficiones) {
+    this.guardarAficionesUsuario = function (email, aficiones) {
         var aficionesStringJSON = convertirArrayEnStringJSON(aficiones);
-        guardarEnBD("aficiones", nick, aficionesStringJSON);
+        guardarEnBD("aficiones", email, aficionesStringJSON);
     };
 
     /**
      * Carga las aficiones de un usuario
-     * @param {String} nick
+     * @param {String} email
      * @returns {AficionesJSON}
      */
-    this.cargarAficionesUsuario = function (nick) {
-        return cargarDeBD("aficiones", nick);
+    this.cargarAficionesUsuario = function (email) {
+        return cargarDeBD("aficiones", email);
     };
 
     //funciones carácteres de usuario
 
     /**
      * Guarda los carácteres de un usuario
-     * @param {String} nick
+     * @param {String} email
      * @param {array Strings} caracteres
      * @returns {undefined}
      */
-    this.guardarCaracteresUsuario = function (nick, caracteres) {
+    this.guardarCaracteresUsuario = function (email, caracteres) {
         var caracteresStringJSON = convertirArrayEnStringJSON(caracteres);
-        guardarEnBD("caracteres", nick, caracteresStringJSON);
+        guardarEnBD("caracteres", email, caracteresStringJSON);
     };
 
     /**
      * Carga los carácteres de un usuario
-     * @param {String} nick
+     * @param {String} email
      * @returns {CaracteresJSON}
      */
-    this.cargarCaracteresUsuario = function (nick) {
-        return cargarDeBD("caracteres", nick);
+    this.cargarCaracteresUsuario = function (email) {
+        return cargarDeBD("caracteres", email);
     };
 
     //funciones intereses usuario
     
     /**
      * Guarda las aficiones en local en formato JSON
-     * @param {String} nick 
+     * @param {String} email 
      * @param {int} edad 
      * @param {float} altura 
      * @param {int} peso 
@@ -167,31 +167,31 @@ function BD(storageSelection) {
      * @param {String} constitucion 
      * @returns {undefined}
      */
-    this.guardarInteresesUsuario = function (nick, edad, altura, peso, genero, ciudad, cp, constitucion) {
+    this.guardarInteresesUsuario = function (email, edad, altura, peso, genero, ciudad, cp, constitucion) {
         var aficionStringJSON = '{' + '"edad":' + edad + ',"altura":' + altura + ',"peso":' + peso + ',"genero":' + genero + ',"ciudad":"' + ciudad + '","cp":' + cp + ',"constitucion":"' + constitucion + '"' + '}';
-        guardarEnBD("intereses", nick, aficionStringJSON);
+        guardarEnBD("intereses", email, aficionStringJSON);
     };
     
     /**
      * 
-     * @param {String} nick
+     * @param {String} email
      * @returns {InteresesJSON}
      */
-    this.cargarInteresesUsuario = function (nick) {
-        return cargarDeBD("intereses", nick);
+    this.cargarInteresesUsuario = function (email) {
+        return cargarDeBD("intereses", email);
     };
 
     //funciones de login
 
     /**
      * Comprueba si un usuario es correcto
-     * @param {String} nick
+     * @param {String} email
      * @param {String} password
      * @returns {Boolean}
      */
-    this.esUsuarioCorrecto = function (nick, password) {
-        var usuarioJSON = cargarDeBD("usuario", nick);
-        if (usuarioJSON.password === password) {
+    this.esUsuarioCorrecto = function (email, password) {
+        var usuarioJSON = cargarDeBD("usuario", email);
+        if (usuarioJSON !==null && usuarioJSON.password === password) {
             return true;
         } else {
             return false;
