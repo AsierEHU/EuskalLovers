@@ -6,7 +6,7 @@
 </jsp:include>
 <div id="registro_center">
     <h1> ¡Regístrate en Euskal Lovers! </h1>
-    <form class="registro_FORMULARIO" action="principal.jsp">
+    <form class="registro_FORMULARIO" action="principal.jsp" id="registro_FORMULARIO">
         <fieldset id="registro_datos">
             <div id="registro_foto">
                 Foto *
@@ -14,11 +14,11 @@
             <table>
                 <tr>
                     <td>Nombre de usuario: * </td>
-                    <td><input type="text" name="registro_nick" minlenght="3" required ></td>
+                    <td><input type="text" name="registro_nick" id="registro_nick" minlenght="3" maxlenght="15" required ></td>
                 </tr>
                 <tr>
                     <td>Contraseña: * </td>
-                    <td><input type="password" name="registro_password" minlenght="5" required ></td>
+                    <td><input type="password" name="registro_password" id="registro_password" minlenght="5" required ></td>
                 </tr>
                 <tr>
                     <td>Email: * </td>

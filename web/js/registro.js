@@ -9,4 +9,5 @@ window.addEventListener('load', function(){
     FV.addValidarEmail("registro_email");
     FV.addValidarNick("registro_nick");
     FV.addValidarPassword("registro_password");
+    FV.addValidarDragAndDrop("registro_foto","registro_FORMULARIO");
 }, false);
