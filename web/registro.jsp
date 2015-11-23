@@ -14,11 +14,11 @@
             <table>
                 <tr>
                     <td>Nombre de usuario: * </td>
-                    <td><input type="text" name="registro_nick" required ></td>
+                    <td><input type="text" name="registro_nick" minlenght="3" required ></td>
                 </tr>
                 <tr>
                     <td>Contraseña: * </td>
-                    <td><input type="password" name="registro_password" required ></td>
+                    <td><input type="password" name="registro_password" minlenght="5" required ></td>
                 </tr>
                 <tr>
                     <td>Email: * </td>
@@ -61,7 +61,7 @@
         </fieldset>
         <br>
         <fieldset id="registro_constitucion">
-            <legend>¿Qué aspecto tienes?</legend>
+            <legend><b>¿Qué aspecto tienes?</b></legend>
             <input type="radio" name="registro_const" value="Delgado" required checked> Delgado/Delgada
             <br>
             <input type="radio" name="registro_const" value="Fornido"> Fornido/Fornida
@@ -70,7 +70,7 @@
         </fieldset>
         <br>
         <fieldset id="registro_caracteristicas">
-            <legend>¿Cómo te definirías?</legend>
+            <legend><b>¿Cómo te definirías?</b></legend>
             <input type="checkbox" name="registro_carac" value="Simpatico"> Simpático/Simpática
             <br>
             <input type="checkbox" name="registro_carac" value="Divertido"> Divertido/Divertida
@@ -85,7 +85,7 @@
         </fieldset>
         <br>
         <fieldset id="registro_gustos">
-            <legend>¿Cuáles son tus gustos?</legend>
+            <legend><b>¿Cuáles son tus gustos?</b></legend>
             <input type="checkbox" name="registro_gustos" value="Deportes"> Deportes
             <br>
             <input type="checkbox" name="registro_gustos" value="Lectura"> Lectura
