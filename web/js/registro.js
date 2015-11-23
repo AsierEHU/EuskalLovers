@@ -7,4 +7,6 @@ window.addEventListener('load', function(){
     addDragAndDropImage("registro_foto");
     FV.addValidarCP("registro_cp");
     FV.addValidarEmail("registro_email");
+    FV.addValidarNick("registro_nick");
+    FV.addValidarPassword("registro_password");
 }, false);

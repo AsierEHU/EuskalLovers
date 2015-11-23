@@ -119,7 +119,7 @@ function formValidator() {
      * @returns {undefined}
      */
     this.addValidarNick = function (id) {
-        addValidacionExpress(id, "^[a-z\\d_]{4,15}$");
+        addValidacionExpress(id, "^[a-zA-Z0-9\\d_]{3,15}$");
     };
 
     /**
