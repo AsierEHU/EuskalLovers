@@ -16,7 +16,7 @@ window.addEventListener("load",function(){
               console.log(document.getElementById("index_Email").value);
      console.log(document.getElementById("index_Contrasena").value);
          console.log(BDS.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value));
-         if(!BDS.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value)){
+         if(!BDL.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value)){
              event.preventDefault();
              alert("Email o contraseña de inicio incorrectas");
          }
