@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>
-                    <b class="index_cajasForm">Contraseña: </b></td><td><input  id="index_Contraseña" type="password" name="email_control" required /></td>
+                    <b class="index_cajasForm">Contraseña: </b></td><td><input  id="index_Contrasena" type="password" name="email_control" required /></td>
             </tr>
         </table> 
        <input id="index_Submit" class="index_btn" type="submit" value="Iniciar sesión"> <n/>

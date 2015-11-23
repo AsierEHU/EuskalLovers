@@ -11,12 +11,16 @@ window.addEventListener("load",function(){
     FV.addValidarEmail("index_Email");
     
      var datosUsuario = document.getElementById("index_infoSesion");
+
      datosUsuario.addEventListener("submit",function(event){
-         if(!BDS.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contraseña").value)){
+              console.log(document.getElementById("index_Email").value);
+     console.log(document.getElementById("index_Contrasena").value);
+         console.log(BDS.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value));
+         if(!BDS.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value)){
              event.preventDefault();
              alert("Email o contraseña de inicio incorrectas");
          }
-     
+     event.preventDefault();
  }, false);
  
     
