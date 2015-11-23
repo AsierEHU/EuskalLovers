@@ -15,8 +15,8 @@
         <tr>
             <td><a href="#" id="index_ENLACEINICIAR" class="index_ENLACES">¿Ya estás registrado? <b>¡Inicia sesión!</b></a></td>
         </tr>
-    </table>
-    
+    </table> 
+   
     <form name="index_infoSesion" id="index_infoSesion" method="post" action="principal.jsp">
         <table>
             <tr>

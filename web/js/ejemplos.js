@@ -21,7 +21,7 @@ window.addEventListener('load', function(){
     var caracteres=BDL.cargarCaracteresUsuario("email@email.com");
     datosUsuario.innerHTML+=caracteres[1].nombre+"<br>";;
 
-    datosUsuario.innerHTML+=BDL.esUsuarioCorrecto("email@email.com","password")+"<br>";;
+    datosUsuario.innerHTML+=BDL.esUsuarioCorrecto("email@email.com","password")+"<br>";
 
     BDL.guardarInteresesUsuario("email@email.com", 45, 1.54, 56, 0, "ciudad", 01012, "constitucion");
     var intereses=BDL.cargarInteresesUsuario("email@email.com");

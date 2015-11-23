@@ -13,14 +13,10 @@ window.addEventListener("load",function(){
      var datosUsuario = document.getElementById("index_infoSesion");
 
      datosUsuario.addEventListener("submit",function(event){
-              console.log(document.getElementById("index_Email").value);
-     console.log(document.getElementById("index_Contrasena").value);
-         console.log(BDS.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value));
          if(!BDL.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value)){
              event.preventDefault();
-             alert("Email o contraseña de inicio incorrectas");
+             alert("Datos introducidos incorrectos");
          }
-     event.preventDefault();
  }, false);
  
     

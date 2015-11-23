@@ -90,7 +90,7 @@ function BD(storageSelection) {
 
     /**
      * Carga un usuario en formato JSON
-     * @param {String} nick
+     * @param {String} email
      * @returns {UsuarioJSON}
      */
     this.cargarUsuario = function (email) {
