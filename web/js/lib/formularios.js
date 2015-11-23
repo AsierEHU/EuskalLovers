@@ -110,7 +110,7 @@ function formValidator() {
      * @returns {undefined}
      */
     this.addValidarPassword = function (id) {
-        addValidacionExpress(id, "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+        addValidacionExpress(id, "^[a-zA-Z0-9]{5,15}$");
     };
 
     /**

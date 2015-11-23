@@ -18,7 +18,7 @@
                 </tr>
                 <tr>
                     <td>Contraseña: * </td>
-                    <td><input type="password" name="registro_password" id="registro_password" minlenght="5" required ></td>
+                    <td><input type="password" name="registro_password" id="registro_password" minlenght="5" manxlenght="15" required ></td>
                 </tr>
                 <tr>
                     <td>Email: * </td>
