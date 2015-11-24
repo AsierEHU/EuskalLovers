@@ -7,7 +7,7 @@
 window.addEventListener('load', function () {
     addDragAndDropImage("perfil_foto");
     FV.addValidarCP("perfil_cp");
-    FV.addValidarCP("cp_busqueda");
+    //FV.addValidarCP("cp_busqueda");
     FV.addValidarEmail("perfil_email");
     FV.addValidarNick("perfil_nick");
     FV.addValidarPassword("perfil_password");
@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
         BDL.guardarCaracteresUsuario(document.getElementById("perfil_email").value, obtenerCheckbox("perfil_carac"));
     }, false);
 
-    var interesesUsuario = document.getElementById("perfil_FORMULARIO");
+    /*var interesesUsuario = document.getElementById("perfil_FORMULARIO");
     interesesUsuario.addEventListener("submit", function () {
         BDL.guardarInteresesUsuario(document.getElementById("perfil_email").value,
                 document.getElementById("edad_busqueda").value,
@@ -61,7 +61,7 @@ window.addEventListener('load', function () {
                 obtenerListaDespegable("ciudad_busqueda"),
                 document.getElementById("cp_busqueda").value,
                 obtenerRadioButton("const_busqueda"));
-    }, false);
+    }, false);*/
     
     document.getElementById("perfil_ENLACEVOLVER").addEventListener("click",function(){
         window.location = "principal.jsp";
