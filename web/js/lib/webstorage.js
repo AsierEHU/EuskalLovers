@@ -184,7 +184,7 @@ function BD(storageSelection) {
     //funciones de login
 
     /**
-     * Comprueba si un usuario es correcto y si es correcta lo loguea
+     * Comprueba si un usuario es correcto y si es correcto lo loguea
      * @param {String} email
      * @param {String} password
      * @returns {Boolean}
@@ -205,7 +205,13 @@ function BD(storageSelection) {
      * @returns {String}
      */
     this.getUsuarioLogueado = function(){
-        return cargarDeBD("login","usuario").email;
+        var usuarioLogueado=cargarDeBD("login","usuario");
+        if(usuarioLogueado!==null){
+            return usuarioLogueado.email;
+        }else{
+            return null;
+        }
+        
     };
 }
 
