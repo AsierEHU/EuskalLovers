@@ -39,10 +39,8 @@ window.addEventListener('load', function(){
         document.getElementById("registro_cp").value,
         obtenerRadioButton("registro_const"),
         document.getElementById("registro_foto").style.backgroundImage);
-//        BDL.guardarAficionesUsuario(document.getElementById("registro_email").value
-//                /*array aficiones*/);
-//        BDL.guardarCaracteresUsuario(document.getElementById("registro_email").value
-//                /*array caracteres*/);
+        BDL.guardarAficionesUsuario(document.getElementById("registro_email").value,obtenerCheckbox("registro_gustos"));            
+        BDL.guardarCaracteresUsuario(document.getElementById("registro_email").value,obtenerCheckbox("registro_carac"));
         event.preventDefault(); //El event.preventdefaul despues de hacer todas las pruebas eliminar
     },false);
        
@@ -59,5 +57,21 @@ function obtenerRadioButton(botonesName){
 
 function obtenerListaDespegable(listaId){
     var lista= document.getElementById(listaId);
-    return lista.options[lista.options.selectedIndex].text;
+    var seleccionado = lista.selectedIndex;
+    var opcionSelec = lista.options[seleccionado];
+    return opcionSelec.value;
+}
+
+function obtenerCheckbox(checkName){
+    var checkbox = document.getElementsByName(checkName);
+    var devolver = [];
+    var j=0;
+    for(i=0;i<checkbox.length;i++){
+        if(checkbox[i].checked){
+           devolver[j]=checkbox[i].value;
+           j++;
+        }
+        return devolver;
+    }
+    
 }
