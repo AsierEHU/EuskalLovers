@@ -84,7 +84,7 @@ function BD(storageSelection) {
      * @returns {undefined}
      */
     this.guardarUsuario = function (nick, password, email, edad, altura, peso, genero, ciudad, cp, constitucion, foto) {
-        var usuarioStringJSON = '{' + '"nick":"' + nick + '","password":"' + password + '","email":"' + email + '","edad":' + edad + ',"altura":' + altura + ',"peso":' + peso + ',"genero":' + genero + ',"ciudad":"' + ciudad + '","cp":' + cp + ',"constitucion":"' + constitucion + '","foto":"' + foto + '"' + '}';
+        var usuarioStringJSON = '{' + '"nick":"' + nick + '","password":"' + password + '","email":"' + email + '","edad":"' + edad + '","altura":"' + altura + '","peso":"' + peso + '","genero":"' + genero + '","ciudad":"' + ciudad + '","cp":"' + cp + '","constitucion":"' + constitucion + '","foto":"' + foto + '"' + '}';
         guardarEnBD("usuario", email, usuarioStringJSON);
     };
 
@@ -168,7 +168,7 @@ function BD(storageSelection) {
      * @returns {undefined}
      */
     this.guardarInteresesUsuario = function (email, edad, altura, peso, genero, ciudad, cp, constitucion) {
-        var aficionStringJSON = '{' + '"edad":' + edad + ',"altura":' + altura + ',"peso":' + peso + ',"genero":' + genero + ',"ciudad":"' + ciudad + '","cp":' + cp + ',"constitucion":"' + constitucion + '"' + '}';
+        var aficionStringJSON = '{' + '"edad":"' + edad + '","altura":"' + altura + '","peso":"' + peso + '","genero":"' + genero + '","ciudad":"' + ciudad + '","cp":"' + cp + '","constitucion":"' + constitucion + '"' + '}';
         guardarEnBD("intereses", email, aficionStringJSON);
     };
     
