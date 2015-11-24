@@ -68,10 +68,10 @@ function obtenerCheckbox(checkName){
     var j=0;
     for(i=0;i<checkbox.length;i++){
         if(checkbox[i].checked){
-           devolver[j]=checkbox[i].value;
-           j++;
+           devolver[j++]=checkbox[i].value;
         }
-        return devolver;
+        
     }
     
+    return devolver;
 }
