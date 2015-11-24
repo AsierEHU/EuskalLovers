@@ -235,4 +235,3 @@ function addDragAndDropImage(id) {
         caja.style.backgroundImage = "url('" + ev.target.result + "')";
     }
 }
-;
