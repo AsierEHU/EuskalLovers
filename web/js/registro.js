@@ -20,6 +20,7 @@
 window.addEventListener('load', function(){
     addDragAndDropImage("registro_foto");
     FV.addValidarCP("registro_cp");
+    FV.addValidarCP("cp_busqueda");
     FV.addValidarEmail("registro_email");
     FV.addValidarNick("registro_nick");
     FV.addValidarPassword("registro_password");
@@ -41,10 +42,25 @@ window.addEventListener('load', function(){
         document.getElementById("registro_foto").style.backgroundImage);
         BDL.guardarAficionesUsuario(document.getElementById("registro_email").value,obtenerCheckbox("registro_gustos"));            
         BDL.guardarCaracteresUsuario(document.getElementById("registro_email").value,obtenerCheckbox("registro_carac"));
-        event.preventDefault(); //El event.preventdefaul despues de hacer todas las pruebas eliminar
+        
+      
+    },false);
+    
+    var interesesUsuario = document.getElementById("registro_FORMULARIO");
+    interesesUsuario.addEventListener("submit",function(event){
+       BDL.guardarInteresesUsuario(document.getElementById("registro_email").value,
+       document.getElementById("edad_busqueda").value,
+       document.getElementById("altura_busqueda").value,
+       document.getElementById("peso_busqueda").value,
+       obtenerRadioButton("genero_busqueda"),
+       obtenerListaDespegable("ciudad_busqueda"),
+       document.getElementById("cp_busqueda").value,
+       obtenerRadioButton("const_busqueda"));
+       
+       
     },false);
        
-});
+},false);
 
 function obtenerRadioButton(botonesName){
     var botones = document.getElementsByName(botonesName);
@@ -70,8 +86,6 @@ function obtenerCheckbox(checkName){
         if(checkbox[i].checked){
            devolver[j++]=checkbox[i].value;
         }
-        
     }
-    
     return devolver;
 }

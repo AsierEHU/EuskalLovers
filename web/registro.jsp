@@ -99,14 +99,39 @@
             <input type="checkbox" name="registro_gustos" value="Tecnologia"> Tecnología
         </fieldset>
         <br>
-        <h2>Indica tus preferencias de búsqueda básicas: * </h2>
+        <h2>Indica tus preferencias de búsqueda:  </h2>
         <br>
-        Busco: <br> <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" checked required > Hombres
+        Busco: * <br> <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" checked required > Hombres
         <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" > Mujeres
         <br>
-        Con una edad mínima de: <input type="number" name="edad_busqueda" id="edad_busqueda" min="18" max="120" required>
+        Con una edad mínima de: *<input type="number" name="edad_busqueda" id="edad_busqueda" min="18" max="120" required>
         <br>
+        Con altura de: <input type="number" name="altura_busqueda" id="altura_busqueda" step="0.01" min="1" max="3">
         <br>
+        Con un peso de: <input type="number" min="30" max="200" name="peso_busqueda" id="peso_busqueda">
+        <br>
+        <td>Que viva en:  </td>
+                    <td>        
+                        <select name="registro_ciudad" id="ciudad_busqueda">
+                            <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
+                            <option value="Bilbao">Bilbao</option>
+                            <option value="San Sebastian">San Sebastián</option>
+                        </select>
+                    </td>
+        <br>
+        Con Código Postal: <input type="text" id="cp_busqueda" name="cp_busqueda" placeholder="00000" minlength="5" maxlength="5">
+         <br>
+         <fieldset id="const_busqueda">
+            <legend><b>Con aspecto: </b></legend>
+            <input type="radio" name="const_busqueda" value="Delgado" checked> Delgado/Delgada
+            <br>
+            <input type="radio" name="const_busqueda" value="Fornido"> Fornido/Fornida
+            <br>
+            <input type="radio" name="const_busqueda" value="Musculoso"> Musculoso/Musculosa
+        </fieldset>
+        <br>
+         <br>
+         <br>
         <h5>Los campos marcados con * son obligatorios</h5>
         <br>
         <input type="submit" value="Terminar Registro">
