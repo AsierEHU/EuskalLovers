@@ -34,24 +34,30 @@ window.addEventListener('load', function(){
         document.getElementById("registro_edad").value,
         document.getElementById("registro_altura").value,
         document.getElementById("registro_peso").value,
-        document.obtenerRadioButton("registro_genero"),
-        /*ciudad*/
+        obtenerRadioButton("registro_genero"),
+        obtenerListaDespegable("registro_ciudad"),
         document.getElementById("registro_cp").value,
-        document.obtenerRadioButton("registro_const")
-        /*foto*/);
-        BDL.guardarAficionesUsuario(document.getElementById("registro_email").value
-                /*array aficiones*/);
-        BDL.guardarCaracteresUsuario(document.getElementById("registro_email").value
-                /*array caracteres*/);
-                event.preventDefault();
+        obtenerRadioButton("registro_const"),
+        document.getElementById("registro_foto").style.backgroundImage);
+//        BDL.guardarAficionesUsuario(document.getElementById("registro_email").value
+//                /*array aficiones*/);
+//        BDL.guardarCaracteresUsuario(document.getElementById("registro_email").value
+//                /*array caracteres*/);
+        event.preventDefault(); //El event.preventdefaul despues de hacer todas las pruebas eliminar
     },false);
        
 });
 
-function obtenerRadioButton(botones){
+function obtenerRadioButton(botonesName){
+    var botones = document.getElementsByName(botonesName);
     for(i=0;i<botones.length;i++){
         if(botones[i].checked){
             return botones[i].value;
         }
     }
+}
+
+function obtenerListaDespegable(listaId){
+    var lista= document.getElementById(listaId);
+    return lista.options[lista.options.selectedIndex].text;
 }

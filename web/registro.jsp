@@ -27,8 +27,8 @@
                 <tr>
                     <td>Género: * </td>
                     <td>
-                        <input type="radio" name="registro_genero" id="registro_genero" value="Masculino" checked required > Masculino
-                        <input type="radio" name="registro_genero" id="registro_genero" value="Femenino" > Femenino
+                        <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
+                        <input type="radio" name="registro_genero" value="Femenino" > Femenino
                     </td>
                 </tr>
                 <tr>
@@ -62,11 +62,11 @@
         <br>
         <fieldset id="registro_constitucion">
             <legend><b>¿Qué aspecto tienes?</b></legend>
-            <input type="radio" name="registro_const" id="registro_const" value="Delgado" required checked> Delgado/Delgada
+            <input type="radio" name="registro_const" value="Delgado" required checked> Delgado/Delgada
             <br>
-            <input type="radio" name="registro_const" id="registro_const" value="Fornido"> Fornido/Fornida
+            <input type="radio" name="registro_const" value="Fornido"> Fornido/Fornida
             <br>
-            <input type="radio" name="registro_const" id="registro_const" value="Musculoso"> Musculoso/Musculosa
+            <input type="radio" name="registro_const" value="Musculoso"> Musculoso/Musculosa
         </fieldset>
         <br>
         <fieldset id="registro_caracteristicas">
