@@ -23,8 +23,34 @@ div#registro_foto{
     text-align: center;
 }
 
-/*div#registro_foto input{
-    width: 0px;
-}*/
+.registro_btn {
+    margin-top: 10px;
+    border: 1px solid #DBE1EB;
+    font-size: 18px;
+    font-family: Arial, Verdana;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-radius: 4px;
+    background: #4972B5;
+    background: -webkit-linear-gradient(left, #4972B5, #618ACB);
+    color: #FFFFFF;
+}
 
+.registro_btn:hover {
+  background: #365D9D;
+  background: -webkit-linear-gradient(left, #365D9D, #436CAD);
+  color: #FFFFFF;
+  border-color: #FBFFAD;
 
+}
+
+#registro_title{
+    background: transparent;
+    font-family: fantasy;
+    font-size: 40px;
+    text-shadow: 0.01em 0.01em #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
