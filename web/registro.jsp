@@ -27,14 +27,14 @@
                 <tr>
                     <td>Género: * </td>
                     <td>
-                        <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
-                        <input type="radio" name="registro_genero" value="Femenino" > Femenino
+                        <input type="radio" name="registro_genero" id="registro_genero" value="Masculino" checked required > Masculino
+                        <input type="radio" name="registro_genero" id="registro_genero" value="Femenino" > Femenino
                     </td>
                 </tr>
                 <tr>
                     <td>Ciudad: * </td>
                     <td>        
-                        <select name="registro_ciudad" required>
+                        <select name="registro_ciudad" id="registro_ciudad" required>
                             <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
                             <option value="Bilbao">Bilbao</option>
                             <option value="San Sebastian">San Sebastián</option>
@@ -47,26 +47,26 @@
                 </tr>
                 <tr>
                     <td>Edad: * </td>
-                    <td><input type="number" name="registro_edad" min="18" max="120" required></td>
+                    <td><input type="number" name="registro_edad" id="registro_edad" min="18" max="120" required></td>
                 </tr>
                 <tr>
                     <td>Altura:</td>
-                    <td><input type="number" name="registro_altura" step="0.01" min="1" max="3"></td>
+                    <td><input type="number" name="registro_altura" id="registro_altura" step="0.01" min="1" max="3"></td>
                 </tr>
                 <tr>
                     <td>Peso: </td>
-                    <td><input type="number" min="30" max="200" name="registro_peso"></td>
+                    <td><input type="number" min="30" max="200" name="registro_peso" id="registro_peso"></td>
                 </tr>
             </table>
         </fieldset>
         <br>
         <fieldset id="registro_constitucion">
             <legend><b>¿Qué aspecto tienes?</b></legend>
-            <input type="radio" name="registro_const" value="Delgado" required checked> Delgado/Delgada
+            <input type="radio" name="registro_const" id="registro_const" value="Delgado" required checked> Delgado/Delgada
             <br>
-            <input type="radio" name="registro_const" value="Fornido"> Fornido/Fornida
+            <input type="radio" name="registro_const" id="registro_const" value="Fornido"> Fornido/Fornida
             <br>
-            <input type="radio" name="registro_const" value="Musculoso"> Musculoso/Musculosa
+            <input type="radio" name="registro_const" id="registro_const" value="Musculoso"> Musculoso/Musculosa
         </fieldset>
         <br>
         <fieldset id="registro_caracteristicas">
@@ -101,10 +101,10 @@
         <br>
         <h2>Indica tus preferencias de búsqueda básicas: * </h2>
         <br>
-        Busco: <br> <input type="radio" name="registro_genero_busqueda" value="Hombres" checked required > Hombres
-        <input type="radio" name="registro_genero_busqueda" value="Mujeres" > Mujeres
+        Busco: <br> <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" checked required > Hombres
+        <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" > Mujeres
         <br>
-        Con una edad mínima de: <input type="number" name="registro_edad_busqueda" min="18" max="120" required>
+        Con una edad mínima de: <input type="number" name="edad_busqueda" id="edad_busqueda" min="18" max="120" required>
         <br>
         <br>
         <h5>Los campos marcados con * son obligatorios</h5>
