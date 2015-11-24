@@ -6,7 +6,7 @@
 </jsp:include>
 <div id="registro_center">
     <h1 id="registro_title"> ¡Regístrate en Euskal Lovers! </h1>
-    <form action="principal.jsp" id="registro_FORMULARIO">
+    <form action="index.jsp" id="registro_FORMULARIO">
         <div id="registro_foto">
             Foto *
         </div>
@@ -143,7 +143,7 @@
         <br>
         <h5>Los campos marcados con * son obligatorios</h5>
         <br>
-        <input class="registro_btn" type="submit" value="Terminar Registro">
+        <input  class="registro_btn" type="submit" value="Terminar Registro">
         <input id="registro_ENLACEVOLVER" class="registro_btn" type="button" value="Volver a inicio">
     </form>
 </div>
