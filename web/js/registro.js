@@ -56,6 +56,10 @@ window.addEventListener('load', function () {
                 obtenerRadioButton("const_busqueda"));
     }, false);
     
+    document.getElementById("registro_ENLACEVOLVER").addEventListener("click",function(){
+        window.location = "index.jsp";
+    },false);
+    
 }, false);
 
 function obtenerRadioButton(botonesName) {

@@ -144,6 +144,7 @@
         <h5>Los campos marcados con * son obligatorios</h5>
         <br>
         <input class="registro_btn" type="submit" value="Terminar Registro">
+        <input id="registro_ENLACEVOLVER" class="registro_btn" type="button" value="Volver a inicio">
     </form>
 </div>
 <jsp:include page="/comun/pie.jsp"/>
