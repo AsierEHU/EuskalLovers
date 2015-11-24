@@ -22,7 +22,7 @@ function BD(storageSelection) {
      * @param {String} cadena
      * @returns {undefined}
      */
-    
+
     function guardarEnBD(prefijo, id, cadena) {
         storage.setItem(prefijo + "_" + id, cadena);
     }
@@ -65,7 +65,7 @@ function BD(storageSelection) {
     }
 
     //publicos
-    
+
     //funciones usuario
 
     /**
@@ -154,7 +154,7 @@ function BD(storageSelection) {
     };
 
     //funciones intereses usuario
-    
+
     /**
      * Guarda las aficiones en local en formato JSON
      * @param {String} email 
@@ -171,7 +171,7 @@ function BD(storageSelection) {
         var aficionStringJSON = '{' + '"edad":"' + edad + '","altura":"' + altura + '","peso":"' + peso + '","genero":"' + genero + '","ciudad":"' + ciudad + '","cp":"' + cp + '","constitucion":"' + constitucion + '"' + '}';
         guardarEnBD("intereses", email, aficionStringJSON);
     };
-    
+
     /**
      * 
      * @param {String} email
@@ -184,18 +184,28 @@ function BD(storageSelection) {
     //funciones de login
 
     /**
-     * Comprueba si un usuario es correcto
+     * Comprueba si un usuario es correcto y si es correcta lo loguea
      * @param {String} email
      * @param {String} password
      * @returns {Boolean}
      */
     this.esUsuarioCorrecto = function (email, password) {
         var usuarioJSON = cargarDeBD("usuario", email);
-        if (usuarioJSON !==null && usuarioJSON.password === password) {
+        if (usuarioJSON !== null && usuarioJSON.password === password) {
+            guardarEnBD("login", "usuario", '{' + '"email":"' + email + '"' + '}');
             return true;
         } else {
             return false;
         }
+    };
+    
+    /**
+     * Devuelve el usuario que se ha autentificado por ultima vez con la funcion
+     * esUsuarioCorrecto();
+     * @returns {String}
+     */
+    this.getUsuarioLogueado = function(){
+        return cargarDeBD("login","usuario").email;
     };
 }
 
