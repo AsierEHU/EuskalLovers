@@ -1,2 +1,63 @@
 
+div#perfil_center{
+    margin:auto;
+    width:800px; 
+    margin-top:50px; 
+    padding:10px; 
+    border-radius: 8px;
+    border:1px solid grey; 
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+form#perfil_FORMULARIO{
+    padding: 10px;
+    
+}
+
+div#perfil_foto{
+    margin: 10px;
+    width: 140px;
+    height: 165px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    float:left;
+    text-align: center;
+}
+
+.perfil_btn {
+    margin-top: 10px;
+    border: 1px solid #DBE1EB;
+    font-size: 18px;
+    font-family: Arial, Verdana;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-radius: 4px;
+    background: #4972B5;
+    background: -webkit-linear-gradient(left, #4972B5, #618ACB);
+    color: #FFFFFF;
+}
+
+.perfil_btn:hover {
+  background: #365D9D;
+  background: -webkit-linear-gradient(left, #365D9D, #436CAD);
+  color: #FFFFFF;
+  border-color: #FBFFAD;
+
+}
+
+#perfil_title{
+    background: transparent;
+    font-family: fantasy;
+    font-size: 40px;
+    text-shadow: 0.01em 0.01em #333;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 3px dotted coral;
+}
+
+#perfil_FORMULARIO fieldset{
+    border-color:coral;
+}
 
