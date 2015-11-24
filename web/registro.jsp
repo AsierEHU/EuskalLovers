@@ -6,59 +6,57 @@
 </jsp:include>
 <div id="registro_center">
     <h1 id="registro_title"> ¡Regístrate en Euskal Lovers! </h1>
-    <form class="registro_FORMULARIO" action="principal.jsp" id="registro_FORMULARIO">
-        <fieldset id="registro_datos">
-            <div id="registro_foto">
-                Foto *
-            </div>
-            <table>
-                <tr>
-                    <td>Nombre de usuario: * </td>
-                    <td><input type="text" name="registro_nick" id="registro_nick" minlenght="3" maxlenght="15" required ></td>
-                </tr>
-                <tr>
-                    <td>Contraseña: * </td>
-                    <td><input type="password" name="registro_password" id="registro_password" minlenght="5" manxlenght="15" required ></td>
-                </tr>
-                <tr>
-                    <td>Email: * </td>
-                    <td><input type="email" id="registro_email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required></td>
-                </tr>
-                <tr>
-                    <td>Género: * </td>
-                    <td>
-                        <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
-                        <input type="radio" name="registro_genero" value="Femenino" > Femenino
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ciudad: * </td>
-                    <td>        
-                        <select name="registro_ciudad" id="registro_ciudad" required>
-                            <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
-                            <option value="Bilbao">Bilbao</option>
-                            <option value="San Sebastian">San Sebastián</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código Postal: * </td>
-                    <td><input type="text" id="registro_cp" name="registro_cp" placeholder="00000" minlength="5" maxlength="5" required></td>
-                </tr>
-                <tr>
-                    <td>Edad: * </td>
-                    <td><input type="number" name="registro_edad" id="registro_edad" min="18" max="120" required></td>
-                </tr>
-                <tr>
-                    <td>Altura:</td>
-                    <td><input type="number" name="registro_altura" id="registro_altura" step="0.01" min="1" max="3"></td>
-                </tr>
-                <tr>
-                    <td>Peso: </td>
-                    <td><input type="number" min="30" max="200" name="registro_peso" id="registro_peso"></td>
-                </tr>
-            </table>
-        </fieldset>
+    <form action="principal.jsp" id="registro_FORMULARIO">
+        <div id="registro_foto">
+            Foto *
+        </div>
+        <table>
+            <tr>
+                <td>Nombre de usuario: * </td>
+                <td><input type="text" name="registro_nick" id="registro_nick" minlenght="3" maxlenght="15" required ></td>
+            </tr>
+            <tr>
+                <td>Contraseña: * </td>
+                <td><input type="password" name="registro_password" id="registro_password" minlenght="5" manxlenght="15" required ></td>
+            </tr>
+            <tr>
+                <td>Email: * </td>
+                <td><input type="email" id="registro_email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required></td>
+            </tr>
+            <tr>
+                <td>Género: * </td>
+                <td>
+                    <input type="radio" name="registro_genero" value="Masculino" checked required > Masculino
+                    <input type="radio" name="registro_genero" value="Femenino" > Femenino
+                </td>
+            </tr>
+            <tr>
+                <td>Ciudad: * </td>
+                <td>        
+                    <select name="registro_ciudad" id="registro_ciudad" required>
+                        <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
+                        <option value="Bilbao">Bilbao</option>
+                        <option value="San Sebastian">San Sebastián</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Código Postal: * </td>
+                <td><input type="text" id="registro_cp" name="registro_cp" placeholder="00000" minlength="5" maxlength="5" required></td>
+            </tr>
+            <tr>
+                <td>Edad: * </td>
+                <td><input type="number" name="registro_edad" id="registro_edad" min="18" max="120" required></td>
+            </tr>
+            <tr>
+                <td>Altura:</td>
+                <td><input type="number" name="registro_altura" id="registro_altura" step="0.01" min="1" max="3"></td>
+            </tr>
+            <tr>
+                <td>Peso: </td>
+                <td><input type="number" min="30" max="200" name="registro_peso" id="registro_peso"></td>
+            </tr>
+        </table>
         <br>
         <fieldset id="registro_constitucion">
             <legend><b>¿Qué aspecto tienes?</b></legend>
@@ -105,18 +103,18 @@
                 <td> Busco: * </td> <br /> <td><input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" checked required > Hombres
                 <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" > Mujeres
             </td> </tr>
-        
+
             <tr>
                 <td>
                     Con una edad mínima de: *</td><td><input type="number" name="edad_busqueda" id="edad_busqueda" min="18" max="120" required> </td> </tr>
-         
+
             <tr>
                 <td> Con altura de: </td> <td> <input type="number" name="altura_busqueda" id="altura_busqueda" step="0.01" min="1" max="3"> </td> </tr>
-          
+
             <tr>
                 <td>
                     Con un peso de: </td> <td> <input type="number" min="30" max="200" name="peso_busqueda" id="peso_busqueda"> </td></tr>
-        
+
             <tr>
                 <td>Que viva en:  </td>
                 <td>        
@@ -126,13 +124,13 @@
                         <option value="San Sebastian">San Sebastián</option>
                     </select>
                 </td> </tr>
-            
+
             <tr>
                 <td>
                     Con Código Postal: </td> <td> <input type="text" id="cp_busqueda" name="cp_busqueda" placeholder="00000" minlength="5" maxlength="5"> </td></tr>
-        
+
         </table>
-         <br>
+        <br>
         <fieldset id="const_busqueda">
             <legend><b>Con aspecto: </b></legend>
             <input type="radio" name="const_busqueda" value="Delgado" checked> Delgado/Delgada

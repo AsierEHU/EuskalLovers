@@ -53,4 +53,9 @@ div#registro_foto{
     text-shadow: 0.01em 0.01em #333;
     text-align: center;
     margin-bottom: 20px;
+    border-bottom: 3px dotted coral;
+}
+
+#registro_FORMULARIO fieldset{
+    border-color:coral;
 }
