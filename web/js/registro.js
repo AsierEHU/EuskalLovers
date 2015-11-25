@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
     var registroUsuario = document.getElementById("registro_FORMULARIO");
 
     registroUsuario.addEventListener("submit", function () {
-        BDL.guardarUsuario(document.getElementById("registro_nick").value,
+        WS.guardarUsuario(document.getElementById("registro_nick").value,
                 document.getElementById("registro_password").value,
                 document.getElementById("registro_email").value,
                 document.getElementById("registro_edad").value,
@@ -27,13 +27,13 @@ window.addEventListener('load', function () {
                 document.getElementById("registro_cp").value,
                 obtenerRadioButton("registro_const"),
                 document.getElementById("registro_foto").style.backgroundImage);
-        BDL.guardarAficionesUsuario(document.getElementById("registro_email").value, obtenerCheckbox("registro_gustos"));
-        BDL.guardarCaracteresUsuario(document.getElementById("registro_email").value, obtenerCheckbox("registro_carac"));
+        WS.guardarAficionesUsuario(document.getElementById("registro_email").value, obtenerCheckbox("registro_gustos"));
+        WS.guardarCaracteresUsuario(document.getElementById("registro_email").value, obtenerCheckbox("registro_carac"));
     }, false);
 
     var interesesUsuario = document.getElementById("registro_FORMULARIO");
     interesesUsuario.addEventListener("submit", function () {
-        BDL.guardarInteresesUsuario(document.getElementById("registro_email").value,
+        WS.guardarInteresesUsuario(document.getElementById("registro_email").value,
                 document.getElementById("edad_busqueda").value,
                 document.getElementById("altura_busqueda").value,
                 document.getElementById("peso_busqueda").value,

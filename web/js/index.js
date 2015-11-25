@@ -13,7 +13,7 @@ window.addEventListener("load",function(){
      var datosUsuario = document.getElementById("index_infoSesion");
 
      datosUsuario.addEventListener("submit",function(event){
-         if(!BDL.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value)){
+         if(!WS.esUsuarioCorrecto(document.getElementById("index_Email").value,document.getElementById("index_Contrasena").value)){
              event.preventDefault();
              alert("Datos introducidos incorrectos");
          }

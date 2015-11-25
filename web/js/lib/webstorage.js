@@ -1,7 +1,6 @@
 
-//Mejor usar BDS, puntuará más
-BDL = new BD(0);
-BDS = new BD(1);
+//Mejor usar BD1, puntuará más
+WS = new BD(1);
 
 /**
  * Clase que maneja el guardado de datos en local
