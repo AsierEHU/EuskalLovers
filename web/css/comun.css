@@ -8,6 +8,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size:cover;
+    background-image: url("../img/f4.png");
 }
 
 footer#comun_footer{
@@ -29,4 +30,8 @@ input:valid {
 
 input:optional:valid{
     border-color: inherit;
+}
+
+fieldset{
+    border-color:coral;
 }

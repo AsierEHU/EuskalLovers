@@ -1,8 +1,4 @@
 
-body{
-      background-image: url("../img/f4.png");
-}
-
 div#registro_center{
     margin:auto;
     width:800px; 
@@ -54,8 +50,4 @@ div#registro_foto{
     text-align: center;
     margin-bottom: 20px;
     border-bottom: 3px dotted coral;
-}
-
-#registro_FORMULARIO fieldset{
-    border-color:coral;
 }

@@ -1,19 +1,4 @@
 
-div#perfil_center{
-    margin:auto;
-    width:800px; 
-    margin-top:50px; 
-    padding:10px; 
-    border-radius: 8px;
-    border:1px solid grey; 
-    background-color: rgba(255, 255, 255, 0.95);
-}
-
-form#perfil_FORMULARIO{
-    padding: 10px;
-    
-}
-
 div#perfil_foto{
     margin: 10px;
     width: 140px;
@@ -46,18 +31,3 @@ div#perfil_foto{
   border-color: #FBFFAD;
 
 }
-
-#perfil_title{
-    background: transparent;
-    font-family: fantasy;
-    font-size: 40px;
-    text-shadow: 0.01em 0.01em #333;
-    text-align: center;
-    margin-bottom: 20px;
-    border-bottom: 3px dotted coral;
-}
-
-#perfil_FORMULARIO fieldset{
-    border-color:coral;
-}
-
