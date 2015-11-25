@@ -7,27 +7,37 @@
 window.addEventListener('load', function () {
     addDragAndDropImage("perfil_foto");
     FV.addValidarCP("perfil_cp");
-    //FV.addValidarCP("cp_busqueda");
-    FV.addValidarEmail("perfil_email");
+    FV.addValidarCP("cp_busqueda");
     FV.addValidarNick("perfil_nick");
     FV.addValidarPassword("perfil_password");
     FV.addValidarDragAndDrop("perfil_foto", "perfil_FORMULARIO");
 
 
     var emailUsuarioLoguado = BDL.getUsuarioLogueado();
-    if(emailUsuarioLoguado!==null){
+    if (emailUsuarioLoguado !== null) {
         var usuario = BDL.cargarUsuario(emailUsuarioLoguado);
-        document.getElementById("perfil_nick").value=usuario.nick,
-        document.getElementById("perfil_password").value=usuario.password,
-        document.getElementById("perfil_email").value=usuario.email,
-        document.getElementById("perfil_edad").value=usuario.edad,
-        document.getElementById("perfil_altura").value=usuario.altura,
-        document.getElementById("perfil_peso").value=usuario.peso,
-        selectRadioButton("perfil_genero",usuario.genero),
-        //selectListaDespegable("perfil_ciudad",usuario.ciudad),
-        document.getElementById("perfil_cp").value=usuario.cp,
-        selectRadioButton("perfil_const",usuario.constitucion),
-        document.getElementById("perfil_foto").style.backgroundImage=usuario.foto;
+        document.getElementById("perfil_nick").value = usuario.nick;
+        document.getElementById("perfil_password").value = usuario.password;
+        document.getElementById("perfil_email").value = usuario.email;
+        document.getElementById("perfil_edad").value = usuario.edad;
+        document.getElementById("perfil_altura").value = usuario.altura;
+        document.getElementById("perfil_peso").value = usuario.peso;
+        selectRadioButton("perfil_genero", usuario.genero);
+        selectListaDespegable("perfil_ciudad", usuario.ciudad);
+        document.getElementById("perfil_cp").value = usuario.cp;
+        selectRadioButton("perfil_const", usuario.constitucion);
+        document.getElementById("perfil_foto").style.backgroundImage = usuario.foto;
+        selectCheckBox("perfil_gustos", BDL.cargarAficionesUsuario(emailUsuarioLoguado));
+        selectCheckBox("perfil_carac", BDL.cargarCaracteresUsuario(emailUsuarioLoguado));
+
+        var interes = BDL.cargarInteresesUsuario(emailUsuarioLoguado);
+        document.getElementById("edad_busqueda").value=interes.edad;
+        document.getElementById("altura_busqueda").value=interes.altura;
+        document.getElementById("peso_busqueda").value=interes.peso;
+        selectRadioButton("genero_busqueda",interes.genero);
+        selectListaDespegable("ciudad_busqueda",interes.ciudad);
+        document.getElementById("cp_busqueda").value=interes.cp;
+        selectRadioButton("const_busqueda",interes.constitucion);
     }
 
 
@@ -51,7 +61,7 @@ window.addEventListener('load', function () {
         BDL.guardarCaracteresUsuario(document.getElementById("perfil_email").value, obtenerCheckbox("perfil_carac"));
     }, false);
 
-    /*var interesesUsuario = document.getElementById("perfil_FORMULARIO");
+    var interesesUsuario = document.getElementById("perfil_FORMULARIO");
     interesesUsuario.addEventListener("submit", function () {
         BDL.guardarInteresesUsuario(document.getElementById("perfil_email").value,
                 document.getElementById("edad_busqueda").value,
@@ -61,12 +71,12 @@ window.addEventListener('load', function () {
                 obtenerListaDespegable("ciudad_busqueda"),
                 document.getElementById("cp_busqueda").value,
                 obtenerRadioButton("const_busqueda"));
-    }, false);*/
-    
-    document.getElementById("perfil_ENLACEVOLVER").addEventListener("click",function(){
+    }, false);
+
+    document.getElementById("perfil_ENLACEVOLVER").addEventListener("click", function () {
         window.location = "principal.jsp";
-    },false);
-    
+    }, false);
+
 }, false);
 
 function obtenerRadioButton(botonesName) {
@@ -97,11 +107,11 @@ function obtenerCheckbox(checkName) {
     return devolver;
 }
 
-function selectRadioButton(botonesName, valor){
+function selectRadioButton(botonesName, valor) {
     var botones = document.getElementsByName(botonesName);
     for (i = 0; i < botones.length; i++) {
-        if (botones[i].value===valor) {
-            botones[i].checked=true;
+        if (botones[i].value === valor) {
+            botones[i].checked = true;
             return;
         }
     }
@@ -109,7 +119,22 @@ function selectRadioButton(botonesName, valor){
 
 function selectListaDespegable(listaId, valor) {
     var lista = document.getElementById(listaId);
-   /* var seleccionado = lista.selectedIndex;
-    var opcionSelec = lista.options[seleccionado];
-    return opcionSelec.value;*/
+    var opciones = lista.options;
+    for (i = 0; i < opciones.length; i++) {
+        if (opciones[i].value === valor) {
+            opciones[i].selected = true;
+            return;
+        }
+    }
+}
+
+function selectCheckBox(checkName, valores) {
+    var checkbox = document.getElementsByName(checkName);
+    for (i = 0; i < checkbox.length; i++) {
+        for (j = 0; j < valores.length && !checkbox[i].checked; j++) {
+            if (checkbox[i].value === valores[j].nombre) {
+                checkbox[i].checked = true;
+            }
+        }
+    }
 }
