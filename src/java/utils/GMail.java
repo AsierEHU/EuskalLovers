@@ -1,4 +1,4 @@
-package java;
+package utils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.MailInterno;
+package utils.MailInterno;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,6 +26,10 @@ public class ListaMensajes {
     
     public Iterator<Mensaje> getMensajes(){
         return mensajes.iterator();
+    }
+    
+    public int getNumeroMensajes(){
+        return mensajes.size();
     }
       
     

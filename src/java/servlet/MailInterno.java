@@ -5,13 +5,13 @@
  */
 package servlet;
 
-import java.MailInterno.MessageControl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.MailInterno.MessageControl;
 
 /**
  *
@@ -31,10 +31,20 @@ public class MailInterno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        MessageControl mc = (MessageControl) getServletContext().getAttribute("mailInterno");
-        if (mc == null) {
-            mc=MessageControl.getMessageControl();
-            getServletContext().setAttribute("mailInterno", mc);
+        String peticion = request.getParameter("peticion");
+        if (peticion != null) {
+            MessageControl mc = (MessageControl) getServletContext().getAttribute("mailInterno");
+            if (mc == null) {
+                mc = MessageControl.getMessageControl();
+                getServletContext().setAttribute("mailInterno", mc);
+            }
+            switch(peticion){
+                case "0":
+                    break;
+                case "1":
+                    break;
+                default:
+            }
         }
 
         response.setContentType("text/html;charset=UTF-8");
