@@ -7,10 +7,12 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.MailInterno.Mensaje;
 import utils.MailInterno.MessageControl;
 
 /**
@@ -38,27 +40,40 @@ public class MailInterno extends HttpServlet {
                 mc = MessageControl.getMessageControl();
                 getServletContext().setAttribute("mailInterno", mc);
             }
-            switch(peticion){
+            String usuario = "Prueba";
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            switch (peticion) {
+                //addMessage()
                 case "0":
+                    String destinatario = request.getParameter("destinatario");
+                    String mensaje = request.getParameter("mensaje");
+                    Mensaje men = new Mensaje(usuario, destinatario, mensaje);
+                    mc.addMensaje(men);
                     break;
+                    
+                //getMensajes()
                 case "1":
+                    Iterator<Mensaje> mensajes = mc.getMensajes(usuario);
+                    String content = "{'mensajes':[";
+                    while (mensajes.hasNext()) {
+                        Mensaje x = mensajes.next();
+                        content += "{'sender':'" + x.getSender() + "','mensaje':'" + x.getMensaje() + "'},";
+                    }
+                    content = content.substring(0, content.length() - 1);
+                    content += "]}";
                     break;
+                    
+                //getNumeroMensajes()
+                case "2":
+                    int numMensajes = mc.getNumeroMensajes(usuario);
+                    out.println("{'cantidad':'" + numMensajes + "'}");
+                    break;
+                    
                 default:
+                    out.println("{'error':'Error en la peticion'}");
+                    break;
             }
-        }
-
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MailInterno</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MailInterno at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

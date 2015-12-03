@@ -10,10 +10,9 @@
     </header>
     <nav id="logueado_nav">
         <ul>
-            <li><a href="index.jsp">Inicio</a></li>
-            <li><a href="registro.jsp">Registro</a></li>
             <li><a href="principal.jsp">Principal</a></li>
             <li><a href="perfil.jsp">Perfil</a></li>
+            <li><a href="mensajes.jsp">Mensajes</a></li>
         </ul>
     </nav>
     <section id="logueado_section">

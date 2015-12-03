@@ -28,11 +28,11 @@ public class MessageControl {
         return messageControl;
     }
 
-    public void addMensaje(String usuario, Mensaje men) {
-        ListaMensajes lm = mailInterno.get(usuario);
+    public void addMensaje(Mensaje men) {
+        ListaMensajes lm = mailInterno.get(men.getSender());
         if (lm == null) {
             lm = new ListaMensajes();
-            mailInterno.put(usuario, lm);
+            mailInterno.put(men.getSender(), lm);
         }
         lm.addMensaje(men);
     }
