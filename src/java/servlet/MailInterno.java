@@ -46,31 +46,44 @@ public class MailInterno extends HttpServlet {
             switch (peticion) {
                 //addMessage()
                 case "0":
-                    String destinatario = request.getParameter("destinatario");
+                    String receiver = request.getParameter("destinatario");
                     String mensaje = request.getParameter("mensaje");
-                    Mensaje men = new Mensaje(usuario, destinatario, mensaje);
+                    Mensaje men = new Mensaje(usuario, receiver, mensaje);
                     mc.addMensaje(men);
                     break;
-                    
-                //getMensajes()
+
+                //getMensajesEnviados()
                 case "1":
-                    Iterator<Mensaje> mensajes = mc.getMensajes(usuario);
-                    String content = "{\"mensajes\":[";
-                    while (mensajes.hasNext()) {
-                        Mensaje x = mensajes.next();
-                        content += "{\"sender\":\"" + x.getSender() + "\",\"mensaje\":\"" + x.getMensaje() + "\"},";
+                    Iterator<Mensaje> mensajesEnviados = mc.getMensajesEnviados(usuario);
+                    String contentOut = "{\"mensajes\":[";
+                    while (mensajesEnviados.hasNext()) {
+                        Mensaje x = mensajesEnviados.next();
+                        contentOut += "{\"receiver\":\"" + x.getReciever() + "\",\"mensaje\":\"" + x.getMensaje() + "\"},";
                     }
-                    content = content.substring(0, content.length() - 1);
-                    content += "]}";
-                    out.println(content);
+                    contentOut = contentOut.substring(0, contentOut.length() - 1);
+                    contentOut += "]}";
+                    out.println(contentOut);
                     break;
-                    
-                //getNumeroMensajes()
+
+                //getMensajesRecibidos()
                 case "2":
-                    int numMensajes = mc.getNumeroMensajes(usuario);
+                    Iterator<Mensaje> mensajesRecibidos = mc.getMensajesRecibidos(usuario);
+                    String contentIn = "{\"mensajes\":[";
+                    while (mensajesRecibidos.hasNext()) {
+                        Mensaje x = mensajesRecibidos.next();
+                        contentIn += "{\"sender\":\"" + x.getSender() + "\",\"mensaje\":\"" + x.getMensaje() + "\"},";
+                    }
+                    contentIn = contentIn.substring(0, contentIn.length() - 1);
+                    contentIn += "]}";
+                    out.println(contentIn);
+                    break;
+
+                //getNumeroMensajesRecibidos()
+                case "3":
+                    int numMensajes = mc.getNumeroMensajesRecibidos(usuario);
                     out.println("{\"cantidad\":\"" + numMensajes + "\"}");
                     break;
-                    
+
                 default:
                     out.println("{\"error\":\"Error en la peticion\"}");
                     break;

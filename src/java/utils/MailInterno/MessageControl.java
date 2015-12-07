@@ -15,10 +15,12 @@ import java.util.Iterator;
 public class MessageControl {
 
     private static MessageControl messageControl;
-    private final HashMap<String, ListaMensajes> mailInterno;
+    private final HashMap<String, ListaMensajes> mensajesOutput;
+    private final HashMap<String, ListaMensajes> mensajesInput;
 
     private MessageControl() {
-        mailInterno = new HashMap<>();
+        mensajesOutput = new HashMap<>();
+        mensajesInput = new HashMap<>();
     }
 
     public static MessageControl getMessageControl() {
@@ -29,29 +31,45 @@ public class MessageControl {
     }
 
     public void addMensaje(Mensaje men) {
-        ListaMensajes lm = mailInterno.get(men.getSender());
-        if (lm == null) {
-            lm = new ListaMensajes();
-            mailInterno.put(men.getSender(), lm);
+        ListaMensajes lmo = mensajesOutput.get(men.getSender());
+        if (lmo == null) {
+            lmo = new ListaMensajes();
+            mensajesOutput.put(men.getSender(), lmo);
         }
-        lm.addMensaje(men);
+        lmo.addMensaje(men);
+        
+        ListaMensajes lmi = mensajesInput.get(men.getReciever());
+        if (lmi == null) {
+            lmi = new ListaMensajes();
+            mensajesInput.put(men.getReciever(), lmi);
+        }
+        lmi.addMensaje(men);
     }
 
-    public Iterator<Mensaje> getMensajes(String usuario) {
-        ListaMensajes lm = mailInterno.get(usuario);
-        if (lm == null) {
-            lm = new ListaMensajes();
-            mailInterno.put(usuario, lm);
+    public Iterator<Mensaje> getMensajesEnviados(String usuario) {
+        ListaMensajes lmo = mensajesOutput.get(usuario);
+        if (lmo == null) {
+            lmo = new ListaMensajes();
+            mensajesOutput.put(usuario, lmo);
         }
-        return lm.getMensajes();
+        return lmo.getMensajes();
+    }
+    
+    public Iterator<Mensaje> getMensajesRecibidos(String usuario) {
+        ListaMensajes lmi = mensajesInput.get(usuario);
+        if (lmi == null) {
+            lmi = new ListaMensajes();
+            mensajesInput.put(usuario, lmi);
+        }
+        return lmi.getMensajes();
     }
 
-    public int getNumeroMensajes(String usuario) {
-        ListaMensajes lm = mailInterno.get(usuario);
-        if (lm == null) {
-            lm = new ListaMensajes();
-            mailInterno.put(usuario, lm);
+    public int getNumeroMensajesRecibidos(String usuario) {
+        ListaMensajes lmi = mensajesInput.get(usuario);
+        if (lmi == null) {
+            lmi = new ListaMensajes();
+            mensajesInput.put(usuario, lmi);
         }
-        return lm.getNumeroMensajes();
+        return lmi.getNumeroMensajes();
     }
 }

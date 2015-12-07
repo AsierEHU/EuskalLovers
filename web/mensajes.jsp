@@ -5,5 +5,7 @@
 </jsp:include>
 
 <p id="numMensajes"></p>
+<article id="mensajesRecibidos"></article>
+<article id="mensajesEnviados"></article>
 
 <jsp:include page="/comun/logueado/pie.jsp"/>

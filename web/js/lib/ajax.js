@@ -6,6 +6,7 @@ function Ajax(direccion) {
     //Privados
 
     function repetir(funcion, millis, enRespuesta) {
+        funcion(enRespuesta);
         bucle();
         function bucle() {
             setTimeout(function () {
@@ -34,20 +35,31 @@ function Ajax(direccion) {
         enviar(enRespuesta, "peticion=0&destinatario=" + destinatario + "&mensaje=" + mensaje);
     };
 
-    this.recibirMensajesTiempo = function (millis, enRespuesta) {
-        repetir(this.recibirMensajes, millis, enRespuesta);
+    /**/
+    this.recibirMensajesEnviadosTiempo = function (millis, enRespuesta) {
+        repetir(this.recibirMensajesEnviados, millis, enRespuesta);
     };
 
-    this.recibirMensajes = function (enRespuesta) {
+    this.recibirMensajesEnviados = function (enRespuesta) {
         enviar(enRespuesta, "peticion=1");
     };
-
-    this.numeroMensajesTiempo = function (millis, enRespuesta) {
-        repetir(this.numeroMensajes, millis, enRespuesta);
+   
+    /**/
+    this.recibirMensajesRecibidosTiempo = function (millis, enRespuesta) {
+        repetir(this.recibirMensajesRecibidos, millis, enRespuesta);
     };
 
-    this.numeroMensajes = function (enRespuesta) {
+    this.recibirMensajesRecibidos = function (enRespuesta) {
         enviar(enRespuesta, "peticion=2");
+    };
+
+    /**/
+    this.numeroMensajesRecibidosTiempo = function (millis, enRespuesta) {
+        repetir(this.numeroMensajesRecibidos, millis, enRespuesta);
+    };
+
+    this.numeroMensajesRecibidos = function (enRespuesta) {
+        enviar(enRespuesta, "peticion=3");
     };
 }
 
