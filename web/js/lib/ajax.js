@@ -1,11 +1,12 @@
 
-AjaxMail = new Ajax("localhost:8084/EuskalLovers/mail");
+AjaxMail = new Ajax("mail");
 
 function Ajax(direccion) {
 
     //Privados
 
     function repetir(funcion, millis, enRespuesta) {
+        bucle();
         function bucle() {
             setTimeout(function () {
                 funcion(enRespuesta);
@@ -23,8 +24,8 @@ function Ajax(direccion) {
             }
         };
 
-        xhttp.open("POST", direccion, true);
-        xhttp.send(parametros);
+        xhttp.open("GET", direccion+"?"+parametros, true);
+        xhttp.send();
     }
 
     //Publicos

@@ -55,23 +55,24 @@ public class MailInterno extends HttpServlet {
                 //getMensajes()
                 case "1":
                     Iterator<Mensaje> mensajes = mc.getMensajes(usuario);
-                    String content = "{'mensajes':[";
+                    String content = "{\"mensajes\":[";
                     while (mensajes.hasNext()) {
                         Mensaje x = mensajes.next();
-                        content += "{'sender':'" + x.getSender() + "','mensaje':'" + x.getMensaje() + "'},";
+                        content += "{\"sender\":\"" + x.getSender() + "\",\"mensaje\":\"" + x.getMensaje() + "\"},";
                     }
                     content = content.substring(0, content.length() - 1);
                     content += "]}";
+                    out.println(content);
                     break;
                     
                 //getNumeroMensajes()
                 case "2":
                     int numMensajes = mc.getNumeroMensajes(usuario);
-                    out.println("{'cantidad':'" + numMensajes + "'}");
+                    out.println("{\"cantidad\":\"" + numMensajes + "\"}");
                     break;
                     
                 default:
-                    out.println("{'error':'Error en la peticion'}");
+                    out.println("{\"error\":\"Error en la peticion\"}");
                     break;
             }
         }
