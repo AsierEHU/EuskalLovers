@@ -35,11 +35,7 @@ public class MailInterno extends HttpServlet {
 
         String peticion = request.getParameter("peticion");
         if (peticion != null) {
-            MessageControl mc = (MessageControl) getServletContext().getAttribute("mailInterno");
-            if (mc == null) {
-                mc = MessageControl.getMessageControl();
-                getServletContext().setAttribute("mailInterno", mc);
-            }
+            MessageControl mc = MessageControl.getMessageControl();
             String usuario = "Prueba";
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
