@@ -46,17 +46,22 @@ public class MailInterno extends HttpServlet {
                     String mensaje = request.getParameter("mensaje");
                     Mensaje men = new Mensaje(usuario, receiver, mensaje);
                     mc.addMensaje(men);
+                    out.println("{\"enviado\":\"ok\"}");
                     break;
 
                 //getMensajesEnviados()
                 case "1":
                     Iterator<Mensaje> mensajesEnviados = mc.getMensajesEnviados(usuario);
                     String contentOut = "{\"mensajes\":[";
+                    boolean tieneMensajes = false;
                     while (mensajesEnviados.hasNext()) {
                         Mensaje x = mensajesEnviados.next();
                         contentOut += "{\"receiver\":\"" + x.getReciever() + "\",\"mensaje\":\"" + x.getMensaje() + "\"},";
+                        tieneMensajes = true;
                     }
-                    contentOut = contentOut.substring(0, contentOut.length() - 1);
+                    if (tieneMensajes) {
+                        contentOut = contentOut.substring(0, contentOut.length() - 1);
+                    }
                     contentOut += "]}";
                     out.println(contentOut);
                     break;

@@ -1,4 +1,24 @@
-section article{
+section#logueado_section article{
     border:1px solid black;
+    width: 340px;
+    margin:16px;
+    padding: 5px;
 }
 
+article#mensajes_mensajesRecibidos, article#mensajes_mensajesEnviados{
+    float:left;
+}
+
+div#mensajes_clear{
+    clear:both;
+}
+
+textarea#mensajes_text{
+    width: 338px;
+    height: 100px;
+    resize: none;
+}
+
+div.mensajes_mensaje{
+    word-wrap: break-word;
+}
