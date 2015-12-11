@@ -19,6 +19,27 @@ footer#comun_footer{
     text-shadow: #555 2px 2px 3px;
 }
 
+input[type=button], input[type=submit]{
+    border: 1px solid #DBE1EB;
+    font-size: 18px;
+    font-family: Arial, Verdana;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-radius: 4px;
+    background: #4972B5;
+    background: -webkit-linear-gradient(left, #4972B5, #618ACB);
+    color: #FFFFFF;
+}
+
+input[type=button]:hover, input[type=submit]:hover{
+    background: #365D9D;
+    background: -webkit-linear-gradient(left, #365D9D, #436CAD);
+    color: #FFFFFF;
+    border-color: #FBFFAD;
+}
+
 input:focus:invalid {
     border-color: red;
     background-color: coral;

@@ -33,16 +33,15 @@ img#logueado_header_logo{
 section#logueado_section{
     border:1px solid magenta;
     padding:10px;
+    position:relative;
 }
 
 nav#logueado_nav{
-    border:1px solid green; 
-    height: 50px;
+    border:1px solid green;
 }
 
 nav#logueado_nav ul li{
-    display:block; 
-    float:left; 
+    display:inline-block; 
     padding:5px; 
     margin:10px; 
     border:1px solid orange;

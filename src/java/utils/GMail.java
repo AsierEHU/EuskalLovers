@@ -49,13 +49,13 @@ public class GMail {
                 return new PasswordAuthentication(username, password);
             }
         });
-        String msgBody = "Enhorabuena, tu cuenta ha sido dad de alta en EuskalLovers.";
+        String msgBody = "Enhorabuena, tu cuenta ha sido dada de alta en EuskalLovers.";
         try {
             Message msg = new MimeMessage(sessionMail);
             msg.setFrom(new InternetAddress("euskallovers@gmail.com", "EuskalLovers"));
             msg.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(correo, nick));
-            msg.setSubject("Tu cuenta de EuskalLovers ha sido activada");
+            msg.setSubject("Cuenta de EuskalLovers activada");
             msg.setText(msgBody);
             Transport.send(msg);
 
