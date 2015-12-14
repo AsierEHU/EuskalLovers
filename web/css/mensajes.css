@@ -9,6 +9,15 @@ article#mensajes_mensajesRecibidos, article#mensajes_mensajesEnviados{
     float:left;
 }
 
+article#mensajes_mensajesRecibidos h2, article#mensajes_mensajesEnviados h2{
+    display:inline;
+}
+
+p#mensajes_numMensajesEntrada, p#mensajes_numMensajesSalida{
+    display: inline;
+}
+
+
 div#mensajes_clear{
     clear:both;
 }
@@ -18,6 +27,7 @@ textarea#mensajes_text{
     height: 100px;
     resize: none;
 }
+
 
 div.mensajes_mensaje{
     word-wrap: break-word;

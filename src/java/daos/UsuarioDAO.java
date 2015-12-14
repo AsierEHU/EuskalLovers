@@ -9,69 +9,56 @@ package daos;
  *
  * @author Asier
  */
-
 import beans.Usuario;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class UsuarioDAO {   
-private Connection cn;
+public class UsuarioDAO {
 
-   
-    public UsuarioDAO(Connection cn){
-            this.cn=cn;
-}
-    
-    public boolean esCorrecto(String email, String pass) throws SQLException
-    {
-        Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Usuario where Email='"+ email +"' and Contraseña='"+ pass +"'");
-        if(rs.next())
-        {
-        	return true;
-        }
-        return false;
+    private final Connection cn;
+
+    public UsuarioDAO(Connection cn) {
+        this.cn = cn;
     }
-    
-    public HashMap<Integer, Usuario> recuperarUsuarios() throws SQLException
-    {
-        HashMap<Integer, Usuario> usuarios = new HashMap<Integer, Usuario>();
+
+    public boolean esCorrecto(String email, String pass) throws SQLException {
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from usuarios");
-        int id=0;
-        while(rs.next())
-        {
-            usuarios.put(id, new Usuario(rs.getString("email"),rs.getString("contraseña")));
-            id ++;
-        }
-        return usuarios;
+        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "' and Contraseña='" + pass + "'");
+        return rs.next();
     }
-    
-    public Usuario cogerUsuario(String email) throws SQLException
-    {
+
+    public Iterator<Usuario> recuperarUsuarios() throws SQLException {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from administradores where email="+ email);
-        if(rs.next())
-        {
-            return new Usuario(rs.getString("email"),rs.getString("contraseña"));
+        ResultSet rs = st.executeQuery("select * from Usuario");
+        while (rs.next()) {
+            usuarios.add(new Usuario(rs.getString("email"), rs.getString("contraseña"), rs.getString("nick")));
+        }
+        return usuarios.iterator();
+    }
+
+    public Usuario cogerUsuario(String email) throws SQLException {
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "'");
+        if (rs.next()) {
+            return new Usuario(rs.getString("email"), rs.getString("contraseña"), rs.getString("nick"));
         }
         return null;
     }
-    
-    public boolean insertarUsuario(Usuario a) throws SQLException
-    {
-        Statement st=cn.createStatement();
-        int total=st.executeUpdate("insert into usuario (nombre, contraseña) values ('"+a.getEmail()+"','"+a.getContraseña());
-    return total != 0;
-    }
-       
-    public boolean eliminarUsuario(String email) throws SQLException
-    {
+
+    public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from usuario where email=" + email);
-    return total != 0; 
+        int total = st.executeUpdate("insert into Usuario (Email, Contraseña) values ('" + a.getEmail() + "','" + a.getContraseña()+ "'");
+        return total != 0;
+    }
+
+    public boolean eliminarUsuario(String email) throws SQLException {
+        Statement st = cn.createStatement();
+        int total = st.executeUpdate("delete from Usuario where Email='" + email+ "'");
+        return total != 0;
     }
 }

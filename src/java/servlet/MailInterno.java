@@ -5,13 +5,19 @@
  */
 package servlet;
 
+import beans.Usuario;
+import daos.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.ConexionBD;
 import utils.MailInterno.Mensaje;
 import utils.MailInterno.MessageControl;
 
@@ -32,11 +38,26 @@ public class MailInterno extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        //Luego borrar
+        request.getSession(true).setAttribute("usuario_email", "asier@asier.com");
+        //
+        
+        String  usuario_email=(String) request.getSession(true).getAttribute("usuario_email");
+        
+        UsuarioDAO udao= new UsuarioDAO(ConexionBD.getConexionBD().getConnection());
+               
+        Usuario usuario=null;
+        try {
+            usuario = udao.cogerUsuario(usuario_email);
+        } catch (SQLException ex) {
+            Logger.getLogger(MailInterno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         String peticion = request.getParameter("peticion");
         if (peticion != null) {
             MessageControl mc = MessageControl.getMessageControl();
-            String usuario = "Prueba";
+            String usuario_nick = usuario.getNick();
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             switch (peticion) {
@@ -44,14 +65,14 @@ public class MailInterno extends HttpServlet {
                 case "0":
                     String receiver = request.getParameter("destinatario");
                     String mensaje = request.getParameter("mensaje");
-                    Mensaje men = new Mensaje(usuario, receiver, mensaje);
+                    Mensaje men = new Mensaje(usuario_nick, receiver, mensaje);
                     mc.addMensaje(men);
                     out.println("{\"enviado\":\"ok\"}");
                     break;
 
                 //getMensajesEnviados()
                 case "1":
-                    Iterator<Mensaje> mensajesEnviados = mc.getMensajesEnviados(usuario);
+                    Iterator<Mensaje> mensajesEnviados = mc.getMensajesEnviados(usuario_nick);
                     String contentOut = "{\"mensajes\":[";
                     boolean tieneMensajes = false;
                     while (mensajesEnviados.hasNext()) {
@@ -68,7 +89,7 @@ public class MailInterno extends HttpServlet {
 
                 //getMensajesRecibidos()
                 case "2":
-                    Iterator<Mensaje> mensajesRecibidos = mc.getMensajesRecibidos(usuario);
+                    Iterator<Mensaje> mensajesRecibidos = mc.getMensajesRecibidos(usuario_nick);
                     String contentIn = "{\"mensajes\":[";
                     while (mensajesRecibidos.hasNext()) {
                         Mensaje x = mensajesRecibidos.next();
@@ -81,7 +102,7 @@ public class MailInterno extends HttpServlet {
 
                 //getNumeroMensajesRecibidos()
                 case "3":
-                    int numMensajes = mc.getNumeroMensajesRecibidos(usuario);
+                    int numMensajes = mc.getNumeroMensajesRecibidos(usuario_nick);
                     out.println("{\"cantidad\":\"" + numMensajes + "\"}");
                     break;
 

@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
     var nme = 0;
     var nmi = 0;
 
-    AjaxMail.numeroMensajesRecibidosTiempo(5000, function (respuesta) {
+    AjaxMail.numeroMensajesRecibidosTiempo(10000, function (respuesta) {
         if (nme < respuesta.cantidad) {
             AjaxMail.recibirMensajesRecibidos(function (respuesta) {
                 var listaMensajes = respuesta.mensajes;
@@ -30,9 +30,11 @@ window.addEventListener('load', function () {
         ev.preventDefault();
         var usuario=document.getElementById("mensajes_usuario").value;
         var text=document.getElementById("mensajes_text").value;
+        document.getElementById("mensajes_text").value="";
         AjaxMail.enviarMensaje(usuario, text, function (respuesta) {});
         nuevoMensaje(usuario, text, "mensajes_mensajesEnviados");
         nmi++;
+
         document.getElementById("mensajes_numMensajesSalida").innerHTML = "  (" + nmi + ")";
     });
 

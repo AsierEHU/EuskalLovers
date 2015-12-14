@@ -9,8 +9,8 @@ package beans;
  *
  * @author Asier
  */
-public class Usuario
-{
+public class Usuario {
+
     private String nick;
     private String email;
     private String contraseña;
@@ -22,44 +22,45 @@ public class Usuario
     private String ciudad;
     private int cp;
     private String foto;
-    
-    public Usuario()
-    {
-        
-    }
-        // Completo
-	public Usuario(String nick, String email,String contraseña, boolean genero, double altura, double peso, String constitucion, String ciudad, int cp, String foto ) {
-		super();
-		this.nick = nick;
-		this.email = email;
-		this.contraseña = contraseña;
-                this.genero = genero;
-                this.altura = altura;
-                this.peso = peso;
-                this.constitucion = constitucion;
-		this.ciudad = ciudad;
-                this.cp = cp;
-                this.foto = foto;
-	}
-        //Obligatorios
-	public Usuario(String nick, String email,String contraseña, boolean genero, String constitucion, String ciudad, int cp, String foto ) {
-		super();
-		this.nick = nick;
-		this.email = email;
-		this.contraseña = contraseña;
-                this.genero = genero;
-                this.constitucion = constitucion;
-		this.ciudad = ciudad;
-                this.cp = cp;
-                this.foto = foto;
-	}
 
-        //Email y contraseña
-        public Usuario(String email,String contraseña) {
-		this.email = email;
-		this.contraseña = contraseña;
-      
-	}
+    public Usuario() {
+
+    }
+    // Completo
+
+    public Usuario(String nick, String email, String contraseña, boolean genero, double altura, double peso, String constitucion, String ciudad, int cp, String foto) {
+        super();
+        this.nick = nick;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.genero = genero;
+        this.altura = altura;
+        this.peso = peso;
+        this.constitucion = constitucion;
+        this.ciudad = ciudad;
+        this.cp = cp;
+        this.foto = foto;
+    }
+    //Obligatorios
+
+    public Usuario(String nick, String email, String contraseña, boolean genero, String constitucion, String ciudad, int cp, String foto) {
+        super();
+        this.nick = nick;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.genero = genero;
+        this.constitucion = constitucion;
+        this.ciudad = ciudad;
+        this.cp = cp;
+        this.foto = foto;
+    }
+
+    //Email y contraseña
+    public Usuario(String email, String contraseña, String nick) {
+        this.email = email;
+        this.contraseña = contraseña;
+        this.nick = nick;
+    }
 
     public double getAltura() {
         return altura;
@@ -93,7 +94,6 @@ public class Usuario
         return contraseña;
     }
 
-    
     public String getNick() {
         return nick;
     }
@@ -138,6 +138,4 @@ public class Usuario
         this.nick = nick;
     }
 
-    
 }
-
