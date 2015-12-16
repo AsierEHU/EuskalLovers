@@ -19,7 +19,7 @@ public class ConexionBD {
     // dsn (Data Source Name) de la base de datos
     private static final String dsn = "jdbc:ucanaccess://C:/EuskalLovers.accdb";
 
-    private ConexionBD() throws ClassNotFoundException, SQLException {
+    public ConexionBD() throws ClassNotFoundException, SQLException {
 
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         // Establecimiento de la conexión con la base de datos

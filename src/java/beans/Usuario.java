@@ -55,11 +55,17 @@ public class Usuario {
         this.foto = foto;
     }
 
-    //Email y contraseña
+    //Email, nick y contraseña
     public Usuario(String email, String contraseña, String nick) {
         this.email = email;
         this.contraseña = contraseña;
         this.nick = nick;
+    }
+    
+    //Email y contraseña
+    public Usuario(String email, String contraseña) {
+        this.email = email;
+        this.contraseña = contraseña;
     }
 
     public double getAltura() {

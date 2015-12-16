@@ -52,7 +52,7 @@ public class UsuarioDAO {
 
     public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Contraseña) values ('" + a.getEmail() + "','" + a.getContraseña()+ "'");
+        int total = st.executeUpdate("insert into Usuario (Email, Contraseña,Nick) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"'");
         return total != 0;
     }
 

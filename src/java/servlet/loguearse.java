@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import utils.ConexionBD;
 import beans.Usuario;
+import daos.UsuarioDAO;
+import java.sql.Connection;
 
 /**
  *
@@ -34,14 +36,17 @@ public class loguearse extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ConexionBD con = new ConexionBD();
         try {
-            con.conectar();
-           String em = request.getParameter("email_control");
-           String pass = request.getParameter("pass_control");
-           if(esCorrecto(em,pass)){
+           
+           String em = (String)request.getParameter("email_control");
+           String pass = (String) request.getParameter("pass_control");
+           Connection conect = ConexionBD.getConexionBD().getConnection();
+           UsuarioDAO us = new UsuarioDAO(conect);
+           
+           if(us.esCorrecto(em, pass)){
                
-           }
+           } else {
+            }
            
         }finally { 
             
