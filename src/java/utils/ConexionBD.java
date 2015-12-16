@@ -17,7 +17,7 @@ public class ConexionBD {
     // Referencia a un objeto de la interface java.sql.Connection 
     private Connection conn;
     // dsn (Data Source Name) de la base de datos
-    private static final String dsn = "jdbc:ucanaccess://C:/Users/asier/Documents/NetBeansProjects/EuskalLovers/web/WEB-INF/EuskalLovers.accdb";
+    private static final String dsn = "jdbc:ucanaccess://C:/EuskalLovers.accdb";
 
     private ConexionBD() throws ClassNotFoundException, SQLException {
 
