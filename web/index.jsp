@@ -17,14 +17,14 @@
         </tr>
     </table> 
    
-    <form name="index_infoSesion" id="index_infoSesion" method="post" action="principal.jsp">
+    <form name="index_infoSesion" id="index_infoSesion" method="post" action="login">
         <table>
             <tr>
                 <td> <b class="index_cajasForm">Email: </b> </td> <td><input  id="index_Email" type="email" name="email_control" autofocus required /></td>
             </tr>
             <tr>
                 <td>
-                    <b class="index_cajasForm">Contraseña: </b></td><td><input  id="index_Contrasena" type="password" name="email_control" required /></td>
+                    <b class="index_cajasForm">Contraseña: </b></td><td><input  id="index_Contrasena" type="password" name="pass_control" required /></td>
             </tr>
         </table> 
        <input id="index_Submit" class="index_btn" type="submit" value="Iniciar sesión"> <n/>

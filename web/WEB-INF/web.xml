@@ -8,6 +8,14 @@
         <servlet-name>MailInterno</servlet-name>
         <url-pattern>/mail</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>loguearse</servlet-name>
+        <servlet-class>servlet.loguearse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loguearse</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
