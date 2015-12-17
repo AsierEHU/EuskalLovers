@@ -10,16 +10,18 @@ import daos.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.ConexionBD;
+import utils.BD;
+import utils.MailInterno.ListaMensajes;
 import utils.MailInterno.Mensaje;
-import utils.MailInterno.MessageControl;
 
 /**
  *
@@ -36,6 +38,61 @@ public class MailInterno extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    private HashMap<String, ListaMensajes> mensajesOutput;
+    private HashMap<String, ListaMensajes> mensajesInput;
+    
+    
+    @Override
+    public void init(ServletConfig cfg) throws ServletException {
+        super.init(cfg);
+        mensajesOutput = new HashMap<>();
+        mensajesInput = new HashMap<>();
+    }
+    
+    private void addMensaje(Mensaje men) {
+        ListaMensajes lmo = mensajesOutput.get(men.getSender());
+        if (lmo == null) {
+            lmo = new ListaMensajes();
+            mensajesOutput.put(men.getSender(), lmo);
+        }
+        lmo.addMensaje(men);
+        
+        ListaMensajes lmi = mensajesInput.get(men.getReciever());
+        if (lmi == null) {
+            lmi = new ListaMensajes();
+            mensajesInput.put(men.getReciever(), lmi);
+        }
+        lmi.addMensaje(men);
+    }
+
+    private Iterator<Mensaje> getMensajesEnviados(String usuario) {
+        ListaMensajes lmo = mensajesOutput.get(usuario);
+        if (lmo == null) {
+            lmo = new ListaMensajes();
+            mensajesOutput.put(usuario, lmo);
+        }
+        return lmo.getMensajes();
+    }
+    
+    private Iterator<Mensaje> getMensajesRecibidos(String usuario) {
+        ListaMensajes lmi = mensajesInput.get(usuario);
+        if (lmi == null) {
+            lmi = new ListaMensajes();
+            mensajesInput.put(usuario, lmi);
+        }
+        return lmi.getMensajes();
+    }
+
+    private int getNumeroMensajesRecibidos(String usuario) {
+        ListaMensajes lmi = mensajesInput.get(usuario);
+        if (lmi == null) {
+            lmi = new ListaMensajes();
+            mensajesInput.put(usuario, lmi);
+        }
+        return lmi.getNumeroMensajes();
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -45,7 +102,7 @@ public class MailInterno extends HttpServlet {
         
         String  usuario_email=(String) request.getSession(true).getAttribute("usuario_email");
         
-        UsuarioDAO udao= new UsuarioDAO(ConexionBD.getConexionBD().getConnection());
+        UsuarioDAO udao= new UsuarioDAO(BD.getConexion());
                
         Usuario usuario=null;
         try {
@@ -56,7 +113,6 @@ public class MailInterno extends HttpServlet {
         
         String peticion = request.getParameter("peticion");
         if (peticion != null) {
-            MessageControl mc = MessageControl.getMessageControl();
             String usuario_nick = usuario.getNick();
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
@@ -66,13 +122,13 @@ public class MailInterno extends HttpServlet {
                     String receiver = request.getParameter("destinatario");
                     String mensaje = request.getParameter("mensaje");
                     Mensaje men = new Mensaje(usuario_nick, receiver, mensaje);
-                    mc.addMensaje(men);
+                    addMensaje(men);
                     out.println("{\"enviado\":\"ok\"}");
                     break;
 
                 //getMensajesEnviados()
                 case "1":
-                    Iterator<Mensaje> mensajesEnviados = mc.getMensajesEnviados(usuario_nick);
+                    Iterator<Mensaje> mensajesEnviados = getMensajesEnviados(usuario_nick);
                     String contentOut = "{\"mensajes\":[";
                     boolean tieneMensajes = false;
                     while (mensajesEnviados.hasNext()) {
@@ -89,7 +145,7 @@ public class MailInterno extends HttpServlet {
 
                 //getMensajesRecibidos()
                 case "2":
-                    Iterator<Mensaje> mensajesRecibidos = mc.getMensajesRecibidos(usuario_nick);
+                    Iterator<Mensaje> mensajesRecibidos = getMensajesRecibidos(usuario_nick);
                     String contentIn = "{\"mensajes\":[";
                     while (mensajesRecibidos.hasNext()) {
                         Mensaje x = mensajesRecibidos.next();
@@ -102,7 +158,7 @@ public class MailInterno extends HttpServlet {
 
                 //getNumeroMensajesRecibidos()
                 case "3":
-                    int numMensajes = mc.getNumeroMensajesRecibidos(usuario_nick);
+                    int numMensajes = getNumeroMensajesRecibidos(usuario_nick);
                     out.println("{\"cantidad\":\"" + numMensajes + "\"}");
                     break;
 

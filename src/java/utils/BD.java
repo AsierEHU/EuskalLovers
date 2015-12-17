@@ -11,41 +11,30 @@ import java.sql.*;
  *
  * @author Asier
  */
-public class ConexionBD {
+public class BD {
 
-    private static ConexionBD conexionBD;
     // Referencia a un objeto de la interface java.sql.Connection 
-    private Connection conn;
+    private static Connection conn;
     // dsn (Data Source Name) de la base de datos
     private static final String dsn = "jdbc:ucanaccess://C:/EuskalLovers.accdb";
 
-    public ConexionBD() throws ClassNotFoundException, SQLException {
-
-        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        // Establecimiento de la conexión con la base de datos
-        conn = DriverManager.getConnection(dsn);
-
-    }
-
-    public static ConexionBD getConexionBD() {
-        if (conexionBD == null) {
+    public static Connection getConexion() {
+        if (conn == null) {
             try {
-                conexionBD = new ConexionBD();
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                // Establecimiento de la conexión con la base de datos
+                conn = DriverManager.getConnection(dsn);
             } catch (ClassNotFoundException | SQLException ex) {
                 System.err.println(ex.getMessage());
             }
         }
-        return conexionBD;
-    }
-    
-    public Connection getConnection(){
         return conn;
     }
 
     // Este método es llamado por el servidor web al "apagarse" (shut down).
     // Sirve para proporcionar una correcta desconexión de una base de datos, 
     // cerrar ficheros abiertos, etc.
-    public void destroy() {
+    public static void destroy() {
         System.out.println("Cerrando conexion...");
         try {
             conn.close();

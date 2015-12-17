@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.ConexionBD;
+import utils.BD;
 import beans.Usuario;
 import daos.UsuarioDAO;
 import java.sql.Connection;
@@ -40,7 +40,7 @@ public class loguearse extends HttpServlet {
            
            String em = (String)request.getParameter("email_control");
            String pass = (String) request.getParameter("pass_control");
-           Connection conect = ConexionBD.getConexionBD().getConnection();
+           Connection conect = BD.getConexion();
            UsuarioDAO us = new UsuarioDAO(conect);
            
            if(us.esCorrecto(em, pass)){
