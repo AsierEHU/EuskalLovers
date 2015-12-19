@@ -15,15 +15,13 @@ public class BD {
 
     // Referencia a un objeto de la interface java.sql.Connection 
     private static Connection conn;
-    // dsn (Data Source Name) de la base de datos
-    private static final String dsn = "jdbc:ucanaccess://C:/EuskalLovers.accdb";
 
     public static Connection getConexion() {
         if (conn == null) {
             try {
-                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
                 // Establecimiento de la conexión con la base de datos
-                conn = DriverManager.getConnection(dsn);
+                conn = DriverManager.getConnection("jdbc:odbc:euskallovers");
             } catch (ClassNotFoundException | SQLException ex) {
                 System.err.println(ex.getMessage());
             }
