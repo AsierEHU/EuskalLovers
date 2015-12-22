@@ -6,6 +6,7 @@
         <img id="logueado_header_logo" src="img/logo.png"/>
         <div id="logueado_header_user">
             <h4>Info usuario</h4>
+            
         </div>
     </header>
     <nav id="logueado_nav">

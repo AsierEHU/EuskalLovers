@@ -47,7 +47,9 @@ public class pruebica extends HttpServlet {
                
                // no me va ni usando la clase BD ni creando la conexión manualmente
                //BD nh = new BD();
+               
            Connection con; // = nh.getConexion();
+           
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
              out.println("connection");
             con = DriverManager.getConnection("jdbc:odbc:euskallovers");
@@ -98,7 +100,7 @@ public class pruebica extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(pruebica.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("no va");
         } catch (SQLException ex) {
             Logger.getLogger(pruebica.class.getName()).log(Level.SEVERE, null, ex);
         }

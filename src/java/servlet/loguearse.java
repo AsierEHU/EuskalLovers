@@ -47,8 +47,8 @@ public class loguearse extends HttpServlet {
            UsuarioDAO us = new UsuarioDAO(conect);
            
            if(us.esCorrecto(em, pass)){
-               request.getSession().getAttribute(em);
-               response.sendRedirect("cabeza.jsp");
+               request.getSession(true).setAttribute("usuario_email", "asier@asier.com");
+               response.sendRedirect("principal.jsp");
            } else{
                
             System.out.println("<script type=\"text/javascript\">");
