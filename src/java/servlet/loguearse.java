@@ -16,6 +16,9 @@ import utils.BD;
 import beans.Usuario;
 import daos.UsuarioDAO;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +37,7 @@ public class loguearse extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try {
            
@@ -44,15 +47,18 @@ public class loguearse extends HttpServlet {
            UsuarioDAO us = new UsuarioDAO(conect);
            
            if(us.esCorrecto(em, pass)){
+               request.getSession().getAttribute(em);
+               response.sendRedirect("cabeza.jsp");
+           } else{
                
-           } else {
+            System.out.println("<script type=\"text/javascript\">");
+            System.out.println("alert('Datos introducidos incorrectos');");
+            System.out.println("location='index.jsp';");
+            System.out.println("</script>");
+                
             }
            
-        }finally { 
-            
-        con.destroy();
-        
-    }
+        }finally {}
      
 }
 
@@ -68,7 +74,11 @@ public class loguearse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(loguearse.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -82,7 +92,11 @@ public class loguearse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(loguearse.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
