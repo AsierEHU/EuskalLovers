@@ -5,7 +5,9 @@
  */
 package utils;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -19,9 +21,9 @@ public class BD {
     public static Connection getConexion() {
         if (conn == null) {
             try {
-                Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+                Class.forName("com.mysql.jdbc.Driver");
                 // Establecimiento de la conexión con la base de datos
-                conn = DriverManager.getConnection("jdbc:odbc:euskallovers");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost/euskallovers", "root", "root");
             } catch (ClassNotFoundException | SQLException ex) {
                 System.err.println(ex.getMessage());
             }

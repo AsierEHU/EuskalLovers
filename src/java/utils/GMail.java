@@ -25,7 +25,7 @@ public class GMail {
     private static GMail mail;
     private final Properties props;
     private final String username = "euskallovers@gmail.com";
-    private final String password = "hola";
+    private final String password = "euskallover";
 
     private GMail() {
         props = new Properties();

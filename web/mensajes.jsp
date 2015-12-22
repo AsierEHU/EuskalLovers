@@ -1,6 +1,6 @@
+<%@page import="utils.BD"%>
 <%@page import="beans.Usuario"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="utils.ConexionBD"%>
 <%@page import="daos.UsuarioDAO"%>
 
 <jsp:include page="/comun/logueado/cabeza.jsp">
@@ -13,7 +13,7 @@
     <form id="mensajes_form">
         <select name="usuario" id="mensajes_usuario" required>
             <%
-                UsuarioDAO udao = new UsuarioDAO(ConexionBD.getConexionBD().getConnection());
+                UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
                 Iterator<Usuario> usuarios = udao.recuperarUsuarios();
                 while (usuarios.hasNext()) {
                     Usuario u = usuarios.next();
