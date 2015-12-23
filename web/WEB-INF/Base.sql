@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `euskallovers`.`Premium` (
   `CuentaTarjeta` MEDIUMTEXT NULL,
   `Saldo` INT NULL,
   `FechaHora` DATETIME NULL,
+  `pack` INT NULL,
   PRIMARY KEY (`Nick`),
   CONSTRAINT `NickFkUser`
     FOREIGN KEY (`Nick`)
