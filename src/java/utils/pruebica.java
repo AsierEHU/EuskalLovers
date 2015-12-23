@@ -40,9 +40,9 @@ public class pruebica extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String hol = request.getParameter("email");
+           String hol = request.getParameter("email") + "hola";
             /* TODO output your page here. You may use following sample code. */
-           out.println("primero");
+           out.println(hol);
            try{
                
                // no me va ni usando la clase BD ni creando la conexión manualmente
@@ -50,9 +50,9 @@ public class pruebica extends HttpServlet {
                
            Connection con; // = nh.getConexion();
            
-            Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+            Class.forName("com.mysql.jdbc.Driver");
              out.println("connection");
-            con = DriverManager.getConnection("jdbc:odbc:euskallovers");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/euskallovers", "root", "root");
              out.println("connection");
             out.println("connection");
                 Statement set;
@@ -60,11 +60,8 @@ public class pruebica extends HttpServlet {
                 out.println("rs");
                 set = con.createStatement();
                 out.println("create");
-                rs = set.executeUpdate("insert into Usuario('Email', 'Nick', 'Contraseña') values ( " + hol + ",'asier','12345')");
-           
-           
-           
-               
+                rs = set.executeUpdate("insert into Usuario(Email, Nick, Password) values (" +"'"+ hol + "'" + ",'prueba7','12345')");
+                out.println(rs);
            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -72,7 +69,7 @@ public class pruebica extends HttpServlet {
             out.println("<title>Servlet pruebica</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet pruebica at " + hol  + rs + "</h1>");
+            out.println("<h1>Servlet pruebica at " + hol + "</h1>");
             out.println("</body>");
             out.println("</html>");
             
