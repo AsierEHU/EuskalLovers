@@ -35,9 +35,11 @@ public class InteresDAO {
             }
             if(!rs.getBoolean("genero")){
             intereses.add("Femenino");
-            }
+            } else{ intereses.add("Masculino");}
+            
             intereses.add(rs.getString("email").toString());
             intereses.add(rs.getString("constitucion"));
+            intereses.add(((Integer)rs.getInt("Edad")).toString());
             
             if((Integer)rs.getInt("cp") != null){
               Integer codigo = rs.getInt("cp");
@@ -46,7 +48,19 @@ public class InteresDAO {
             if(rs.getString("ciudad")!=null){
             intereses.add(rs.getString("email"));
             }
+            
+            if((Double)rs.getDouble("altura")!=null){
+                intereses.add(((Double)rs.getDouble("altura")).toString());
+            }
+            if((Double)rs.getDouble("peso")!=null){
+                intereses.add(((Double)rs.getDouble("peso")).toString());
+            }
         }
         return intereses.iterator();
     }
+     public boolean insertarInteres(Interes a) throws SQLException{
+         Statement st = cn.createStatement();
+         int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,CP,Peso,Altura,Constitucion) values ('" + a.getNick() + "','" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "'");
+         return res!=0;
+     }
 }
