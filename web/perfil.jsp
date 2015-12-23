@@ -1,7 +1,6 @@
 <jsp:include page="/comun/logueado/cabeza.jsp">
     <jsp:param name="title" value="Perfil"/>
     <jsp:param name="include" value="perfil"/>
-    <jsp:param name="includeLib" value="webstorage"/>
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 

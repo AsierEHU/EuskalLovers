@@ -6,14 +6,12 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import utils.BD;
-import beans.Usuario;
 import daos.UsuarioDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -43,19 +41,17 @@ public class loguearse extends HttpServlet {
            
            String em = (String)request.getParameter("email_control");
            String pass = (String) request.getParameter("pass_control");
-           Connection conect = BD.getConexion();
-           UsuarioDAO us = new UsuarioDAO(conect);
+           UsuarioDAO us = new UsuarioDAO(BD.getConexion());
            
            if(us.esCorrecto(em, pass)){
-               request.getSession(true).setAttribute("usuario_email", "asier@asier.com");
+               request.getSession(true).setAttribute("usuario_email", em);
                response.sendRedirect("principal.jsp");
            } else{
-               
-            System.out.println("<script type=\"text/javascript\">");
-            System.out.println("alert('Datos introducidos incorrectos');");
-            System.out.println("location='index.jsp';");
-            System.out.println("</script>");
-                
+               response.sendRedirect("index.jsp");
+//            System.out.println("<script type=\"text/javascript\">");
+//            System.out.println("alert('Datos introducidos incorrectos');");
+//            System.out.println("location='index.jsp';");
+//            System.out.println("</script>");
             }
            
         }finally {}
