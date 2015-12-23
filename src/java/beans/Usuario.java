@@ -20,7 +20,7 @@ public class Usuario {
     private double peso;
     private String constitucion;
     private String ciudad;
-    private int cp;
+    private String cp;
     private String foto;
 
     public Usuario() {
@@ -28,7 +28,7 @@ public class Usuario {
     }
     // Completo
 
-    public Usuario(String nick, String email, String contraseña, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, int cp, String foto) {
+    public Usuario(String nick, String email, String contraseña, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, String cp, String foto) {
         super();
         this.nick = nick;
         this.email = email;
@@ -44,7 +44,7 @@ public class Usuario {
     }
     //Obligatorios
 
-    public Usuario(String nick, String email, String contraseña, boolean genero, String constitucion, String ciudad, int cp, String foto) {
+    public Usuario(String nick, String email, String contraseña, boolean genero, String constitucion, String ciudad, String cp, String foto) {
         super();
         this.nick = nick;
         this.email = email;
@@ -81,7 +81,7 @@ public class Usuario {
         return edad;
     }
 
-    public int getCp() {
+    public String getCp() {
         return cp;
     }
 
@@ -125,7 +125,7 @@ public class Usuario {
         this.constitucion = constitucion;
     }
 
-    public void setCp(int cp) {
+    public void setCp(String cp) {
         this.cp = cp;
     }
 

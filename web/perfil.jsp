@@ -69,7 +69,7 @@
         </tr>
         <tr>
             <td>Código Postal: * </td>
-            <td><input type="text" id="perfil_cp" name="perfil_cp" placeholder="00000" minlength="5" maxlength="5" value="<%="0" + ((Integer)u.getCp()).toString() %>" required></td>
+            <td><input type="text" id="perfil_cp" name="perfil_cp" placeholder="00000" minlength="5" maxlength="5" value="<%=u.getCp()%>" required></td>
         </tr>
         <tr>
             <td>Edad: * </td>
