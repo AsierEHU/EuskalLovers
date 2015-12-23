@@ -27,7 +27,7 @@ public class UsuarioDAO {
 
     public boolean esCorrecto(String email, String pass) throws SQLException {
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "' and Contraseña='" + pass + "'");
+        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "' and Password='" + pass + "'");
         return rs.next();
     }
 
@@ -36,7 +36,7 @@ public class UsuarioDAO {
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Usuario");
         while (rs.next()) {
-            usuarios.add(new Usuario(rs.getString("email"), rs.getString("contraseña"), rs.getString("nick")));
+            usuarios.add(new Usuario(rs.getString("Email"), rs.getString("Password"), rs.getString("Nick")));
         }
         return usuarios.iterator();
     }
@@ -45,14 +45,14 @@ public class UsuarioDAO {
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "'");
         if (rs.next()) {
-            return new Usuario(rs.getString("email"), rs.getString("contraseña"), rs.getString("nick"));
+            return new Usuario(rs.getString("Email"), rs.getString("Password"), rs.getString("Nick"));
         }
         return null;
     }
 
     public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Contraseña,Nick) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"')");
+        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"')");
         return total != 0;
     }
 

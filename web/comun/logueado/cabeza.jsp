@@ -1,9 +1,9 @@
 <%
     String email = (String)session.getAttribute("usuario_email");
-//    if(email == null){
-//        application.getRequestDispatcher("/index.jsp").forward(request, response);
-//        response.sendRedirect("/index.jsp");
-//    }
+    if(email == null){
+        application.getRequestDispatcher("/index.jsp").forward(request, response);
+        //esto hay que mejorar
+    }
     
     UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
     Usuario u = udao.cogerUsuario(email);
