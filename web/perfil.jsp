@@ -16,10 +16,6 @@
         
         <%
     String email = (String)session.getAttribute("usuario_email");
-    if(email == null){
-        application.getRequestDispatcher("/index.jsp").forward(request, response);
-    }
-    
     UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
     Usuario u = udao.cogerUsuario(email);
 
