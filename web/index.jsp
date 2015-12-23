@@ -4,6 +4,19 @@
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 
+<%
+    if(request.getParameter("error")!=null){
+        %>
+        <script>
+            alert("Error de identificación");
+        </script>
+        <%
+    }
+    if(request.getParameter("desconectar")!=null){
+        session.removeAttribute("usuario_email");
+    }
+%>
+
 <div id="index_SECTIONID">
     <img id="index_Logo" src="img/logo.png"  alt="logo" />
     <table id="index_TABLA" >

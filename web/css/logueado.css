@@ -4,40 +4,41 @@ div#logueado_center{
     width:800px; 
     margin-top:50px; 
     padding:10px; 
-    border:1px solid black; 
-    background-color: white;
+    border-radius: 8px;
+    border:1px solid grey; 
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 header#logueado_header{
-    border:1px solid pink; 
-    position:relative;
+    border:1px solid red; 
+    border-radius: 8px;
 }
 
 div#logueado_header_user{
-    border:1px solid blue; 
+    border:1px solid orange;
+    border-radius: 8px;
+    padding: 10px;
     width:200px; 
     height:80px; 
-    bottom:0px; 
-    right:0px; 
-    position:absolute; 
+    float:right;
     margin:10px;
 }
 
 img#logueado_header_logo{
-    border:1px solid red; 
-    width:100px; 
-    height:100px; 
-    margin:10px;
+/*    border:1px solid red; */
+    width:500px; 
+    height:120px;
 }
 
 section#logueado_section{
-    border:1px solid magenta;
+    border:1px solid red;
+    border-radius: 8px;
     padding:10px;
     position:relative;
 }
 
 nav#logueado_nav{
-    border:1px solid green;
+/*    border:1px solid green;*/
 }
 
 nav#logueado_nav ul li{
@@ -45,8 +46,22 @@ nav#logueado_nav ul li{
     padding:5px; 
     margin:10px; 
     border:1px solid orange;
+    border-radius: 8px;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+nav#logueado_nav ul li:hover{
+    background-color: rgba(255, 0, 0, 1);
+}
+
+nav#logueado_nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
 footer#logueado_footer{
-    border: 1px solid yellow;
+/*    border: 1px solid yellow;*/
+    text-align: right;
+    padding: 5px;
 }

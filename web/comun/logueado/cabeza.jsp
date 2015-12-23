@@ -20,9 +20,10 @@
 
 <div id="logueado_center">
     <header id="logueado_header">
-        <img id="logueado_header_logo" src="img/logo.png"/>
+        <img id="logueado_header_logo" src="img/title.png"/>
         <div id="logueado_header_user">
             <h4>Bienvenido <%=u.getNick()%></h4>
+            <a href="index.jsp?desconectar=true">Desconectar</a>
         </div>
     </header>
     <nav id="logueado_nav">
@@ -30,7 +31,7 @@
             <li><a href="principal.jsp">Principal</a></li>
             <li><a href="perfil.jsp">Perfil</a></li>
             <li><a href="mensajes.jsp">Mensajes</a></li>
-            <li><a href="premium.jsp">Hazte premium!</a></li>
+            <li><a href="premium.jsp">¡Hazte premium!</a></li>
         </ul>
     </nav>
     <section id="logueado_section">
