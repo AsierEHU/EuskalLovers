@@ -52,13 +52,13 @@ public class UsuarioDAO {
 
     public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Contraseña,Nick) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"'");
+        int total = st.executeUpdate("insert into Usuario (Email, Contraseña,Nick) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"')");
         return total != 0;
     }
 
     public boolean eliminarUsuario(String email) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Usuario where Email='" + email+ "'");
+        int total = st.executeUpdate("delete from Usuario where Email='" + email+ "')");
         return total != 0;
     }
 }

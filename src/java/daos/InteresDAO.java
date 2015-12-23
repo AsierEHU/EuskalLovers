@@ -11,6 +11,7 @@ package daos;
  */
 
 import beans.Interes;
+import beans.Usuario;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class InteresDAO {
+    
     private final Connection cn;
 
     public InteresDAO(Connection cn) {
@@ -60,7 +62,21 @@ public class InteresDAO {
     }
      public boolean insertarInteres(Interes a) throws SQLException{
          Statement st = cn.createStatement();
-         int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,CP,Peso,Altura,Constitucion) values ('" + a.getNick() + "','" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "'");
+         int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,CP,Peso,Altura,Constitucion) values ('" + a.getNick() + "','" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "')");
          return res!=0;
      }
+     
+     public boolean insertarInteresUsuario(Usuario u, Interes a) throws SQLException{
+         Statement st = cn.createStatement();
+         int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,Constitucion) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "') where Interes.Nick = '" + u.getNick() + '"');
+         return res !=0;
+     }
+     
+     public boolean cambiarInteres(Interes a) throws SQLException {
+        Statement st = cn.createStatement();
+        int total = st.executeUpdate("Update Interes set Genero='" +a.isGenero()+ "', Edad='" +a.getEdad()+ "', Cp='" +a.getCp()+ "', Peso='" +a.getPeso()+ "', Altura='" +a.getAltura()+ "', Constitucion='" +a.getConstitucion()+ "' where Interes.Nick = '" +a.getNick()+'"');
+        return total != 0;
+    }
 }
+
+//

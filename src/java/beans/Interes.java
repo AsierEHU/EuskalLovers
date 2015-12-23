@@ -10,7 +10,7 @@ package beans;
  * @author Asier
  */
 public class Interes {
-    
+
     private String nick;
     private boolean genero;
     private int edad;
@@ -19,9 +19,9 @@ public class Interes {
     private String constitucion;
     private String ciudad;
     private int cp;
-    
+
     // todos
-    public Interes(String nick, boolean genero,int edad, double altura, double peso, String constitucion, String ciudad, int cp) {
+    public Interes(String nick, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, int cp) {
         super();
         this.nick = nick;
         this.genero = genero;
@@ -32,8 +32,10 @@ public class Interes {
         this.ciudad = ciudad;
         this.cp = cp;
     }
-        // minimos
-    public Interes(String nick, boolean genero,int edad, String constitucion){
+
+    // minimos
+
+    public Interes(String nick, boolean genero, int edad, String constitucion) {
         super();
         this.nick = nick;
         this.edad = edad;
@@ -104,6 +106,5 @@ public class Interes {
     public void setCp(int cp) {
         this.cp = cp;
     }
-    
-    
+
 }
