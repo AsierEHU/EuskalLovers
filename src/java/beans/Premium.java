@@ -16,14 +16,24 @@ public class Premium {
     private long cuentaTajeta;
     private int saldo;
     private Time fechaHora;
+    private int pack;
     
-    public Premium(String nick, long cuentaTarjeta, int saldo, Time fechaHora){
+    public Premium(String nick, long cuentaTarjeta, int saldo, Time fechaHora, int pack){
         this.nick = nick;
         this.cuentaTajeta = cuentaTarjeta;
         this.saldo = saldo;
         this.fechaHora = fechaHora;
+        this.pack = pack;
     }
-
+    
+    public int getPack(){
+        return pack;
+    }
+    
+    public void setPack(int pack){
+        this.pack = pack;
+    }
+    
     public String getNick() {
         return nick;
     }
