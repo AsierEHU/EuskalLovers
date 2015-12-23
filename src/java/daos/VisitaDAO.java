@@ -51,7 +51,7 @@ public class VisitaDAO {
     
     public boolean eliminarVisita (Visita v)throws SQLException {
        Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Visita where nick1='" + v.getNick1()+"'"); 
+        int total = st.executeUpdate("delete from Visita where nick1='" + v.getNick1()+"' AND nick2 ="+ v.getNick2()+"'"); 
         return total != 0;  
     }   
 }
