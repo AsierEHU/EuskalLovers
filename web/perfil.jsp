@@ -1,25 +1,41 @@
+<%@page import="utils.BD"%>
+<%@page import="beans.Usuario"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="daos.UsuarioDAO"%>
 <jsp:include page="/comun/logueado/cabeza.jsp">
     <jsp:param name="title" value="Perfil"/>
     <jsp:param name="include" value="perfil"/>
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 
-<form action="perfil.jsp" id="perfil_FORMULARIO">
+<form action="/Perfil" id="perfil_FORMULARIO">
     <div id="perfil_foto">
         Foto *
     </div>
     <table>
+        
+        <%
+    String email = (String)session.getAttribute("usuario_email");
+    if(email == null){
+        application.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
+    
+    UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
+    Usuario u = udao.cogerUsuario(email);
+
+%>
+            
         <tr>
             <td>Nombre de usuario: * </td>
-            <td><input type="text" name="perfil_nick" id="perfil_nick" minlenght="3" maxlenght="15" required ></td>
+            <td><input type="text" name="perfil_nick" id="perfil_nick" minlenght="3" maxlenght="15" required value="<%=u.getNick()%>" ></td>
         </tr>
         <tr>
             <td>Contraseña: * </td>
-            <td><input type="password" name="perfil_password" id="perfil_password" minlenght="5" manxlenght="15" required ></td>
+            <td><input type="password" name="perfil_password" id="perfil_password" minlenght="5" manxlenght="15" value="<%=u.getContraseña()%>" required ></td>
         </tr>
         <tr>
             <td>Email: * </td>
-            <td><input type="email" id="perfil_email" name="perfil_email" required placeholder="ejemplo@ejemplo.com" required disabled></td>
+            <td><input type="email" id="perfil_email" name="perfil_email" value="<%=u.getEmail()%>" required  disabled></td>
         </tr>
         <tr>
             <td>Género: * </td>
@@ -32,27 +48,40 @@
             <td>Ciudad: * </td>
             <td>        
                 <select name="perfil_ciudad" id="perfil_ciudad" required>
-                    <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
-                    <option value="Bilbao">Bilbao</option>
-                    <option value="San Sebastian">San Sebastián</option>
+                    <option value="Vitoria-Gasteiz" <% if(u.getCiudad()=="Vitoria-Gasteiz"){
+                            out.print("selected");
+                        }
+                                %> >Vitoria-Gasteiz
+                        </option>
+                    <option value="Bilbao" <% if(u.getCiudad()=="Bilbao"){ 
+                            out.print("selected");
+                        }
+                                %> >Bilbao
+                     
+                    </option>
+                    <option value="San Sebastian" <% if(u.getCiudad()=="San Sebastian"){
+                            out.print("selected");
+                        }
+                                %>>San Sebastián
+                    </option>
                 </select>
             </td>
         </tr>
         <tr>
             <td>Código Postal: * </td>
-            <td><input type="text" id="perfil_cp" name="perfil_cp" placeholder="00000" minlength="5" maxlength="5" required></td>
+            <td><input type="text" id="perfil_cp" name="perfil_cp" placeholder="00000" minlength="5" maxlength="5" value="<%="0" + ((Integer)u.getCp()).toString() %>" required></td>
         </tr>
         <tr>
             <td>Edad: * </td>
-            <td><input type="number" name="perfil_edad" id="perfil_edad" min="18" max="120" required></td>
+            <td><input type="number" name="perfil_edad" id="perfil_edad" min="18" max="120" value="<%=u.getEdad()%>" required></td>
         </tr>
         <tr>
             <td>Altura:</td>
-            <td><input type="number" name="perfil_altura" id="perfil_altura" step="0.01" min="1" max="3"></td>
+            <td><input type="number" name="perfil_altura" id="perfil_altura" step="0.01" value="<%=u.getAltura()%>" min="1" max="3"></td>
         </tr>
         <tr>
             <td>Peso: </td>
-            <td><input type="number" min="30" max="200" name="perfil_peso" id="perfil_peso"></td>
+            <td><input type="number" min="30" max="200" name="perfil_peso" value="<%=u.getPeso()%>" id="perfil_peso"></td>
         </tr>
     </table>
     <br>

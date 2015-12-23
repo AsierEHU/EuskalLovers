@@ -45,7 +45,7 @@ public class UsuarioDAO {
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "'");
         if (rs.next()) {
-            return new Usuario(rs.getString("Email"), rs.getString("Password"), rs.getString("Nick"));
+            return new Usuario(rs.getString("Nick"), rs.getString("Email"), rs.getString("Password"),rs.getBoolean("Genero"), rs.getInt("Edad"),rs.getDouble("Altura"),rs.getDouble("Peso"),rs.getString("Constitucion"),rs.getString("Ciudad"),rs.getInt("CP"),rs.getString("Foto"));
         }
         return null;
     }

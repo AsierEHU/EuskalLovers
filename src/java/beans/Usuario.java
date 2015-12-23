@@ -28,12 +28,13 @@ public class Usuario {
     }
     // Completo
 
-    public Usuario(String nick, String email, String contraseña, boolean genero, double altura, double peso, String constitucion, String ciudad, int cp, String foto) {
+    public Usuario(String nick, String email, String contraseña, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, int cp, String foto) {
         super();
         this.nick = nick;
         this.email = email;
         this.contraseña = contraseña;
         this.genero = genero;
+        this.edad = edad;
         this.altura = altura;
         this.peso = peso;
         this.constitucion = constitucion;
