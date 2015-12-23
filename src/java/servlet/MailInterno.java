@@ -96,9 +96,6 @@ public class MailInterno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //Luego borrar
-        request.getSession(true).setAttribute("usuario_email", "asier@asier.com");
-        //
         
         String  usuario_email=(String) request.getSession(true).getAttribute("usuario_email");
         

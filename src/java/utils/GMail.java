@@ -42,21 +42,20 @@ public class GMail {
         return mail;
     }
 
-    public void enviarMensaje(String nick, String correo) {
+    public void enviarMensaje(String nick, String correo, String subject, String texto) {
         Session sessionMail = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
         });
-        String msgBody = "Enhorabuena, tu cuenta ha sido dada de alta en EuskalLovers.";
         try {
             Message msg = new MimeMessage(sessionMail);
             msg.setFrom(new InternetAddress("euskallovers@gmail.com", "EuskalLovers"));
             msg.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(correo, nick));
-            msg.setSubject("Cuenta de EuskalLovers activada");
-            msg.setText(msgBody);
+            msg.setSubject(subject);
+            msg.setText(texto);
             Transport.send(msg);
 
         } catch (AddressException e) {

@@ -1,7 +1,6 @@
 <jsp:include page="/comun/cabeza.jsp">
     <jsp:param name="title" value="Regístrate en EuskalLovers"/>
     <jsp:param name="include" value="registro"/>
-    <jsp:param name="includeLib" value="webstorage"/>
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 <div id="registro_center">
