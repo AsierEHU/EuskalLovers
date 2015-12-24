@@ -18,10 +18,10 @@ public class Interes {
     private double peso;
     private String constitucion;
     private String ciudad;
-    private int cp;
+    private String cp;
 
     // todos
-    public Interes(String nick, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, int cp) {
+    public Interes(String nick, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, String cp) {
         super();
         this.nick = nick;
         this.genero = genero;
@@ -99,11 +99,11 @@ public class Interes {
         this.ciudad = ciudad;
     }
 
-    public int getCp() {
+    public String getCp() {
         return cp;
     }
 
-    public void setCp(int cp) {
+    public void setCp(String cp) {
         this.cp = cp;
     }
 
