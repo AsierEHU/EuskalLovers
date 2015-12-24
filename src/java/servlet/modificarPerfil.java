@@ -5,6 +5,8 @@
  */
 package servlet;
 
+import beans.Usuario;
+import daos.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.BD;
 
 /**
  *
@@ -34,7 +37,24 @@ public class modificarPerfil extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            boolean fem = true;
+
+            String em = (String) request.getParameter("perfil_email");
+            String pass = (String) request.getParameter("perfil_password");
+            String nk = (String) request.getParameter("perfil_nick");
+            String gnero = (String) request.getParameter("perfil_genero");
+            if (gnero.equals("Masculino")) {
+                fem = false;}
+            String ciuad = (String) request.getParameter("perfil_ciudad");
+            String Cpos = (String) request.getParameter("perfil_cp");
+            int dad =  Integer.parseInt(request.getParameter("perfil_edad"));
+            double alt = Double.parseDouble(request.getParameter("perfil_altura"));
+            int pso = Integer.parseInt(request.getParameter("perfil_peso"));
+            String asp = (String) request.getParameter("perfil_const");
             
+            Usuario u = new Usuario(nk,em,pass,fem,dad,alt,pso,asp,ciuad,Cpos,"");
+            
+            UsuarioDAO us = new UsuarioDAO(BD.getConexion());
         }
     }
 

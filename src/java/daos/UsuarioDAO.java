@@ -61,4 +61,10 @@ public class UsuarioDAO {
         int total = st.executeUpdate("delete from Usuario where Email='" + email+ "')");
         return total != 0;
     }
+    
+    public boolean modificarUsuario(Usuario u)throws SQLException{
+        Statement st = cn.createStatement();
+        int total = st.executeUpdate("update Usuario set Nick='"+u.getNick()+"',Password='"+u.getContraseña()+"',Genero="+u.isFemenino()+",Edad="+u.getEdad()+",Altura="+u.getAltura()+",Peso="+u.getPeso()+"Constitucion='"+u.getConstitucion()+"',Ciudad='"+u.getCiudad()+"',CP='"+u.getCp()+"'");
+        return total!=0;
+    }
 }
