@@ -109,8 +109,9 @@ public class Usuario {
         return peso;
     }
 
+    // En la base de datos es un BOOLEAN, si está a 0 es femenino, si está a 1 o más masculino
     public boolean isFemenino() {
-        return genero;
+        return !genero;
     }
 
     public void setAltura(double altura) {

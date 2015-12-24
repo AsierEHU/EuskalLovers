@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="beans.Personalidad"%>
+<%@page import="daos.PersonalidadDAO"%>
 <%@page import="utils.BD"%>
 <%@page import="beans.Usuario"%>
 <%@page import="java.util.Iterator"%>
@@ -13,14 +16,13 @@
         Foto *
     </div>
     <table>
-        
-        <%
-    String email = (String)session.getAttribute("usuario_email");
-    UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
-    Usuario u = udao.cogerUsuario(email);
 
-%>
-            
+        <%
+            String email = (String) session.getAttribute("usuario_email");
+            UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
+            Usuario u = udao.cogerUsuario(email);
+        %>
+
         <tr>
             <td>Nombre de usuario: * </td>
             <td><input type="text" name="perfil_nick" id="perfil_nick" minlenght="3" maxlenght="15" required value="<%=u.getNick()%>" ></td>
@@ -36,29 +38,35 @@
         <tr>
             <td>Género: * </td>
             <td>
-                <input type="radio" name="perfil_genero" value="Masculino" checked required > Masculino
-                <input type="radio" name="perfil_genero" value="Femenino" > Femenino
+                <input type="radio" name="perfil_genero" value="Masculino"  required <% if (!u.isFemenino()) {
+                        out.print("checked");
+                    }
+                       %> > Masculino
+                <input type="radio" name="perfil_genero" value="Femenino" <% if (u.isFemenino()) {
+                        out.print("checked");
+                    }
+                       %> > Femenino
             </td>
         </tr>
         <tr>
             <td>Ciudad: * </td>
             <td>        
                 <select name="perfil_ciudad" id="perfil_ciudad" required>
-                    <option value="Vitoria-Gasteiz" <% if(u.getCiudad()=="Vitoria-Gasteiz"){
+                    <option value="Vitoria-Gasteiz" <% if (u.getCiudad().equals("Vitoria-Gasteiz")) {
                             out.print("selected");
                         }
-                                %> >Vitoria-Gasteiz
-                        </option>
-                    <option value="Bilbao" <% if(u.getCiudad()=="Bilbao"){ 
-                            out.print("selected");
-                        }
-                                %> >Bilbao
-                     
+                            %> >Vitoria-Gasteiz
                     </option>
-                    <option value="San Sebastian" <% if(u.getCiudad()=="San Sebastian"){
+                    <option value="Bilbao" <% if (u.getCiudad().equals("Bilbao")) {
                             out.print("selected");
                         }
-                                %>>San Sebastián
+                            %> >Bilbao
+
+                    </option>
+                    <option value="San Sebastian" <% if (u.getCiudad().equals("San Sebastian")) {
+                            out.print("selected");
+                        }
+                            %>>San Sebastián
                     </option>
                 </select>
             </td>
@@ -83,26 +91,89 @@
     <br>
     <fieldset id="perfil_constitucion">
         <legend><b>¿Qué aspecto tienes?</b></legend>
-        <input type="radio" name="perfil_const" value="Delgado" required checked> Delgado/Delgada
+        <input type="radio" name="perfil_const" value="Delgado" required <% if (u.getConstitucion().equals("Delgado")) {
+                out.print("checked");
+            }
+               %> > Delgado/Delgada
         <br>
-        <input type="radio" name="perfil_const" value="Fornido"> Fornido/Fornida
+        <input type="radio" name="perfil_const" value="Fornido" <% if (u.getConstitucion().equals("Fornido")) {
+                out.print("checked");
+            }
+               %> > Fornido/Fornida
         <br>
-        <input type="radio" name="perfil_const" value="Musculoso"> Musculoso/Musculosa
+        <input type="radio" name="perfil_const" value="Musculoso" <% if (u.getConstitucion().equals("Musculoso")) {
+                out.print("checked");
+            }
+               %>> Musculoso/Musculosa
     </fieldset>
     <br>
+
+    <%
+        PersonalidadDAO pdao = new PersonalidadDAO(BD.getConexion());
+        Iterator<Personalidad> personalidades = pdao.cogerPersonalidades(u);
+        ArrayList<String> pers = new ArrayList<>();
+        while (personalidades.hasNext()) {
+            String a = personalidades.next().getNombre();
+            pers.add(a);
+        }
+    %>
+
+    
     <fieldset id="perfil_caracteristicas">
         <legend><b>¿Cómo te definirías?</b></legend>
-        <input type="checkbox" name="perfil_carac" value="Simpatico"> Simpático/Simpática
+        <input type="checkbox" name="perfil_carac" value="Simpatico" <%
+        while(pers.iterator().hasNext()){
+            if(pers.iterator().next().equals("Simpatico")){
+                out.print("checked");
+            }
+        }
+        
+        %>> Simpático/Simpática
         <br>
-        <input type="checkbox" name="perfil_carac" value="Divertido"> Divertido/Divertida
+        <input type="checkbox" name="perfil_carac" value="Divertido" <%
+        while(pers.iterator().hasNext()){
+            if(pers.iterator().next().equals("Divertido")){
+                out.print("checked");
+            }
+        }
+        
+        %>> Divertido/Divertida
         <br>
-        <input type="checkbox" name="perfil_carac" value="Alegre"> Alegre
+        <input type="checkbox" name="perfil_carac" value="Alegre" <%
+        while(pers.iterator().hasNext()){
+            if(pers.iterator().next().equals("Alegre")){
+                out.print("checked");
+            }
+        }
+        
+        %>> Alegre
         <br>
-        <input type="checkbox" name="perfil_carac" value="Generoso"> Generoso/Generosa
+        <input type="checkbox" name="perfil_carac" value="Generoso" <%
+        while(pers.iterator().hasNext()){
+            if(pers.iterator().next().equals("Generoso")){
+                out.print("checked");
+            }
+        }
+        
+        %>> Generoso/Generosa
         <br>
-        <input type="checkbox" name="perfil_carac" value="Atrevido"> Atrevido/Atrevida
+        <input type="checkbox" name="perfil_carac" value="Atrevido" <%
+        while(pers.iterator().hasNext()){
+            if(pers.iterator().next().equals("Atrevido")){
+                out.print("checked");
+            }
+        }
+        
+        %>> Atrevido/Atrevida
         <br>
-        <input type="checkbox" name="perfil_carac" value="Romantico"> Romántico/Romántica
+        <input type="checkbox" name="perfil_carac" value="Romantico" <%
+        while(pers.iterator().hasNext()){
+            if(pers.iterator().next().equals("Romantico")){
+                out.print("checked");
+            }
+        }
+        
+        %>> Romántico/Romántica
     </fieldset>
     <br>
     <fieldset id="perfil_gustos">
