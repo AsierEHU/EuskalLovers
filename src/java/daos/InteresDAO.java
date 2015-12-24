@@ -30,7 +30,7 @@ public class InteresDAO {
     public Iterator<String> recuperarIntereses(String nick) throws SQLException {
         ArrayList<String> intereses = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Interes where nick = " + nick);
+        ResultSet rs = st.executeQuery("select * from Interes where nick ='"+nick+"'");
         while (rs.next()) {
             if(rs.getString("ciudad")!=null){
             intereses.add(rs.getString("email"));
@@ -64,9 +64,19 @@ public class InteresDAO {
     public int getEdadInteres(String nick)throws SQLException{
         int res = 0;
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select Edad from Interes where nick = " + nick);
+        ResultSet rs = st.executeQuery("select Edad from Interes where nick ='"+nick+"'");
         if(rs.next()){
             res = rs.getInt("Edad");
+        }
+        return res;
+    }
+    
+    public String getCiudadInteres(String nick)throws SQLException{
+        String res="";
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select Ciudad from Interes where nick ='"+nick+"'");
+        if(rs.next()){
+            res = rs.getString("Ciudad");
         }
         return res;
     }
@@ -74,7 +84,7 @@ public class InteresDAO {
     public String getCPInteres(String nick)throws SQLException{
         String res="";
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select CP from Interes where nick = " + nick);
+        ResultSet rs = st.executeQuery("select CP from Interes where nick ='"+nick+"'");
         if(rs.next()){
             res = rs.getString("CP");
         }
@@ -84,7 +94,7 @@ public class InteresDAO {
     public String getConstitucionInteres(String nick)throws SQLException{
         String res="";
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select Constitucion from Interes where nick = " + nick);
+        ResultSet rs = st.executeQuery("select Constitucion from Interes where nick ='"+nick+"'");
         if(rs.next()){
             res = rs.getString("Constitucion");
         }
@@ -94,7 +104,7 @@ public class InteresDAO {
     public String getGeneroInteres(String nick)throws SQLException{
         String res="Femenino";
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select genero from Interes where nick = " + nick);
+        ResultSet rs = st.executeQuery("select genero from Interes where nick ='"+nick+"'");
         if(rs.next()){
             if(rs.getBoolean("Genero")){
                 res="Masculino";
@@ -106,7 +116,7 @@ public class InteresDAO {
     public int getPesoInteres(String nick)throws SQLException{
         int res = 0;
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select Peso from Interes where nick = " + nick);
+        ResultSet rs = st.executeQuery("select Peso from Interes where nick ='"+nick+"'");
         if(rs.next()){
             res = rs.getInt("Peso");
         }
@@ -116,7 +126,7 @@ public class InteresDAO {
     public double getAlturaInteres(String nick)throws SQLException{
         double res = 0.0;
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select Altura from Interes where nick = " + nick);
+        ResultSet rs = st.executeQuery("select Altura from Interes where nick ='"+nick+"'");
         if(rs.next()){
             res = rs.getDouble("Altura");
         }

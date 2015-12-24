@@ -215,8 +215,18 @@
     %>
     <table>
         <tr>
-            <td> Busco: * </td> <br /> <td><input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" required > Hombres
-            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres"> Mujeres
+            <td> Busco: * </td> <br /> <td><input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" required  <% 
+                   if(idao.getGeneroInteres(u.getNick()).equals("Masculino")){
+                       out.print("checked");
+                   }
+                   
+                   %>> Hombres
+            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" <% 
+                   if(idao.getGeneroInteres(u.getNick()).equals("Femenino")){
+                       out.print("checked");
+                   }
+                   
+                   %>> Mujeres
         </td> </tr>
 
         <tr>
@@ -234,9 +244,18 @@
             <td>Que viva en:  </td>
             <td>        
                 <select name="perfil_ciudad" id="ciudad_busqueda">
-                    <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
-                    <option value="Bilbao">Bilbao</option>
-                    <option value="San Sebastian">San Sebastián</option>
+                    <option value="Vitoria-Gasteiz" <% if (idao.getCiudadInteres(u.getNick()).equals("Vitoria-Gasteiz")) {
+                            out.print("selected");
+                        }
+                            %>>Vitoria-Gasteiz</option>
+                    <option value="Bilbao"<% if (idao.getCiudadInteres(u.getNick()).equals("Bilbao")) {
+                            out.print("selected");
+                        }
+                            %>>Bilbao</option>
+                    <option value="San Sebastian" <% if (idao.getCiudadInteres(u.getNick()).equals("San Sebastian")) {
+                            out.print("selected");
+                        }
+                            %>>San Sebastián</option>
                 </select>
             </td> </tr>
 
