@@ -44,13 +44,24 @@ public class PersonalidadDAO {
         return total != 0;
     }
 
-    public Iterator<Personalidad> cogerPersonalidades(Usuario u) throws SQLException {
+    public Iterator<Personalidad> cogerPersonalidades() throws SQLException {
         ArrayList<Personalidad> personalidades = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Personalidad where Nick='"+u.getNick()+"'");
+        ResultSet rs = st.executeQuery("select * from Personalidad");
         while(rs.next()){
             personalidades.add(new Personalidad(rs.getString("Nick"), rs.getString("Nombre")));
         }
         return personalidades.iterator();
     }
+    
+    public boolean estaPersonalidad(String nombre,String usuario)throws SQLException{
+        boolean esta=false;
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select * from Personalidad where Nick='"+usuario+"'and Nombre='"+nombre+"'");
+        if(rs.next()){
+            esta=true;
+        }
+        return esta;
+    }
+    
 }

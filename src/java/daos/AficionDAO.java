@@ -7,8 +7,11 @@ package daos;
 
 import beans.Aficion;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -39,4 +42,25 @@ public class AficionDAO {
         int total = st.executeUpdate("Update Aficion set Nombre='" + a.getNombre() + "' where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
         return total != 0;
     }
+    
+    public Iterator<Aficion> cogerAficiones() throws SQLException {
+        ArrayList<Aficion> personalidades = new ArrayList<>();
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select * from Aficion");
+        while(rs.next()){
+            personalidades.add(new Aficion(rs.getString("Nick"), rs.getString("Nombre")));
+        }
+        return personalidades.iterator();
+    }
+    
+    public boolean estaAficion(String nombre,String usuario)throws SQLException{
+        boolean esta=false;
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select * from Aficion where Nick='"+usuario+"'and Nombre='"+nombre+"'");
+        if(rs.next()){
+            esta=true;
+        }
+        return esta;
+    }
+    
 }

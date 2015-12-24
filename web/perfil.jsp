@@ -1,3 +1,5 @@
+<%@page import="daos.InteresDAO"%>
+<%@page import="daos.AficionDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="beans.Personalidad"%>
 <%@page import="daos.PersonalidadDAO"%>
@@ -110,104 +112,123 @@
 
     <%
         PersonalidadDAO pdao = new PersonalidadDAO(BD.getConexion());
-        Iterator<Personalidad> personalidades = pdao.cogerPersonalidades(u);
-        ArrayList<String> pers = new ArrayList<>();
-        while (personalidades.hasNext()) {
-            String a = personalidades.next().getNombre();
-            pers.add(a);
-        }
     %>
 
     
     <fieldset id="perfil_caracteristicas">
         <legend><b>¿Cómo te definirías?</b></legend>
-        <input type="checkbox" name="perfil_carac" value="Simpatico" <%
-        while(pers.iterator().hasNext()){
-            if(pers.iterator().next().equals("Simpatico")){
-                out.print("checked");
-            }
-        }
-        
-        %>> Simpático/Simpática
+        <input type="checkbox" name="perfil_carac" value="Simpatico"
+               <% 
+               if(pdao.estaPersonalidad("Simpatico", u.getNick())){
+                   out.print("checked");
+               }
+               %>
+               > Simpático/Simpática
         <br>
-        <input type="checkbox" name="perfil_carac" value="Divertido" <%
-        while(pers.iterator().hasNext()){
-            if(pers.iterator().next().equals("Divertido")){
-                out.print("checked");
-            }
-        }
-        
-        %>> Divertido/Divertida
+        <input type="checkbox" name="perfil_carac" value="Divertido"
+               <% 
+               if(pdao.estaPersonalidad("Divertido", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Divertido/Divertida
         <br>
-        <input type="checkbox" name="perfil_carac" value="Alegre" <%
-        while(pers.iterator().hasNext()){
-            if(pers.iterator().next().equals("Alegre")){
-                out.print("checked");
-            }
-        }
-        
-        %>> Alegre
+        <input type="checkbox" name="perfil_carac" value="Alegre"
+               <% 
+               if(pdao.estaPersonalidad("Alegre", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Alegre
         <br>
-        <input type="checkbox" name="perfil_carac" value="Generoso" <%
-        while(pers.iterator().hasNext()){
-            if(pers.iterator().next().equals("Generoso")){
-                out.print("checked");
-            }
-        }
-        
-        %>> Generoso/Generosa
+        <input type="checkbox" name="perfil_carac" value="Generoso"
+               <% 
+               if(pdao.estaPersonalidad("Generoso", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Generoso/Generosa
         <br>
-        <input type="checkbox" name="perfil_carac" value="Atrevido" <%
-        while(pers.iterator().hasNext()){
-            if(pers.iterator().next().equals("Atrevido")){
-                out.print("checked");
-            }
-        }
-        
-        %>> Atrevido/Atrevida
+        <input type="checkbox" name="perfil_carac" value="Atrevido"
+               <% 
+               if(pdao.estaPersonalidad("Atrevido", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Atrevido/Atrevida
         <br>
-        <input type="checkbox" name="perfil_carac" value="Romantico" <%
-        while(pers.iterator().hasNext()){
-            if(pers.iterator().next().equals("Romantico")){
-                out.print("checked");
-            }
-        }
-        
-        %>> Romántico/Romántica
+        <input type="checkbox" name="perfil_carac" value="Romantico"
+               <% 
+               if(pdao.estaPersonalidad("Romantico", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Romántico/Romántica
     </fieldset>
     <br>
+    <%
+        AficionDAO adao = new AficionDAO(BD.getConexion());
+    %>
     <fieldset id="perfil_gustos">
         <legend><b>¿Cuáles son tus gustos?</b></legend>
-        <input type="checkbox" name="perfil_gustos" value="Deportes"> Deportes
+        <input type="checkbox" name="perfil_gustos" value="Deportes"
+               <% 
+               if(adao.estaAficion("Deportes", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Deportes
         <br>
-        <input type="checkbox" name="perfil_gustos" value="Lectura"> Lectura
+        <input type="checkbox" name="perfil_gustos" value="Lectura"
+               <% 
+               if(adao.estaAficion("Lectura", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Lectura
         <br>
-        <input type="checkbox" name="perfil_gustos" value="Television"> Televisión
+        <input type="checkbox" name="perfil_gustos" value="Television"
+               <% 
+               if(adao.estaAficion("Television", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Televisión
         <br>
-        <input type="checkbox" name="perfil_gustos" value="Musica"> Música
+        <input type="checkbox" name="perfil_gustos" value="Musica"
+               <% 
+               if(adao.estaAficion("Musica", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Música
         <br>
-        <input type="checkbox" name="perfil_gustos" value="OcioNoc"> Ocio nocturno
+        <input type="checkbox" name="perfil_gustos" value="OcioNoc"
+               <% 
+               if(adao.estaAficion("Ocio nocturno", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Ocio nocturno
         <br>
-        <input type="checkbox" name="perfil_gustos" value="Tecnologia"> Tecnología
+        <input type="checkbox" name="perfil_gustos" value="Tecnologia"
+               <% 
+               if(adao.estaAficion("Tecnologia", u.getNick())){
+                   out.print("checked");
+               }
+               %>> Tecnología
     </fieldset>
     <br>
     <h2>Indica tus preferencias de búsqueda:  </h2>
+    <%
+        InteresDAO idao = new InteresDAO(BD.getConexion());
+    %>
     <table>
         <tr>
-            <td> Busco: * </td> <br /> <td><input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" checked required > Hombres
-            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" > Mujeres
+            <td> Busco: * </td> <br /> <td><input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" required > Hombres
+            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres"> Mujeres
         </td> </tr>
 
         <tr>
             <td>
-                Con una edad mínima de: *</td><td><input type="number" name="edad_busqueda" id="edad_busqueda" min="18" max="120" required> </td> </tr>
+                Con una edad mínima de: *</td><td><input type="number" name="edad_busqueda" id="edad_busqueda" min="18" max="120" required value="<%=idao.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
-            <td> Con altura de: </td> <td> <input type="number" name="altura_busqueda" id="altura_busqueda" step="0.01" min="1" max="3"> </td> </tr>
+            <td> Con altura de: </td> <td> <input type="number" name="altura_busqueda" id="altura_busqueda" step="0.01" min="1" max="3" value="<%=idao.getAlturaInteres(u.getNick())%>"> </td> </tr>
 
         <tr>
             <td>
-                Con un peso de: </td> <td> <input type="number" min="30" max="200" name="peso_busqueda" id="peso_busqueda"> </td></tr>
+                Con un peso de: </td> <td> <input type="number" min="30" max="200" name="peso_busqueda" id="peso_busqueda" value="<%=idao.getPesoInteres(u.getNick())%>"> </td></tr>
 
         <tr>
             <td>Que viva en:  </td>
@@ -221,17 +242,34 @@
 
         <tr>
             <td>
-                Con Código Postal: </td> <td> <input type="text" id="cp_busqueda" name="cp_busqueda" placeholder="00000" minlength="5" maxlength="5"> </td></tr>
+                Con Código Postal: </td> <td> <input type="text" id="cp_busqueda" name="cp_busqueda" placeholder="00000" minlength="5" maxlength="5" value="<%=idao.getCPInteres(u.getNick())%>"> </td></tr>
 
     </table>
     <br>
     <fieldset id="const_busqueda">
         <legend><b>Con aspecto: </b></legend>
-        <input type="radio" name="const_busqueda" value="Delgado" checked> Delgado/Delgada
+        <input type="radio" name="const_busqueda" value="Delgado" <% 
+                   if(idao.getConstitucionInteres(u.getNick()).equals("Delgado")){
+                       out.print("checked");
+                   }
+                   
+                   %>> Delgado/Delgada
         <br>
-        <input type="radio" name="const_busqueda" value="Fornido"> Fornido/Fornida
+        <input type="radio" name="const_busqueda" value="Fornido"
+               <% 
+                   if(idao.getConstitucionInteres(u.getNick()).equals("Fornido")){
+                       out.print("checked");
+                   }
+                   
+                   %>> Fornido/Fornida
         <br>
-        <input type="radio" name="const_busqueda" value="Musculoso"> Musculoso/Musculosa
+        <input type="radio" name="const_busqueda" value="Musculoso"
+               <% 
+                   if(idao.getConstitucionInteres(u.getNick()).equals("Musculoso")){
+                       out.print("checked");
+                   }
+                   
+                   %>> Musculoso/Musculosa
     </fieldset>
     <br>
     <br>
