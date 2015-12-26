@@ -5,9 +5,13 @@
  */
 package servlet;
 
+import beans.Aficion;
 import beans.Interes;
+import beans.Personalidad;
 import beans.Usuario;
+import daos.AficionDAO;
 import daos.InteresDAO;
+import daos.PersonalidadDAO;
 import daos.UsuarioDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -38,52 +42,66 @@ public class registrarse extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        boolean fem_reg = true;
-        boolean fem_bus = true;
-        
-        String nick = (String)request.getParameter("registro_nick");
-        String pass = (String)request.getParameter("registro_password");
-        String mail = (String)request.getParameter("registro_email");
-        String gen = (String) request.getParameter("registro_genero");
-        if (gen.equals("Masculino")) {
-                fem_reg = false;}
-        String ciudad = (String)request.getParameter("registro_ciudad");
-        String cp = request.getParameter("registro_cp");
-        int edad = Integer.parseInt(request.getParameter("registro_edad"));
-        double altura = Double.parseDouble(request.getParameter("registro_altura"));
-        int peso = Integer.parseInt(request.getParameter("registro_peso"));
-        String consti = (String)request.getParameter("registro_const");
-        String [] caracter;
-        caracter = request.getParameterValues("registro_caracteristicas");
-        String [] gustos;
-        gustos = request.getParameterValues("registro_gustos");
-        String foto = (String)request.getParameter("registro_foto");
-        
-        Usuario u = new Usuario(nick,mail,pass,fem_reg,edad,altura,peso,consti,ciudad,cp,foto);
-        UsuarioDAO ud = new UsuarioDAO(BD.getConexion());
-        
         try {
-            ud.insertarUsuario(u);
+            response.setContentType("text/html;charset=UTF-8");
+            boolean fem_reg = true;
+            boolean fem_bus = true;
+            
+            String nick = (String)request.getParameter("registro_nick");
+            String pass = (String)request.getParameter("registro_password");
+            String mail = (String)request.getParameter("registro_email");
+            String gen = (String) request.getParameter("registro_genero");
+            if (gen.equals("Masculino")) {
+                fem_reg = false;}
+            String ciudad = (String)request.getParameter("registro_ciudad");
+            String cp = request.getParameter("registro_cp");
+            int edad = Integer.parseInt(request.getParameter("registro_edad"));
+            double altura = Double.parseDouble(request.getParameter("registro_altura"));
+            int peso = Integer.parseInt(request.getParameter("registro_peso"));
+            String consti = (String)request.getParameter("registro_const");
+            String [] caracter;
+            caracter = request.getParameterValues("registro_caracteristicas");
+            String [] gustos;
+            gustos = request.getParameterValues("registro_gustos");
+            String foto = (String)request.getParameter("registro_foto");
+            
+            Usuario u = new Usuario(nick,mail,pass,fem_reg,edad,altura,peso,consti,ciudad,cp,foto);
+            UsuarioDAO ud = new UsuarioDAO(BD.getConexion());
+            
+            ud.insertarUsuarioCompleto(u);
+            
+            for(int i=0;i<caracter.length;i++){
+                Personalidad per = new Personalidad(nick,caracter[i]);
+                PersonalidadDAO perD = new PersonalidadDAO(BD.getConexion());
+                perD.insertarAficion(per);
+            }
+            
+            for(int i=0;i<gustos.length;i++){
+                Aficion afi = new Aficion(nick,gustos[i]);
+                AficionDAO afiD = new AficionDAO(BD.getConexion());
+                afiD.insertarAficion(afi);
+            }
+            
+            String gen_bus = (String)request.getParameter("genero_busqueda");
+            if (gen_bus.equals("Masculino")) {
+                fem_bus = false;}
+            int edad_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
+            double altura_bus = Double.parseDouble(request.getParameter("altura_busqueda"));
+            int peso_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
+            String ciudad_bus = (String)request.getParameter("ciudad_busqueda");
+            String const_bus = (String)request.getParameter("const_busqueda");
+            String cp_bus = request.getParameter("cp_busqueda");
+            
+            Interes inter_usuario = new Interes(nick,fem_bus,edad_bus,altura_bus,peso_bus,const_bus,ciudad_bus,cp_bus);
+            InteresDAO interD = new InteresDAO(BD.getConexion());
+            
+            interD.insertarInteres(inter_usuario);
+     
         } catch (SQLException ex) {
             Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        String gen_bus = (String)request.getParameter("genero_busqueda");
-        if (gen_bus.equals("Masculino")) {
-                fem_bus = false;}
-        int edad_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
-        double altura_bus = Double.parseDouble(request.getParameter("altura_busqueda"));
-        int peso_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
-        String ciudad_bus = (String)request.getParameter("ciudad_busqueda");
-        String const_bus = (String)request.getParameter("const_busqueda");
-        String cp_bus = request.getParameter("cp_busqueda");
-        
-        Interes inter_usuario = new Interes(nick,fem_bus,edad_bus,altura_bus,peso_bus,const_bus,ciudad_bus,cp_bus);
-        InteresDAO interD = new InteresDAO(BD.getConexion());
 
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
