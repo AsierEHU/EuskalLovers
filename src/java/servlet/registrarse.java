@@ -100,6 +100,8 @@ public class registrarse extends HttpServlet {
             InteresDAO interD = new InteresDAO(BD.getConexion());
             
             interD.insertarInteres(inter_usuario);
+            
+            response.sendRedirect("index.jsp");
                  
         } catch (SQLException ex) {
             Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
