@@ -44,13 +44,14 @@ public class Usuario {
     }
     //Obligatorios
 
-    public Usuario(String nick, String email, String contraseña, boolean genero, String constitucion, String ciudad, String cp, String foto) {
+    public Usuario(String nick, String email, String contraseña, boolean genero, String constitucion, int edad, String ciudad, String cp, String foto) {
         super();
         this.nick = nick;
         this.email = email;
         this.contraseña = contraseña;
         this.genero = genero;
         this.constitucion = constitucion;
+        this.edad=edad;
         this.ciudad = ciudad;
         this.cp = cp;
         this.foto = foto;
