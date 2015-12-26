@@ -65,10 +65,10 @@ public class registrarse extends HttpServlet {
             gustos = request.getParameterValues("registro_gustos");
             String foto = (String)request.getParameter("registro_foto");
             
-            Usuario u = new Usuario(nick,mail,pass,fem_reg,edad,altura,peso,consti,ciudad,cp,foto);
+            Usuario u = new Usuario(nick,mail,pass,fem_reg,consti,ciudad,cp,foto);
             UsuarioDAO ud = new UsuarioDAO(BD.getConexion());
             
-            ud.insertarUsuarioCompleto(u);
+            ud.insertarUsuario(u);
             
             for (String caracter1 : caracter) {
                 if (caracter1 != null) {
