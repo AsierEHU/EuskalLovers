@@ -26,19 +26,19 @@ public class PersonalidadDAO {
         this.cn = cn;
     }
 
-    public boolean insertarAficion(Personalidad a) throws SQLException {
+    public boolean insertarPersonalidad(Personalidad a) throws SQLException {
         Statement st = cn.createStatement();
         int total = st.executeUpdate("insert into Personalidad(Nick,Nombre)values('" + a.getNick() + "','" + a.getNombre() + "')");
         return 0 != total;
     }
 
-    public boolean eliminarAficion(Personalidad a) throws SQLException {
+    public boolean eliminarPersonalidad(Personalidad a) throws SQLException {
         Statement st = cn.createStatement();
         int total = st.executeUpdate("delete from Personalidad where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
         return total != 0;
     }
 
-    public boolean cambiarAficion(Personalidad a) throws SQLException {
+    public boolean cambiarPersonalidad(Personalidad a) throws SQLException {
         Statement st = cn.createStatement();
         int total = st.executeUpdate("Update Personalidad set Nombre='" + a.getNombre() + "' where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
         return total != 0;

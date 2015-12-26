@@ -74,7 +74,7 @@ public class registrarse extends HttpServlet {
                 if (caracter1 != null) {
                     Personalidad per = new Personalidad(nick, caracter1);
                     PersonalidadDAO perD = new PersonalidadDAO(BD.getConexion());
-                    perD.insertarAficion(per);
+                    perD.insertarPersonalidad(per);
                 }
             }
             
