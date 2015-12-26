@@ -5,22 +5,22 @@
 </jsp:include>
 <div id="registro_center">
     <h1 id="registro_title"> ¡Regístrate en Euskal Lovers! </h1>
-    <form action="index.jsp" id="registro_FORMULARIO">
+    <form action="registro" id="registro_FORMULARIO">
         <div id="registro_foto">
             Foto *
         </div>
         <table>
             <tr>
                 <td>Nombre de usuario: * </td>
-                <td><input type="text" name="registro_nick" id="registro_nick" minlenght="3" maxlenght="15" required ></td>
+                <td><input type="text" name="registro_nick" id="registro_nick" required ></td>
             </tr>
             <tr>
                 <td>Contraseña: * </td>
-                <td><input type="password" name="registro_password" id="registro_password" minlenght="5" manxlenght="15" required ></td>
+                <td><input type="password" name="registro_password" id="registro_password" required ></td>
             </tr>
             <tr>
                 <td>Email: * </td>
-                <td><input type="email" id="registro_email" name="registro_email" required placeholder="ejemplo@ejemplo.com" required></td>
+                <td><input type="email" id="registro_email" name="registro_email" required placeholder="ejemplo@ejemplo.com"></td>
             </tr>
             <tr>
                 <td>Género: * </td>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <td>Código Postal: * </td>
-                <td><input type="text" id="registro_cp" name="registro_cp" placeholder="00000" minlength="5" maxlength="5" required></td>
+                <td><input type="text" id="registro_cp" name="registro_cp" placeholder="00000" required></td>
             </tr>
             <tr>
                 <td>Edad: * </td>

@@ -70,16 +70,20 @@ public class registrarse extends HttpServlet {
             
             ud.insertarUsuarioCompleto(u);
             
-            for(int i=0;i<caracter.length;i++){
-                Personalidad per = new Personalidad(nick,caracter[i]);
-                PersonalidadDAO perD = new PersonalidadDAO(BD.getConexion());
-                perD.insertarAficion(per);
+            for (String caracter1 : caracter) {
+                if (caracter1 != null) {
+                    Personalidad per = new Personalidad(nick, caracter1);
+                    PersonalidadDAO perD = new PersonalidadDAO(BD.getConexion());
+                    perD.insertarAficion(per);
+                }
             }
             
-            for(int i=0;i<gustos.length;i++){
-                Aficion afi = new Aficion(nick,gustos[i]);
+            for(String aficion1 : gustos){
+                if(aficion1 != null){
+                Aficion afi = new Aficion(nick,aficion1);
                 AficionDAO afiD = new AficionDAO(BD.getConexion());
                 afiD.insertarAficion(afi);
+                }
             }
             
             String gen_bus = (String)request.getParameter("genero_busqueda");
@@ -96,7 +100,7 @@ public class registrarse extends HttpServlet {
             InteresDAO interD = new InteresDAO(BD.getConexion());
             
             interD.insertarInteres(inter_usuario);
-     
+                 
         } catch (SQLException ex) {
             Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
         }
