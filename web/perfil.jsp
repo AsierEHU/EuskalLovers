@@ -13,7 +13,7 @@
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 
-<form action="/Perfil" id="perfil_FORMULARIO">
+<form action="Perfil" id="perfil_FORMULARIO">
     <div id="perfil_foto">
         Foto *
     </div>
