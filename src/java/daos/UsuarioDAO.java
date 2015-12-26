@@ -52,13 +52,13 @@ public class UsuarioDAO {
 
     public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"')");
+        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Genero, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"','"+a.isFemenino()+"','"+a.getConstitucion()+"','"+a.getCp()+"','"+" "+"')");
         return total != 0;
     }
     
     public boolean insertarUsuarioCompleto(Usuario a) throws SQLException{
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario values ('" + a.getNick()+"','"+a.getEmail()+"','"+a.getContraseña()+"','"+a.isFemenino()+"','"+a.getEdad()+"','"+a.getAltura()+"','"+a.getPeso()+"','"+a.getConstitucion()+"','"+a.getCiudad()+"','"+a.getCp()+"','"+a.getFoto()+"');");
+        int total = st.executeUpdate("insert into Usuario values ('" + a.getNick()+"','"+a.getEmail()+"','"+a.getContraseña()+"','"+a.isFemenino()+"','"+a.getEdad()+"','"+a.getAltura()+"','"+a.getPeso()+"','"+a.getConstitucion()+"','"+a.getCiudad()+"','"+a.getCp()+" "+"');");
         return total != 0;
     }
 
@@ -70,7 +70,7 @@ public class UsuarioDAO {
     
     public boolean modificarUsuario(Usuario u)throws SQLException{
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set Nick='"+u.getNick()+"',Password='"+u.getContraseña()+"',Genero="+u.isFemenino()+",Edad="+u.getEdad()+",Altura="+u.getAltura()+",Peso="+u.getPeso()+"Constitucion='"+u.getConstitucion()+"',Ciudad='"+u.getCiudad()+"',CP='"+u.getCp()+"'");
+        int total = st.executeUpdate("update Usuario set Nick='"+u.getNick()+"',Password='"+u.getContraseña()+"',Genero="+u.isFemenino()+",Edad="+u.getEdad()+",Altura="+u.getAltura()+",Peso="+u.getPeso()+"Constitucion='"+u.getConstitucion()+"',Ciudad='"+u.getCiudad()+"',CP='"+u.getCp()+"'where nick ='"+u.getNick()+"'");
         return total!=0;
     }
 }
