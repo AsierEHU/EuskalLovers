@@ -52,13 +52,13 @@ public class UsuarioDAO {
 
     public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Genero, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"',"+a.isFemenino()+",'"+a.getConstitucion()+"','"+a.getCp()+"','"+a.getFoto()+"')");
+        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Edad, Genero, Ciudad, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"',"+a.getEdad()+","+a.isFemenino()+",'"+a.getCiudad()+"','"+a.getConstitucion()+"','"+a.getCp()+"','"+a.getFoto()+"')");
         return total != 0;
     }
     
     public boolean insertarUsuarioCompleto(Usuario a) throws SQLException{
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario values ('" + a.getNick()+"','"+a.getEmail()+"','"+a.getContraseña()+"','"+a.isFemenino()+"','"+a.getEdad()+"','"+a.getAltura()+"','"+a.getPeso()+"','"+a.getConstitucion()+"','"+a.getCiudad()+"','"+a.getCp()+" "+"');");
+        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Edad, Altura, Peso, Genero, Ciudad, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"',"+a.getEdad()+","+a.getAltura()+","+a.getPeso()+","+a.isFemenino()+",'"+a.getCiudad()+"','"+a.getConstitucion()+"','"+a.getCp()+"','"+a.getFoto()+"')");
         return total != 0;
     }
 

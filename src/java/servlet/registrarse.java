@@ -56,7 +56,7 @@ public class registrarse extends HttpServlet {
             String ciudad = (String)request.getParameter("registro_ciudad");
             String cp = request.getParameter("registro_cp");
             int edad = Integer.parseInt(request.getParameter("registro_edad"));
-            double altura = Double.parseDouble(request.getParameter("registro_altura"));
+            float altura = Float.parseFloat(request.getParameter("registro_altura"));
             int peso = Integer.parseInt(request.getParameter("registro_peso"));
             String consti = (String)request.getParameter("registro_const");
             String [] caracter;
@@ -65,7 +65,7 @@ public class registrarse extends HttpServlet {
             gustos = request.getParameterValues("registro_gustos");
             String foto = (String)request.getParameter("registro_foto");
             
-            Usuario u = new Usuario(nick,mail,pass,fem_reg,consti,edad,ciudad,cp,foto);
+            Usuario u = new Usuario(nick,mail,pass,fem_reg,consti,edad,ciudad,cp,"");
             UsuarioDAO ud = new UsuarioDAO(BD.getConexion());
             
             ud.insertarUsuario(u);
