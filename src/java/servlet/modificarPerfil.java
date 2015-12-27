@@ -72,6 +72,7 @@ public class modificarPerfil extends HttpServlet {
             //Personalidad
             PersonalidadDAO ps = new PersonalidadDAO(BD.getConexion());
             String[] cara = request.getParameterValues("perfil_carac");
+            ps.eliminarPersonalidades(nk);
             for (String c : cara) {
                 if (cara != null) {
                     Personalidad Pp = new Personalidad(u.getNick(), c);
