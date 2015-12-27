@@ -70,19 +70,19 @@ public class registrarse extends HttpServlet {
             
             ud.insertarUsuario(u);
             
-            for (String caracter1 : caracter) {
-                if (caracter1 != null) {
+            if(caracter!=null){
+                for (String caracter1 : caracter) {
                     Personalidad per = new Personalidad(nick, caracter1);
                     PersonalidadDAO perD = new PersonalidadDAO(BD.getConexion());
                     perD.insertarPersonalidad(per);
                 }
             }
             
-            for(String aficion1 : gustos){
-                if(aficion1 != null){
-                Aficion afi = new Aficion(nick,aficion1);
-                AficionDAO afiD = new AficionDAO(BD.getConexion());
-                afiD.insertarAficion(afi);
+            if(gustos!=null){
+                for(String aficion1 : gustos){
+                    Aficion afi = new Aficion(nick,aficion1);
+                    AficionDAO afiD = new AficionDAO(BD.getConexion());
+                    afiD.insertarAficion(afi);
                 }
             }
             
@@ -90,7 +90,7 @@ public class registrarse extends HttpServlet {
             if (gen_bus.equals("Masculino")) {
                 fem_bus = false;}
             int edad_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
-            double altura_bus = Double.parseDouble(request.getParameter("altura_busqueda"));
+            float altura_bus = Float.parseFloat(request.getParameter("altura_busqueda"));
             int peso_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
             String ciudad_bus = (String)request.getParameter("ciudad_busqueda");
             String const_bus = (String)request.getParameter("const_busqueda");
