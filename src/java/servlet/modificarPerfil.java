@@ -73,8 +73,8 @@ public class modificarPerfil extends HttpServlet {
             PersonalidadDAO ps = new PersonalidadDAO(BD.getConexion());
             String[] cara = request.getParameterValues("perfil_carac");
             ps.eliminarPersonalidades(nk);
-            for (String c : cara) {
-                if (cara != null) {
+            if (cara != null) {
+                for (String c : cara) {
                     Personalidad Pp = new Personalidad(u.getNick(), c);
                     ps.insertarPersonalidad(Pp);
                 }
@@ -83,28 +83,31 @@ public class modificarPerfil extends HttpServlet {
             //Aficiones
             AficionDAO as = new AficionDAO(BD.getConexion());
             String[] gust = request.getParameterValues("perfil_gustos");
-            as.eliminarAficiones(nk);
-            for (String g : gust) {
-                if (gust != null) {
-                    Aficion Gp = new Aficion(u.getNick(), g);
-                    as.insertarAficion(Gp);
+            if (gust != null) {
+                as.eliminarAficiones(nk);
+                for (String g : gust) {
+                    if (gust != null) {
+                        Aficion Gp = new Aficion(u.getNick(), g);
+                        as.insertarAficion(Gp);
+                    }
                 }
             }
-            
+
             //Intereses
-            String gene_bus = (String)request.getParameter("genero_busqueda");
+            String gene_bus = (String) request.getParameter("genero_busqueda");
             if (gene_bus.equals("Masculino")) {
-                feme_bus = false;}
+                feme_bus = false;
+            }
             int eda_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
             double altur_bus = Double.parseDouble(request.getParameter("altura_busqueda"));
             int pes_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
-            String ciuda_bus = (String)request.getParameter("ciudad_busqueda");
-            String cons_bus = (String)request.getParameter("const_busqueda");
+            String ciuda_bus = (String) request.getParameter("ciudad_busqueda");
+            String cons_bus = (String) request.getParameter("const_busqueda");
             String cpe_bus = request.getParameter("cp_busqueda");
-            
-            Interes int_us = new Interes(nk,feme_bus,eda_bus,altur_bus,pes_bus,cons_bus,ciuda_bus,cpe_bus);
+
+            Interes int_us = new Interes(nk, feme_bus, eda_bus, altur_bus, pes_bus, cons_bus, ciuda_bus, cpe_bus);
             InteresDAO interD = new InteresDAO(BD.getConexion());
-            
+
             interD.cambiarInteres(int_us);
 
             response.sendRedirect("perfil.jsp");
