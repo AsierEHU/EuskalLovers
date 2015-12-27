@@ -5,7 +5,7 @@
 </jsp:include>
 <div id="registro_center">
     <h1 id="registro_title"> ¡Regístrate en Euskal Lovers! </h1>
-    <form action="registro" id="registro_FORMULARIO">
+    <form action="registro" id="registro_FORMULARIO" method="post">
         <div id="registro_foto">
             Foto *
         </div>
