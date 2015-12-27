@@ -54,7 +54,7 @@ public class modificarPerfil extends HttpServlet {
             String ciuad = (String) request.getParameter("perfil_ciudad");
             String Cpos = (String) request.getParameter("perfil_cp");
             int dad = Integer.parseInt(request.getParameter("perfil_edad"));
-            double alt = Double.parseDouble(request.getParameter("perfil_altura"));
+            float alt = Float.parseFloat(request.getParameter("perfil_altura"));
             int pso = Integer.parseInt(request.getParameter("perfil_peso"));
             String asp = (String) request.getParameter("perfil_const");
 

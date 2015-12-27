@@ -16,8 +16,8 @@ public class Usuario {
     private String contraseña;
     private boolean genero;
     private int edad;
-    private double altura;
-    private double peso;
+    private float altura;
+    private int peso;
     private String constitucion;
     private String ciudad;
     private String cp;
@@ -28,7 +28,7 @@ public class Usuario {
     }
     // Completo
 
-    public Usuario(String nick, String email, String contraseña, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, String cp, String foto) {
+    public Usuario(String nick, String email, String contraseña, boolean genero, int edad, float altura, int peso, String constitucion, String ciudad, String cp, String foto) {
         super();
         this.nick = nick;
         this.email = email;
@@ -70,7 +70,7 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public double getAltura() {
+    public float getAltura() {
         return altura;
     }
 
@@ -106,7 +106,7 @@ public class Usuario {
         return nick;
     }
 
-    public double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
@@ -115,7 +115,7 @@ public class Usuario {
         return !genero;
     }
 
-    public void setAltura(double altura) {
+    public void setAltura(float altura) {
         this.altura = altura;
     }
 
@@ -139,7 +139,7 @@ public class Usuario {
         this.email = email;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 

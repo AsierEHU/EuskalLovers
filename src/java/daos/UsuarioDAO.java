@@ -45,14 +45,14 @@ public class UsuarioDAO {
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "'");
         if (rs.next()) {
-            return new Usuario(rs.getString("Nick"), rs.getString("Email"), rs.getString("Password"),rs.getBoolean("Genero"), rs.getInt("Edad"),rs.getDouble("Altura"),rs.getDouble("Peso"),rs.getString("Constitucion"),rs.getString("Ciudad"),rs.getString("CP"),rs.getString("Foto"));
+            return new Usuario(rs.getString("Nick"), rs.getString("Email"), rs.getString("Password"),rs.getBoolean("Genero"), rs.getInt("Edad"),rs.getFloat("Altura"),rs.getInt("Peso"),rs.getString("Constitucion"),rs.getString("Ciudad"),rs.getString("CP"),rs.getString("Foto"));
         }
         return null;
     }
 
     public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Genero, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"','"+a.isFemenino()+"','"+a.getConstitucion()+"','"+a.getCp()+"','"+" "+"')");
+        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Genero, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"',"+a.isFemenino()+",'"+a.getConstitucion()+"','"+a.getCp()+"','"+a.getFoto()+"')");
         return total != 0;
     }
     
@@ -70,7 +70,7 @@ public class UsuarioDAO {
     
     public boolean modificarUsuario(Usuario u)throws SQLException{
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set Nick='"+u.getNick()+"',Password='"+u.getContraseña()+"',Genero="+u.isFemenino()+",Edad="+u.getEdad()+",Altura="+u.getAltura()+",Peso="+u.getPeso()+"Constitucion='"+u.getConstitucion()+"',Ciudad='"+u.getCiudad()+"',CP='"+u.getCp()+"'where nick ='"+u.getNick()+"'");
+        int total = st.executeUpdate("update Usuario set Nick='"+u.getNick()+"',Password='"+u.getContraseña()+"',Genero="+u.isFemenino()+",Edad="+u.getEdad()+",Altura="+u.getAltura()+",Peso="+u.getPeso()+",Constitucion='"+u.getConstitucion()+"',Ciudad='"+u.getCiudad()+"',CP='"+u.getCp()+"'where nick ='"+u.getNick()+"'");
         return total!=0;
     }
 }
