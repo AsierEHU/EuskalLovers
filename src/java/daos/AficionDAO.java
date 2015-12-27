@@ -27,7 +27,7 @@ public class AficionDAO {
 
     public boolean insertarAficion(Aficion a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Aficion(Nick,Nombre)values('" + a.getNick() + "','" + a.getNombre() + "')");
+        int total = st.executeUpdate("insert into Aficion(Nick,Nombre)values('"+a.getNick()+ "','" +a.getNombre()+"')");
         return 0 != total;
     }
 
@@ -61,6 +61,11 @@ public class AficionDAO {
             esta=true;
         }
         return esta;
+    }
+    public boolean eliminarAficiones(String nick) throws SQLException {
+        Statement st = cn.createStatement();
+        int total = st.executeUpdate("delete from Aficion where Nick='"+nick+'"');
+        return total != 0;
     }
     
 }

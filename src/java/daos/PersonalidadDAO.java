@@ -28,13 +28,19 @@ public class PersonalidadDAO {
 
     public boolean insertarPersonalidad(Personalidad a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Personalidad(Nick,Nombre)values('" + a.getNick() + "','" + a.getNombre() + "')");
+        int total = st.executeUpdate("insert into Personalidad(Nick,Nombre)values('"+a.getNick()+"','"+a.getNombre()+"')");
         return 0 != total;
     }
 
     public boolean eliminarPersonalidad(Personalidad a) throws SQLException {
         Statement st = cn.createStatement();
         int total = st.executeUpdate("delete from Personalidad where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
+        return total != 0;
+    }
+
+    public boolean eliminarPersonalidades(String nick) throws SQLException {
+        Statement st = cn.createStatement();
+        int total = st.executeUpdate("delete from Personalidad where Nick='"+nick+'"');
         return total != 0;
     }
 
@@ -48,20 +54,20 @@ public class PersonalidadDAO {
         ArrayList<Personalidad> personalidades = new ArrayList<>();
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Personalidad");
-        while(rs.next()){
+        while (rs.next()) {
             personalidades.add(new Personalidad(rs.getString("Nick"), rs.getString("Nombre")));
         }
         return personalidades.iterator();
     }
-    
-    public boolean estaPersonalidad(String nombre,String usuario)throws SQLException{
-        boolean esta=false;
+
+    public boolean estaPersonalidad(String nombre, String usuario) throws SQLException {
+        boolean esta = false;
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Personalidad where Nick='"+usuario+"'and Nombre='"+nombre+"'");
-        if(rs.next()){
-            esta=true;
+        if (rs.next()) {
+            esta = true;
         }
         return esta;
     }
-    
+
 }

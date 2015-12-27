@@ -5,7 +5,13 @@
  */
 package servlet;
 
+import beans.Aficion;
+import beans.Interes;
+import beans.Personalidad;
 import beans.Usuario;
+import daos.AficionDAO;
+import daos.InteresDAO;
+import daos.PersonalidadDAO;
 import daos.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,6 +47,7 @@ public class modificarPerfil extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             boolean fem = true;
+            boolean feme_bus = true;
 
             String em = (String) request.getParameter("perfil_email");
             String pass = (String) request.getParameter("perfil_password");
@@ -61,9 +68,47 @@ public class modificarPerfil extends HttpServlet {
             Usuario u = new Usuario(nk, em, pass, fem, dad, alt, pso, asp, ciuad, Cpos, "");
             UsuarioDAO us = new UsuarioDAO(BD.getConexion());
             us.modificarUsuario(u);
+
+            //Personalidad
+            PersonalidadDAO ps = new PersonalidadDAO(BD.getConexion());
+            String[] cara = request.getParameterValues("perfil_carac");
+            for (String c : cara) {
+                if (cara != null) {
+                    Personalidad Pp = new Personalidad(u.getNick(), c);
+                    ps.insertarPersonalidad(Pp);
+                }
+            }
+
+            //Aficiones
+            AficionDAO as = new AficionDAO(BD.getConexion());
+            String[] gust = request.getParameterValues("perfil_gustos");
+            for (String g : gust) {
+                if (gust != null) {
+                    Aficion Gp = new Aficion(u.getNick(), g);
+                    as.insertarAficion(Gp);
+                }
+            }
+            
+            //Intereses
+            String gene_bus = (String)request.getParameter("genero_busqueda");
+            if (gene_bus.equals("Masculino")) {
+                feme_bus = false;}
+            int eda_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
+            double altur_bus = Double.parseDouble(request.getParameter("altura_busqueda"));
+            int pes_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
+            String ciuda_bus = (String)request.getParameter("ciudad_busqueda");
+            String cons_bus = (String)request.getParameter("const_busqueda");
+            String cpe_bus = request.getParameter("cp_busqueda");
+            
+            Interes int_us = new Interes(nk,feme_bus,eda_bus,altur_bus,pes_bus,cons_bus,ciuda_bus,cpe_bus);
+            InteresDAO interD = new InteresDAO(BD.getConexion());
+            
+            interD.cambiarInteres(int_us);
+
             response.sendRedirect("perfil.jsp");
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
