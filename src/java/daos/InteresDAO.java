@@ -141,13 +141,13 @@ public class InteresDAO {
      
      public boolean insertarInteresUsuario(Usuario u, Interes a) throws SQLException{
          Statement st = cn.createStatement();
-         int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,Constitucion) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "') where Interes.Nick = '" + u.getNick() + '"');
+         int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,Constitucion) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "') where Interes.Nick = '" + u.getNick() + "'");
          return res !=0;
      }
      
      public boolean cambiarInteres(Interes a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("Update Interes set Genero="+a.isGenero()+",Edad="+a.getEdad()+",Cp='"+a.getCp()+"', Peso=" +a.getPeso()+", Altura=" +a.getAltura()+", Constitucion='"+a.getConstitucion()+"' where Interes.Nick = '"+a.getNick()+'"');
+        int total = st.executeUpdate("Update Interes set Genero="+a.isGenero()+",Edad="+a.getEdad()+",Cp='"+a.getCp()+"', Peso=" +a.getPeso()+", Altura=" +a.getAltura()+", Constitucion='"+a.getConstitucion()+"' where Interes.Nick = '"+a.getNick()+"'");
         return total != 0;
     }
 }
