@@ -34,19 +34,19 @@ public class PersonalidadDAO {
 
     public boolean eliminarPersonalidad(Personalidad a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Personalidad where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
+        int total = st.executeUpdate("delete from Personalidad where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + "'");
         return total != 0;
     }
 
     public boolean eliminarPersonalidades(String nick) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Personalidad where Nick='"+nick+'"');
+        int total = st.executeUpdate("delete from Personalidad where Nick='"+nick+"'");
         return total != 0;
     }
 
     public boolean cambiarPersonalidad(Personalidad a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("Update Personalidad set Nombre='" + a.getNombre() + "' where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
+        int total = st.executeUpdate("Update Personalidad set Nombre='" + a.getNombre() + "' where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + "'");
         return total != 0;
     }
 
