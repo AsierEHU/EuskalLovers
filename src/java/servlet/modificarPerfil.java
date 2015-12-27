@@ -48,6 +48,10 @@ public class modificarPerfil extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             boolean fem = true;
             boolean feme_bus = true;
+            float alt;
+            int pso;
+            float altur_bus;
+            int pes_bus;
 
             String em = (String) request.getParameter("perfil_email");
             String pass = (String) request.getParameter("perfil_password");
@@ -61,8 +65,17 @@ public class modificarPerfil extends HttpServlet {
             String ciuad = (String) request.getParameter("perfil_ciudad");
             String Cpos = (String) request.getParameter("perfil_cp");
             int dad = Integer.parseInt(request.getParameter("perfil_edad"));
-            float alt = Float.parseFloat(request.getParameter("perfil_altura"));
-            int pso = Integer.parseInt(request.getParameter("perfil_peso"));
+            if (request.getParameter("perfil_altura").equals("")) {
+                alt = (float) 0.0;
+            } else {
+                alt = Float.parseFloat(request.getParameter("perfil_altura"));
+            }
+
+            if (request.getParameter("perfil_peso").equals("")) {
+                pso = 0;
+            } else {
+                pso = Integer.parseInt(request.getParameter("perfil_peso"));
+            }
             String asp = (String) request.getParameter("perfil_const");
 
             Usuario u = new Usuario(nk, em, pass, fem, dad, alt, pso, asp, ciuad, Cpos, "");
@@ -98,8 +111,16 @@ public class modificarPerfil extends HttpServlet {
                 feme_bus = false;
             }
             int eda_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
-            double altur_bus = Double.parseDouble(request.getParameter("altura_busqueda"));
-            int pes_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
+            if (request.getParameter("altura_busqueda").equals("")) {
+                altur_bus = (float) 0.0;
+            } else {
+                altur_bus = Float.parseFloat(request.getParameter("altura_busqueda"));
+            }
+            if (request.getParameter("peso_busqueda").equals("")) {
+                pes_bus = 0;
+            } else {
+                pes_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
+            }
             String ciuda_bus = (String) request.getParameter("ciudad_busqueda");
             String cons_bus = (String) request.getParameter("const_busqueda");
             String cpe_bus = request.getParameter("cp_busqueda");
