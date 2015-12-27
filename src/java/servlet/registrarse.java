@@ -60,7 +60,7 @@ public class registrarse extends HttpServlet {
             int peso = Integer.parseInt(request.getParameter("registro_peso"));
             String consti = (String)request.getParameter("registro_const");
             String [] caracter;
-            caracter = request.getParameterValues("registro_caracteristicas");
+            caracter = request.getParameterValues("registro_carac");
             String [] gustos;
             gustos = request.getParameterValues("registro_gustos");
             String foto = (String)request.getParameter("registro_foto");
