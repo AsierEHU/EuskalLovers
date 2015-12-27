@@ -87,7 +87,7 @@ public class registrarse extends HttpServlet {
             }
             
             String gen_bus = (String)request.getParameter("genero_busqueda");
-            if (gen_bus.equals("Masculino")) {
+            if (gen_bus.equals("Hombres")) {
                 fem_bus = false;}
             int edad_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
             float altura_bus = Float.parseFloat(request.getParameter("altura_busqueda"));
