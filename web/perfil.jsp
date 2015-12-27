@@ -295,6 +295,6 @@
     <h5>Los campos marcados con * son obligatorios</h5>
     <br>
     <input class="perfil_btn" type="submit" value="Editar perfil">
-    <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
+    <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal" onclick = "location='principal.jsp'" >
 </form>
 <jsp:include page="/comun/logueado/pie.jsp"/>
