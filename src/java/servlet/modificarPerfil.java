@@ -83,6 +83,7 @@ public class modificarPerfil extends HttpServlet {
             //Aficiones
             AficionDAO as = new AficionDAO(BD.getConexion());
             String[] gust = request.getParameterValues("perfil_gustos");
+            as.eliminarAficiones(nk);
             for (String g : gust) {
                 if (gust != null) {
                     Aficion Gp = new Aficion(u.getNick(), g);
