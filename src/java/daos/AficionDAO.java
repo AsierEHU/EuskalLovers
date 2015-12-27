@@ -33,13 +33,13 @@ public class AficionDAO {
 
     public boolean eliminarAficion(Aficion a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Aficion where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
+        int total = st.executeUpdate("delete from Aficion where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + "'");
         return total != 0;
     }
 
     public boolean cambiarAficion(Aficion a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("Update Aficion set Nombre='" + a.getNombre() + "' where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + '"');
+        int total = st.executeUpdate("Update Aficion set Nombre='" + a.getNombre() + "' where Nick='" + a.getNick() + "' AND Nombre='" + a.getNombre() + "'");
         return total != 0;
     }
     
@@ -64,7 +64,7 @@ public class AficionDAO {
     }
     public boolean eliminarAficiones(String nick) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Aficion where Nick='"+nick+'"');
+        int total = st.executeUpdate("delete from Aficion where Nick='"+nick+"'");
         return total != 0;
     }
     
