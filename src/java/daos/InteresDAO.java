@@ -133,7 +133,17 @@ public class InteresDAO {
         return res;
     }
     
-     public boolean insertarInteres(Interes a) throws SQLException{
+    public boolean insertarInteresBasico(Interes a)throws SQLException{
+        Statement st = cn.createStatement();
+        int fem =0;
+         if(a.isGenero()==false){
+             fem=1;
+         }
+         int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,Constitucion,Ciudad) values ('" + a.getNick() + "','" + fem + "','" + a.getEdad() +"','"+ a.getConstitucion() +"','"+ a.getCiudad()+"')");
+         return res!=0;
+    }
+    
+    public boolean insertarInteres(Interes a) throws SQLException{
          Statement st = cn.createStatement();
          int fem =0;
          if(a.isGenero()==false){
@@ -142,7 +152,7 @@ public class InteresDAO {
          int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,CP,Peso,Altura,Constitucion,Ciudad) values ('" + a.getNick() + "','" + fem + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "','"+a.getCiudad()+"')");
          return res!=0;
      }
-     
+          
      public boolean insertarInteresUsuario(Usuario u, Interes a) throws SQLException{
          Statement st = cn.createStatement();
          int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,,Ciudad) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "','"+ a.getCiudad()+"') where Interes.Nick = '" + u.getNick() + "'");

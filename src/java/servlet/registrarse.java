@@ -141,10 +141,10 @@ public class registrarse extends HttpServlet {
                 cp_busqueda_si = true;
             }
             
-            Interes inter_usuario = new Interes(nick,fem_bus,edad_bus,altura_bus,peso_bus,const_bus,ciudad_bus,cp_bus);
+            Interes inter_usuario = new Interes(nick,fem_bus,edad_bus,const_bus,ciudad_bus);
             InteresDAO interD = new InteresDAO(BD.getConexion());
             
-            interD.insertarInteres(inter_usuario);
+            interD.insertarInteresBasico(inter_usuario);
             
             if(altura_busqueda_si){
                 Interes inter_usuario1 = new Interes(nick,fem_bus,edad_bus,altura_bus,peso_bus,const_bus,ciudad_bus,cp_bus);

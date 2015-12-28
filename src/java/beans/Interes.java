@@ -35,12 +35,13 @@ public class Interes {
 
     // minimos
 
-    public Interes(String nick, boolean genero, int edad, String constitucion) {
+    public Interes(String nick, boolean genero, int edad, String constitucion, String ciudad) {
         super();
         this.nick = nick;
         this.edad = edad;
         this.genero = genero;
         this.constitucion = constitucion;
+        this.ciudad=ciudad;
     }
 
     public String getNick() {
