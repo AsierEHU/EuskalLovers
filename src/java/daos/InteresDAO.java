@@ -139,13 +139,13 @@ public class InteresDAO {
          if(a.isGenero()==false){
              fem=1;
          }
-         int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,CP,Peso,Altura,Constitucion) values ('" + a.getNick() + "','" + fem + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "')");
+         int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,CP,Peso,Altura,Constitucion,Ciudad) values ('" + a.getNick() + "','" + fem + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "','"+a.getCiudad()+"')");
          return res!=0;
      }
      
      public boolean insertarInteresUsuario(Usuario u, Interes a) throws SQLException{
          Statement st = cn.createStatement();
-         int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,Constitucion) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "') where Interes.Nick = '" + u.getNick() + "'");
+         int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,,Ciudad) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "','"+ a.getCiudad()+"') where Interes.Nick = '" + u.getNick() + "'");
          return res !=0;
      }
      
@@ -154,6 +154,24 @@ public class InteresDAO {
         int total = st.executeUpdate("Update Interes set Genero="+a.isGenero()+",Edad="+a.getEdad()+",Cp='"+a.getCp()+"', Peso=" +a.getPeso()+", Altura=" +a.getAltura()+", Constitucion='"+a.getConstitucion()+"' where Interes.Nick = '"+a.getNick()+"'");
         return total != 0;
     }
+     
+     public boolean actualizarAlturaBusqueda(Interes a)throws SQLException{
+         Statement st = cn.createStatement();
+        int total = st.executeUpdate("Update Interes set altura='"+ a.getAltura()+"' where Interes.Nick = '"+a.getNick()+"'");
+        return total != 0;
+     }
+     
+     public boolean actualizarPesoBusqueda(Interes a)throws SQLException{
+         Statement st = cn.createStatement();
+        int total = st.executeUpdate("Update Interes set peso='"+ a.getPeso()+"' where Interes.Nick = '"+a.getNick()+"'");
+        return total != 0;
+     }
+     
+     public boolean actualizarCPBusqueda(Interes a)throws SQLException{
+         Statement st = cn.createStatement();
+        int total = st.executeUpdate("Update Interes set cp='"+ a.getCp()+"' where Interes.Nick = '"+a.getNick()+"'");
+        return total != 0;
+     }
 }
 
 //
