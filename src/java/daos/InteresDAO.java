@@ -167,19 +167,19 @@ public class InteresDAO {
      
      public boolean actualizarAlturaBusqueda(Interes a)throws SQLException{
          Statement st = cn.createStatement();
-        int total = st.executeUpdate("Update Interes set altura='"+ a.getAltura()+"' where Interes.Nick = '"+a.getNick()+"'");
+        int total = st.executeUpdate("Update Interes set Altura='"+ a.getAltura()+"' where Interes.Nick = '"+a.getNick()+"'");
         return total != 0;
      }
      
      public boolean actualizarPesoBusqueda(Interes a)throws SQLException{
          Statement st = cn.createStatement();
-        int total = st.executeUpdate("Update Interes set peso='"+ a.getPeso()+"' where Interes.Nick = '"+a.getNick()+"'");
+        int total = st.executeUpdate("Update Interes set Peso='"+ a.getPeso()+"' where Interes.Nick = '"+a.getNick()+"'");
         return total != 0;
      }
      
      public boolean actualizarCPBusqueda(Interes a)throws SQLException{
          Statement st = cn.createStatement();
-        int total = st.executeUpdate("Update Interes set cp='"+ a.getCp()+"' where Interes.Nick = '"+a.getNick()+"'");
+        int total = st.executeUpdate("Update Interes set CP='"+ a.getCp()+"' where Interes.Nick = '"+a.getNick()+"'");
         return total != 0;
      }
 }

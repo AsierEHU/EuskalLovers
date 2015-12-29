@@ -117,7 +117,7 @@
             <tr>
                 <td>Que viva en:  </td>
                 <td>        
-                    <select name="registro_ciudad" id="ciudad_busqueda">
+                    <select name="ciudad_busqueda" id="ciudad_busqueda">
                         <option value="Vitoria-Gasteiz">Vitoria-Gasteiz</option>
                         <option value="Bilbao">Bilbao</option>
                         <option value="San Sebastian">San Sebastián</option>
@@ -126,7 +126,7 @@
 
             <tr>
                 <td>
-                    Con Código Postal: </td> <td> <input type="text" id="cp_busqueda" name="cp_busqueda" placeholder="00000" minlength="5" maxlength="5"> </td></tr>
+                    Con Código Postal: </td> <td> <input type="text" name="cp_busqueda" id="cp_busqueda"  placeholder="00000" minlength="5" maxlength="5"> </td></tr>
 
         </table>
         <br>

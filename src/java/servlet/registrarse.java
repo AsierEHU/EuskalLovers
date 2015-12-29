@@ -135,8 +135,9 @@ public class registrarse extends HttpServlet {
             } 
             String ciudad_bus = (String)request.getParameter("ciudad_busqueda");
             String const_bus = (String)request.getParameter("const_busqueda");
-            String cp_bus = request.getParameter("cp_busqueda");
-            if (cp_bus.equals("")){                
+            String cp_bus = (String)request.getParameter("cp_busqueda");
+            if (cp_bus.equals("null")){
+                cp_bus = "";
             } else {
                 cp_busqueda_si = true;
             }
