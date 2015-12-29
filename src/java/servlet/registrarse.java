@@ -82,7 +82,7 @@ public class registrarse extends HttpServlet {
             gustos = request.getParameterValues("registro_gustos");
             String foto = (String)request.getParameter("registro_foto");
             
-            Usuario u = new Usuario(nick,mail,pass,fem_reg,consti,edad,ciudad,cp,"");
+            Usuario u = new Usuario(nick,mail,pass,fem_reg,consti,edad,ciudad,cp,foto);
             UsuarioDAO ud = new UsuarioDAO(BD.getConexion());
             ud.insertarUsuario(u);
             
@@ -135,8 +135,9 @@ public class registrarse extends HttpServlet {
             } 
             String ciudad_bus = (String)request.getParameter("ciudad_busqueda");
             String const_bus = (String)request.getParameter("const_busqueda");
-            String cp_bus = request.getParameter("cp_busqueda");
-            if (cp_bus.equals("")){                
+            String cp_bus = "";
+            if (request.getParameter("cp_busqueda").equals("null")){
+                cp_bus = "";
             } else {
                 cp_busqueda_si = true;
             }
