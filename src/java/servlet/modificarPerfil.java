@@ -124,6 +124,9 @@ public class modificarPerfil extends HttpServlet {
             String ciuda_bus = (String) request.getParameter("ciudad_busqueda");
             String cons_bus = (String) request.getParameter("const_busqueda");
             String cpe_bus = request.getParameter("cp_busqueda");
+            if (cpe_bus.equals("null")){
+                cpe_bus="";
+            }
 
             Interes int_us = new Interes(nk, feme_bus, eda_bus, altur_bus, pes_bus, cons_bus, ciuda_bus, cpe_bus);
             InteresDAO interD = new InteresDAO(BD.getConexion());
