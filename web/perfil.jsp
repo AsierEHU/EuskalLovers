@@ -114,50 +114,50 @@
         PersonalidadDAO pdao = new PersonalidadDAO(BD.getConexion());
     %>
 
-    
+
     <fieldset id="perfil_caracteristicas">
         <legend><b>¿Cómo te definirías?</b></legend>
         <input type="checkbox" name="perfil_carac" value="Simpatico"
-               <% 
-               if(pdao.estaPersonalidad("Simpatico", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (pdao.estaPersonalidad("Simpatico", u.getNick())) {
+                       out.print("checked");
+                   }
                %>
                > Simpático/Simpática
         <br>
         <input type="checkbox" name="perfil_carac" value="Divertido"
-               <% 
-               if(pdao.estaPersonalidad("Divertido", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (pdao.estaPersonalidad("Divertido", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Divertido/Divertida
         <br>
         <input type="checkbox" name="perfil_carac" value="Alegre"
-               <% 
-               if(pdao.estaPersonalidad("Alegre", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (pdao.estaPersonalidad("Alegre", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Alegre
         <br>
         <input type="checkbox" name="perfil_carac" value="Generoso"
-               <% 
-               if(pdao.estaPersonalidad("Generoso", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (pdao.estaPersonalidad("Generoso", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Generoso/Generosa
         <br>
         <input type="checkbox" name="perfil_carac" value="Atrevido"
-               <% 
-               if(pdao.estaPersonalidad("Atrevido", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (pdao.estaPersonalidad("Atrevido", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Atrevido/Atrevida
         <br>
         <input type="checkbox" name="perfil_carac" value="Romantico"
-               <% 
-               if(pdao.estaPersonalidad("Romantico", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (pdao.estaPersonalidad("Romantico", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Romántico/Romántica
     </fieldset>
     <br>
@@ -167,45 +167,45 @@
     <fieldset id="perfil_gustos">
         <legend><b>¿Cuáles son tus gustos?</b></legend>
         <input type="checkbox" name="perfil_gustos" value="Deportes"
-               <% 
-               if(adao.estaAficion("Deportes", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (adao.estaAficion("Deportes", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Deportes
         <br>
         <input type="checkbox" name="perfil_gustos" value="Lectura"
-               <% 
-               if(adao.estaAficion("Lectura", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (adao.estaAficion("Lectura", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Lectura
         <br>
         <input type="checkbox" name="perfil_gustos" value="Television"
-               <% 
-               if(adao.estaAficion("Television", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (adao.estaAficion("Television", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Televisión
         <br>
         <input type="checkbox" name="perfil_gustos" value="Musica"
-               <% 
-               if(adao.estaAficion("Musica", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (adao.estaAficion("Musica", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Música
         <br>
         <input type="checkbox" name="perfil_gustos" value="OcioNoc"
-               <% 
-               if(adao.estaAficion("Ocio nocturno", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (adao.estaAficion("Ocio nocturno", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Ocio nocturno
         <br>
         <input type="checkbox" name="perfil_gustos" value="Tecnologia"
-               <% 
-               if(adao.estaAficion("Tecnologia", u.getNick())){
-                   out.print("checked");
-               }
+               <%
+                   if (adao.estaAficion("Tecnologia", u.getNick())) {
+                       out.print("checked");
+                   }
                %>> Tecnología
     </fieldset>
     <br>
@@ -215,17 +215,16 @@
     %>
     <table>
         <tr>
-            <td> Busco: * </td> <br /> <td><input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" required  <% 
-                   if(idao.getGeneroInteres(u.getNick()).equals("Masculino")){
-                       out.print("checked");
-                   }
-                   
-                   %>> Hombres
-            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" <% 
-                   if(idao.getGeneroInteres(u.getNick()).equals("Femenino")){
-                       out.print("checked");
-                   }
-                   
+            <td> Busco: * </td> <br /> <td><input type="radio" name="genero_busqueda" id="genero_busqueda" value="Hombres" required  <%
+                if (idao.getGeneroInteres(u.getNick()).equals("Masculino")) {
+                    out.print("checked");
+                }
+
+                                                  %>> Hombres
+            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" <%                if (idao.getGeneroInteres(u.getNick()).equals("Femenino")) {
+                    out.print("checked");
+                }
+
                    %>> Mujeres
         </td> </tr>
 
@@ -267,34 +266,35 @@
     <br>
     <fieldset id="const_busqueda">
         <legend><b>Con aspecto: </b></legend>
-        <input type="radio" name="const_busqueda" value="Delgado" <% 
-                   if(idao.getConstitucionInteres(u.getNick()).equals("Delgado")){
-                       out.print("checked");
-                   }
-                   
-                   %>> Delgado/Delgada
+        <input type="radio" name="const_busqueda" value="Delgado" <%
+            if (idao.getConstitucionInteres(u.getNick()).equals("Delgado")) {
+                out.print("checked");
+            }
+
+               %>> Delgado/Delgada
         <br>
         <input type="radio" name="const_busqueda" value="Fornido"
-               <% 
-                   if(idao.getConstitucionInteres(u.getNick()).equals("Fornido")){
+               <%                   if (idao.getConstitucionInteres(u.getNick()).equals("Fornido")) {
                        out.print("checked");
                    }
-                   
-                   %>> Fornido/Fornida
+
+               %>> Fornido/Fornida
         <br>
         <input type="radio" name="const_busqueda" value="Musculoso"
-               <% 
-                   if(idao.getConstitucionInteres(u.getNick()).equals("Musculoso")){
+               <%                   if (idao.getConstitucionInteres(u.getNick()).equals("Musculoso")) {
                        out.print("checked");
                    }
-                   
-                   %>> Musculoso/Musculosa
+
+               %>> Musculoso/Musculosa
     </fieldset>
     <br>
     <br>
     <h5>Los campos marcados con * son obligatorios</h5>
     <br>
     <input class="perfil_btn" type="submit" value="Editar perfil">
-    <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal" onclick = "location='principal.jsp'" >
+    <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
+</form>
+<form method="post" action="Delete" >
+    <input type="submit" class="perfil_btn" value="Eliminar mi perfil" onclick = "location = 'index.jsp'">
 </form>
 <jsp:include page="/comun/logueado/pie.jsp"/>
