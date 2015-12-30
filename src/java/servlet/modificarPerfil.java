@@ -106,7 +106,7 @@ public class modificarPerfil extends HttpServlet {
 
             //Intereses
             String gene_bus = (String) request.getParameter("genero_busqueda");
-            if (gene_bus.equals("Masculino")) {
+            if (gene_bus.equals("Hombres")) {
                 feme_bus = false;
             }
             int eda_bus = Integer.parseInt(request.getParameter("edad_busqueda"));

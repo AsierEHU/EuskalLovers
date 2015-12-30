@@ -194,9 +194,9 @@
                    }
                %>> Música
         <br>
-        <input type="checkbox" name="perfil_gustos" value="Ocio Nocturno"
+        <input type="checkbox" name="perfil_gustos" value="OcioNoc"
                <%
-                   if (adao.estaAficion("Ocio nocturno", u.getNick())) {
+                   if (adao.estaAficion("OcioNoc", u.getNick())) {
                        out.print("checked");
                    }
                %>> Ocio nocturno
