@@ -5,17 +5,29 @@
         <servlet-class>servlet.MailInterno</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>eliminarUsuario</servlet-name>
+        <servlet-class>servlet.eliminarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>modificarPerfil</servlet-name>
+        <servlet-class>servlet.modificarPerfil</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>registrarse</servlet-name>
         <servlet-class>servlet.registrarse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loguearse</servlet-name>
+        <servlet-class>servlet.loguearse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HacersePremium</servlet-name>
+        <servlet-class>servlet.HacersePremium</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MailInterno</servlet-name>
         <url-pattern>/mail</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>loguearse</servlet-name>
-        <servlet-class>servlet.loguearse</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>loguearse</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>registrarse</servlet-name>
         <url-pattern>/registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HacersePremium</servlet-name>
+        <url-pattern>/Premium</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarUsuario</servlet-name>
+        <url-pattern>/Delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modificarPerfil</servlet-name>
+        <url-pattern>/Perfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

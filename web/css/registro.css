@@ -1,4 +1,15 @@
 
+/*div#registro_foto{
+    margin: 10px;
+    width: 140px;
+    height: 165px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    float:left;
+    text-align: center;
+}*/
+
+
 div#registro_center{
     margin:auto;
     width:800px; 
@@ -7,16 +18,6 @@ div#registro_center{
     border-radius: 8px;
     border:1px solid grey; 
     background-color: rgba(255, 255, 255, 0.95);
-}
-
-div#registro_foto{
-    margin: 10px;
-    width: 140px;
-    height: 165px;
-    border: 1px solid gray;
-    border-radius: 8px;
-    float:left;
-    text-align: center;
 }
 
 .registro_btn {

@@ -14,9 +14,9 @@
 </jsp:include>
 
 <form action="Perfil" id="perfil_FORMULARIO" method="POST">
-    <div id="perfil_foto">
+<!--    <div id="perfil_foto">
         Foto *
-    </div>
+    </div>-->
     <table>
 
         <%
@@ -295,6 +295,6 @@
     <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
 </form>
 <form method="post" action="Delete" >
-    <input type="submit" class="perfil_btn" value="Eliminar mi perfil" onclick = "location = 'index.jsp'">
+    <input type="submit" class="perfil_btn" value="Eliminar mi perfil">
 </form>
 <jsp:include page="/comun/logueado/pie.jsp"/>

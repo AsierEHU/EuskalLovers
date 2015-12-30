@@ -13,22 +13,26 @@ import daos.AficionDAO;
 import daos.InteresDAO;
 import daos.PersonalidadDAO;
 import daos.UsuarioDAO;
+//import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//import org.apache.tomcat.util.http.fileupload.FileItem;
+//import org.apache.tomcat.util.http.fileupload.FileItemIterator;
+//import org.apache.tomcat.util.http.fileupload.FileUploadException;
+//import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+//import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import utils.BD;
 
 /**
  *
  * @author Adrián
  */
-@WebServlet(name = "registrarse", urlPatterns = {"/registrarse"})
 public class registrarse extends HttpServlet {
 
     /**
@@ -51,125 +55,146 @@ public class registrarse extends HttpServlet {
             boolean altura_busqueda_si = false;
             boolean peso_busqueda_si = false;
             boolean cp_busqueda_si = false;
-            
-            String nick = (String)request.getParameter("registro_nick");
-            String pass = (String)request.getParameter("registro_password");
-            String mail = (String)request.getParameter("registro_email");
+
+            String nick = (String) request.getParameter("registro_nick");
+            String pass = (String) request.getParameter("registro_password");
+            String mail = (String) request.getParameter("registro_email");
             String gen = (String) request.getParameter("registro_genero");
             if (gen.equals("Masculino")) {
-                fem_reg = false;}
-            String ciudad = (String)request.getParameter("registro_ciudad");
+                fem_reg = false;
+            }
+            String ciudad = (String) request.getParameter("registro_ciudad");
             String cp = request.getParameter("registro_cp");
             int edad = Integer.parseInt(request.getParameter("registro_edad"));
             float altura = (float) 0.0;
-            if(request.getParameter("registro_altura").equals("")){                
-            }
-            else{
+            if (request.getParameter("registro_altura").equals("")) {
+            } else {
                 alturaSi = true;
                 altura = Float.parseFloat(request.getParameter("registro_altura"));
             }
             int peso = 0;
-            if(request.getParameter("registro_peso").equals("")){               
-            }
-            else{
+            if (request.getParameter("registro_peso").equals("")) {
+            } else {
                 pesoSi = true;
                 peso = Integer.parseInt(request.getParameter("registro_peso"));
-            }            
-            String consti = (String)request.getParameter("registro_const");
-            String [] caracter;
+            }
+            String consti = (String) request.getParameter("registro_const");
+            String[] caracter;
             caracter = request.getParameterValues("registro_carac");
-            String [] gustos;
+            String[] gustos;
             gustos = request.getParameterValues("registro_gustos");
-            String foto = (String)request.getParameter("registro_foto");
-            
-            Usuario u = new Usuario(nick,mail,pass,fem_reg,consti,edad,ciudad,cp,"");
+
+//            DiskFileItemFactory factory = new DiskFileItemFactory();
+//            ServletFileUpload upload = new ServletFileUpload(factory);
+//            FileItemIterator i = upload.getItemIterator(request);
+//            File imagen = null;
+//            while (i.hasNext() && imagen == null) {
+//                FileItem fi = (FileItem) i.next();
+//                if (!fi.isFormField()) {
+//                    // Get the uploaded file parameters
+//                    String fieldName = fi.getFieldName();
+//                    String fileName = fi.getName();
+//                    String contentType = fi.getContentType();
+//                    boolean isInMemory = fi.isInMemory();
+//                    long sizeInBytes = fi.getSize();
+//                    File uploadDir = new File("img/fotos");
+//                    imagen = File.createTempFile("perfil", "asd", uploadDir);
+//                    fi.write(imagen);
+//                }
+//            }
+
+            Usuario u = new Usuario(nick, mail, pass, fem_reg, consti, edad, ciudad, cp, "");
             UsuarioDAO ud = new UsuarioDAO(BD.getConexion());
             ud.insertarUsuario(u);
-            
-            if(alturaSi){
-                Usuario u1 = new Usuario(nick,mail,pass,fem_reg,edad,altura,peso,consti,ciudad,cp,foto);
+
+            if (alturaSi) {
+                Usuario u1 = new Usuario(nick, mail, pass, fem_reg, edad, altura, peso, consti, ciudad, cp, "");
                 UsuarioDAO ud1 = new UsuarioDAO(BD.getConexion());
-                ud1.actualizarAltura(u1);               
+                ud1.actualizarAltura(u1);
             }
-            
-            if(pesoSi){
-                Usuario u2 = new Usuario(nick,mail,pass,fem_reg,edad,altura,peso,consti,ciudad,cp,foto);
+
+            if (pesoSi) {
+                Usuario u2 = new Usuario(nick, mail, pass, fem_reg, edad, altura, peso, consti, ciudad, cp, "");
                 UsuarioDAO ud2 = new UsuarioDAO(BD.getConexion());
                 ud2.actualizarPeso(u2);
             }
-                       
-            if(caracter!=null){
+
+            if (caracter != null) {
                 for (String caracter1 : caracter) {
                     Personalidad per = new Personalidad(nick, caracter1);
                     PersonalidadDAO perD = new PersonalidadDAO(BD.getConexion());
                     perD.insertarPersonalidad(per);
                 }
             }
-            
-            if(gustos!=null){
-                for(String aficion1 : gustos){
-                    Aficion afi = new Aficion(nick,aficion1);
+
+            if (gustos != null) {
+                for (String aficion1 : gustos) {
+                    Aficion afi = new Aficion(nick, aficion1);
                     AficionDAO afiD = new AficionDAO(BD.getConexion());
                     afiD.insertarAficion(afi);
                 }
             }
-            
-            String gen_bus = (String)request.getParameter("genero_busqueda");
+
+            String gen_bus = (String) request.getParameter("genero_busqueda");
             if (gen_bus.equals("Hombres")) {
-                fem_bus = false;}
-            int edad_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
-            
-            float altura_bus = (float) 0.0;
-            if(request.getParameter("altura_busqueda").equals("")){                
+                fem_bus = false;
             }
-            else{
+            int edad_bus = Integer.parseInt(request.getParameter("edad_busqueda"));
+
+            float altura_bus = (float) 0.0;
+            if (request.getParameter("altura_busqueda").equals("")) {
+            } else {
                 altura_busqueda_si = true;
                 altura_bus = Float.parseFloat(request.getParameter("altura_busqueda"));
             }
             int peso_bus = 0;
-            if(request.getParameter("peso_busqueda").equals("")){                
-            }
-            else{
+            if (request.getParameter("peso_busqueda").equals("")) {
+            } else {
                 peso_busqueda_si = true;
                 peso_bus = Integer.parseInt(request.getParameter("peso_busqueda"));
-            } 
-            String ciudad_bus = (String)request.getParameter("ciudad_busqueda");
-            String const_bus = (String)request.getParameter("const_busqueda");
-            String cp_bus = (String)request.getParameter("cp_busqueda");
-            if (cp_bus.equals("null")){
+            }
+            String ciudad_bus = (String) request.getParameter("ciudad_busqueda");
+            String const_bus = (String) request.getParameter("const_busqueda");
+            String cp_bus = (String) request.getParameter("cp_busqueda");
+            if (cp_bus.equals("null")) {
                 cp_bus = "";
             } else {
                 cp_busqueda_si = true;
             }
-            
-            Interes inter_usuario = new Interes(nick,fem_bus,edad_bus,const_bus,ciudad_bus);
+
+            Interes inter_usuario = new Interes(nick, fem_bus, edad_bus, const_bus, ciudad_bus);
             InteresDAO interD = new InteresDAO(BD.getConexion());
-            
+
             interD.insertarInteresBasico(inter_usuario);
-            
-            if(altura_busqueda_si){
-                Interes inter_usuario1 = new Interes(nick,fem_bus,edad_bus,altura_bus,peso_bus,const_bus,ciudad_bus,cp_bus);
-                InteresDAO interD1 = new InteresDAO(BD.getConexion());                
+
+            if (altura_busqueda_si) {
+                Interes inter_usuario1 = new Interes(nick, fem_bus, edad_bus, altura_bus, peso_bus, const_bus, ciudad_bus, cp_bus);
+                InteresDAO interD1 = new InteresDAO(BD.getConexion());
                 interD1.actualizarAlturaBusqueda(inter_usuario1);
             }
-            if(peso_busqueda_si){
-                Interes inter_usuario2 = new Interes(nick,fem_bus,edad_bus,altura_bus,peso_bus,const_bus,ciudad_bus,cp_bus);
-                InteresDAO interD2 = new InteresDAO(BD.getConexion());                
+            if (peso_busqueda_si) {
+                Interes inter_usuario2 = new Interes(nick, fem_bus, edad_bus, altura_bus, peso_bus, const_bus, ciudad_bus, cp_bus);
+                InteresDAO interD2 = new InteresDAO(BD.getConexion());
                 interD2.actualizarPesoBusqueda(inter_usuario2);
             }
-            if(cp_busqueda_si){
-                Interes inter_usuario3 = new Interes(nick,fem_bus,edad_bus,altura_bus,peso_bus,const_bus,ciudad_bus,cp_bus);
-                InteresDAO interD3 = new InteresDAO(BD.getConexion());                
+            if (cp_busqueda_si) {
+                Interes inter_usuario3 = new Interes(nick, fem_bus, edad_bus, altura_bus, peso_bus, const_bus, ciudad_bus, cp_bus);
+                InteresDAO interD3 = new InteresDAO(BD.getConexion());
                 interD3.actualizarCPBusqueda(inter_usuario3);
             }
-            
+
             response.sendRedirect("index.jsp");
-                 
+
         } catch (SQLException ex) {
             Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } /*catch (FileUploadException ex) {
+            Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
 
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
