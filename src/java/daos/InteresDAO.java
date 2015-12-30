@@ -135,9 +135,9 @@ public class InteresDAO {
     
     public boolean insertarInteresBasico(Interes a)throws SQLException{
         Statement st = cn.createStatement();
-        int fem =0;
+        int fem =1;
          if(a.isGenero()==false){
-             fem=1;
+             fem=0;
          }
          int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,Constitucion,Ciudad) values ('" + a.getNick() + "','" + fem + "','" + a.getEdad() +"','"+ a.getConstitucion() +"','"+ a.getCiudad()+"')");
          return res!=0;
@@ -145,9 +145,9 @@ public class InteresDAO {
     
     public boolean insertarInteres(Interes a) throws SQLException{
          Statement st = cn.createStatement();
-         int fem =0;
+         int fem =1;
          if(a.isGenero()==false){
-             fem=1;
+             fem=0;
          }
          int res = st.executeUpdate("insert into Interes(Nick,Genero,Edad,CP,Peso,Altura,Constitucion,Ciudad) values ('" + a.getNick() + "','" + fem + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "','"+a.getCiudad()+"')");
          return res!=0;
