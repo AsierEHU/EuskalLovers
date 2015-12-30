@@ -40,6 +40,12 @@ public class UsuarioDAO {
         }
         return usuarios.iterator();
     }
+    
+    public boolean yaExisteUsuario(String nick, String email) throws SQLException{
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "' or Nick='"+nick+"'");
+        return rs.next();
+    }
 
     public Usuario cogerUsuario(String email) throws SQLException {
         Statement st = cn.createStatement();

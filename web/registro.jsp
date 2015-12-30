@@ -3,6 +3,18 @@
     <jsp:param name="include" value="registro"/>
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
+
+
+<%
+    if(request.getParameter("error")!=null){
+        %>
+        <script>
+            alert("El nombre de usuario o el correo electrónico ya han sido usados");
+        </script>
+        <%
+    }
+%>
+
 <div id="registro_center">
     <h1 id="registro_title"> ¡Regístrate en Euskal Lovers! </h1>
     <form action="registro" id="registro_FORMULARIO" method="post">
