@@ -64,7 +64,7 @@ public class UsuarioDAO {
 
     public boolean eliminarUsuario(String email) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Usuario where Email='"+email+'"');
+        int total = st.executeUpdate("delete from Usuario where Email='"+email+"'");
         return total != 0;
     }
     

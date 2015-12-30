@@ -114,7 +114,7 @@ public class Usuario {
     public boolean isFemenino() {
         return !genero;
     }
-
+ 
     public void setAltura(float altura) {
         this.altura = altura;
     }

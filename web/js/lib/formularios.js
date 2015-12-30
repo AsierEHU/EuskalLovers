@@ -226,7 +226,8 @@ function addDragAndDropImage(id) {
         arch.addEventListener('load', leer, false);
         arch.readAsDataURL(ev.dataTransfer.files[0]);
     }
-
+    
+    
     function permitirDrop(ev) {
         ev.preventDefault();
     }
