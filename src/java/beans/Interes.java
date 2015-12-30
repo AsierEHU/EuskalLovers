@@ -53,7 +53,7 @@ public class Interes {
     }
 
     public boolean isGenero() {
-        return genero;
+        return !genero;
     }
 
     public void setGenero(boolean genero) {
