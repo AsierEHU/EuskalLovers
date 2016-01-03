@@ -5,13 +5,20 @@
  */
 package servlet;
 
+import beans.Interes;
+import daos.InteresDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.BD;
 
 /**
  *
@@ -30,19 +37,44 @@ public class busqueda extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet busqueda</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet busqueda at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            boolean gen = true;
+            boolean alturaSi = false;
+            boolean pesoSi = false;
+            String nick = (String) request.getSession().getAttribute("usuario_nick");
+            String genero = (String) request.getParameter("genero_busq");
+                if (genero.equals("Masculino")) {
+                    gen = false;
+                }
+            int edad = Integer.parseInt(request.getParameter("edad_busq"));
+            float altura = (float) 0.0;
+            if (request.getParameter("altura_busq").equals("")) {
+                } else {
+                    alturaSi = true;
+                    altura = Float.parseFloat(request.getParameter("altura_busq"));
+                }
+            int peso = 0;
+                if (request.getParameter("peso_busq").equals("")) {
+                } else {
+                    pesoSi = true;
+                    peso = Integer.parseInt(request.getParameter("peso_busq"));
+                }
+            String ciudad = (String) request.getParameter("ciudad_busq");
+            String cp = request.getParameter("cp_busq");
+            String consti = (String) request.getParameter("const_busq");
+            
+            Interes inter1 = new Interes(nick, gen, edad, altura, peso,consti, ciudad,cp);
+            InteresDAO interD1 = new InteresDAO(BD.getConexion());
+            
+            ArrayList<String> buscados = interD1.buscarUsuariosConcreto(inter1);
+            
+            if(buscados == null){
+                inter1 = new Interes(nick,gen,edad,consti,ciudad);
+                interD1 = new InteresDAO(BD.getConexion());
+                buscados = interD1.buscarUsuariosBasico(inter1);
+            }
         }
     }
 
@@ -58,7 +90,11 @@ public class busqueda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(busqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +108,11 @@ public class busqueda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(busqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

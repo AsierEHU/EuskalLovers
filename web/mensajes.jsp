@@ -1,3 +1,4 @@
+<%@page import="daos.PremiumDAO"%>
 <%@page import="utils.BD"%>
 <%@page import="beans.Usuario"%>
 <%@page import="java.util.Iterator"%>
@@ -24,8 +25,17 @@
                 }
             %>
         </select>
-        <textarea id="mensajes_text" name="text" required ></textarea>
-        <input type="submit" value="enviar"/>
+        <%
+            String email = (String) session.getAttribute("usuario_email");
+            Usuario u = udao.cogerUsuario(email);
+            PremiumDAO pdao = new PremiumDAO(BD.getConexion());
+            String disabled = "";
+            if(!pdao.esPremium(u.getNick())){
+                disabled="disabled";
+            }
+        %>
+        <textarea id="mensajes_text" name="text" required <%=disabled%>><%if(!disabled.equals("")){out.print("Hazte premium para poder mandar mensajes.");}%></textarea>
+        <input type="submit" value="enviar" <%=disabled%>/>
     </form>
 </article>
 <article id="mensajes_mensajesRecibidos">

@@ -1,10 +1,11 @@
+<%@page import="daos.PremiumDAO"%>
 <%
-    String email = (String)session.getAttribute("usuario_email");
-    if(email == null){
+    String email = (String) session.getAttribute("usuario_email");
+    if (email == null) {
         application.getRequestDispatcher("/index.jsp").forward(request, response);
         //esto hay que mejorar
     }
-    
+
     UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
     Usuario u = udao.cogerUsuario(email);
 
@@ -33,7 +34,20 @@
             <li><a href="principal.jsp">Principal</a></li>
             <li><a href="perfil.jsp">Perfil</a></li>
             <li><a href="mensajes.jsp">Mensajes</a></li>
-            <li><a href="premium.jsp">¡Hazte premium!</a></li>
+            <li>
+                <%
+                    PremiumDAO pdao = new PremiumDAO(BD.getConexion());
+                    if (pdao.esPremium(u.getNick())) {
+                %>
+                    <a>¡Ya eres premium!</a></li>  
+                <%
+                } else {
+                %>
+                <a href="premium.jsp">¡Hazte premium!</a></li>  
+                <%
+                    }
+                %>
+
         </ul>
     </nav>
     <section id="logueado_section">
