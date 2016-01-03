@@ -75,6 +75,7 @@ public class busqueda extends HttpServlet {
                 interD1 = new InteresDAO(BD.getConexion());
                 buscados = interD1.buscarUsuariosBasico(inter1);
             }
+            response.sendRedirect("principal.jsp");
         }
     }
 

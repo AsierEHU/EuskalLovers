@@ -96,8 +96,11 @@
         Busqueda avanzada (Rellene todos los campos por favor):
         <form>
         
-
+            
         <table>
+        <tr>
+            <td>
+                Nick: </td><td><input type="text" name="nick_busq"> </td> </tr>
         <tr>
             <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" required  <%
                 if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
@@ -171,6 +174,6 @@
                %>> Musculoso/Musculosa
     </fieldset>
     <br>
-    <input type="submit" class="busqueda_btn" value="Buscar">
+    <input type="submit" class="busqueda_btn" value="Busqueda avanzada">
         </form>
 <jsp:include page="/comun/logueado/pie.jsp"/>
