@@ -52,6 +52,15 @@ public class HacersePremium extends HttpServlet {
         if((pak==1 && sal<25) || (pak==2 && sal<65) || (pak==3 && sal<100)){
             noMoney = true;
         }
+        if(pak==1){
+            dP.actualizarSaldo(25, nick);
+        }
+        if(pak==2){
+            dP.actualizarSaldo(65, nick);
+        }
+        if(pak==3){
+            dP.actualizarSaldo(100, nick);
+        }
         
         if(noMoney){
             response.sendRedirect("premium.jsp?error=usuario");
