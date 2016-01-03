@@ -46,6 +46,7 @@ public class modificarPerfil extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
@@ -101,7 +102,6 @@ public class modificarPerfil extends HttpServlet {
             
             UsuarioDAO us = new UsuarioDAO(BD.getConexion());
             if(fotoName.equals("")){
-                System.out.println(em);
                 fotoName=us.cogerUsuario(em).getFoto();
             }
             Usuario u = new Usuario(nk, em, pass, fem, dad, alt, pso, asp, ciuad, Cpos, fotoName);

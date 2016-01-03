@@ -83,11 +83,27 @@
         </tr>
         <tr>
             <td>Altura:</td>
-            <td><input type="number" name="perfil_altura" id="perfil_altura" step="0.01" value="<%=u.getAltura()%>" min="1" max="3"></td>
+            <%
+                String altura;
+                if(u.getAltura()==0f){
+                    altura="";
+                }else{
+                    altura=String.valueOf(u.getAltura());
+                }
+            %>
+            <td><input type="number" name="perfil_altura" id="perfil_altura" step="0.01" value="<%=altura%>" min="1" max="3"></td>
         </tr>
         <tr>
             <td>Peso: </td>
-            <td><input type="number" min="30" max="200" name="perfil_peso" value="<%=u.getPeso()%>" id="perfil_peso"></td>
+            <%
+                String peso;
+                if(u.getPeso()==0){
+                    peso="";
+                }else{
+                    peso=String.valueOf(u.getPeso());
+                }
+            %>
+            <td><input type="number" min="30" max="200" name="perfil_peso" value="<%=peso%>" id="perfil_peso"></td>
         </tr>
     </table>
     <br>
@@ -233,11 +249,27 @@
                 Con una edad mínima de: *</td><td><input type="number" name="edad_busqueda" id="edad_busqueda" min="18" max="120" required value="<%=idao.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
-            <td> Con altura de: </td> <td> <input type="number" name="altura_busqueda" id="altura_busqueda" step="0.01" min="1" max="3" value="<%=idao.getAlturaInteres(u.getNick())%>"> </td> </tr>
+            <%
+                String altura2;
+                if(idao.getAlturaInteres(u.getNick())==0f){
+                    altura2="";
+                }else{
+                    altura2=String.valueOf(idao.getAlturaInteres(u.getNick()));
+                }
+            %>
+            <td> Con altura de: </td> <td> <input type="number" name="altura_busqueda" id="altura_busqueda" step="0.01" min="1" max="3" value="<%=altura2%>"> </td> </tr>
 
         <tr>
+            <%
+                String peso2;
+                if(idao.getPesoInteres(u.getNick())==0){
+                    peso2="";
+                }else{
+                    peso2=String.valueOf(idao.getPesoInteres(u.getNick()));
+                }
+            %>
             <td>
-                Con un peso de: </td> <td> <input type="number" min="30" max="200" name="peso_busqueda" id="peso_busqueda" value="<%=idao.getPesoInteres(u.getNick())%>"> </td></tr>
+                Con un peso de: </td> <td> <input type="number" min="30" max="200" name="peso_busqueda" id="peso_busqueda" value="<%=peso2%>"> </td></tr>
 
         <tr>
             <td>Que viva en:  </td>
