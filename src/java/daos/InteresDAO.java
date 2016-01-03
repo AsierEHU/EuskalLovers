@@ -182,6 +182,25 @@ public class InteresDAO {
         int total = st.executeUpdate("Update Interes set CP='"+ a.getCp()+"' where Interes.Nick = '"+a.getNick()+"'");
         return total != 0;
      }
+     
+     public ArrayList<String> buscarUsuariosBasico(Interes a)throws SQLException{
+        ArrayList<String> usuariosBuscados = new ArrayList<>();
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select nick from usuario where genero='"+a.isGenero()+"' and edad='"+a.getEdad()+"' and ciudad='"+a.getCiudad()+"' and constitucion='"+a.getConstitucion()+"'");
+        while (rs.next()) {
+            usuariosBuscados.add(rs.getString("Nick"));
+        }
+        return usuariosBuscados;
+    }
+     
+     public ArrayList<String> buscarUsuariosConcreto(Interes a)throws SQLException{
+        ArrayList<String> usuariosBuscados = new ArrayList<>();
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select nick from usuario where genero='"+a.isGenero()+"' and edad='"+a.getEdad()+"' and altura='"+a.getAltura()+"' and peso='"+a.getPeso()+"' and ciudad='"+a.getCiudad()+"' and cp='"+a.getCp()+"' and constitucion='"+a.getConstitucion()+"'");
+        while (rs.next()) {
+            usuariosBuscados.add(rs.getString("Nick"));
+        }
+        return usuariosBuscados;
+    }
 }
-
-//
+    
