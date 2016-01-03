@@ -5,12 +5,20 @@
  */
 package servlet;
 
+import beans.Premium;
+import daos.PremiumDAO;
+import daos.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.BD;
 
 /**
  *
@@ -29,19 +37,28 @@ public class HacersePremium extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HacersePremium</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HacersePremium at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            throws ServletException, IOException, SQLException {
+        boolean noMoney = false;
+        String ema = (String)request.getSession().getAttribute("usuario_email");
+        UsuarioDAO uda = new UsuarioDAO(BD.getConexion());
+        String nick = uda.devuelveNick(ema);
+        PremiumDAO dP = new PremiumDAO(BD.getConexion());
+        java.util.Date fecha = new Date();
+        
+        String cnt = (String)request.getParameter("premium_tarjeta");
+        int sal = Integer.parseInt(request.getParameter("premium_saldo"));
+        int pak = Integer.parseInt(request.getParameter("premiumPack"));
+        
+        if((pak==1 && sal<25) || (pak==2 && sal<65) || (pak==3 && sal<100)){
+            noMoney = true;
+        }
+        
+        if(noMoney){
+            response.sendRedirect("premium.jsp?error=usuario");
+        } else{
+        Premium p = new Premium(nick, cnt, sal, fecha, pak);
+        dP.hacerPremium(p);
+        response.sendRedirect("principal.jsp");
         }
     }
 
@@ -57,7 +74,11 @@ public class HacersePremium extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(HacersePremium.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -71,7 +92,11 @@ public class HacersePremium extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(HacersePremium.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

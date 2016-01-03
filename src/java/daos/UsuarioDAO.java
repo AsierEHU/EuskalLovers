@@ -40,10 +40,10 @@ public class UsuarioDAO {
         }
         return usuarios.iterator();
     }
-    
-    public boolean yaExisteUsuario(String nick, String email) throws SQLException{
+
+    public boolean yaExisteUsuario(String nick, String email) throws SQLException {
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "' or Nick='"+nick+"'");
+        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "' or Nick='" + nick + "'");
         return rs.next();
     }
 
@@ -51,50 +51,52 @@ public class UsuarioDAO {
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "'");
         if (rs.next()) {
-            return new Usuario(rs.getString("Nick"), rs.getString("Email"), rs.getString("Password"),rs.getBoolean("Genero"), rs.getInt("Edad"),rs.getFloat("Altura"),rs.getInt("Peso"),rs.getString("Constitucion"),rs.getString("Ciudad"),rs.getString("CP"),rs.getString("Foto"));
+            return new Usuario(rs.getString("Nick"), rs.getString("Email"), rs.getString("Password"), rs.getBoolean("Genero"), rs.getInt("Edad"), rs.getFloat("Altura"), rs.getInt("Peso"), rs.getString("Constitucion"), rs.getString("Ciudad"), rs.getString("CP"), rs.getString("Foto"));
         }
         return null;
     }
 
     public boolean insertarUsuario(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Edad, Genero, Ciudad, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"',"+a.getEdad()+","+a.isFemenino()+",'"+a.getCiudad()+"','"+a.getConstitucion()+"','"+a.getCp()+"','"+a.getFoto()+"')");
+        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Edad, Genero, Ciudad, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña() + "','" + a.getNick() + "'," + a.getEdad() + "," + a.isFemenino() + ",'" + a.getCiudad() + "','" + a.getConstitucion() + "','" + a.getCp() + "','" + a.getFoto() + "')");
         return total != 0;
     }
-    
-    public boolean insertarUsuarioCompleto(Usuario a) throws SQLException{
+
+    public boolean insertarUsuarioCompleto(Usuario a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Edad, Altura, Peso, Genero, Ciudad, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña()+ "','" +a.getNick()+"',"+a.getEdad()+","+a.getAltura()+","+a.getPeso()+","+a.isFemenino()+",'"+a.getCiudad()+"','"+a.getConstitucion()+"','"+a.getCp()+"','"+a.getFoto()+"')");
+        int total = st.executeUpdate("insert into Usuario (Email, Password, Nick, Edad, Altura, Peso, Genero, Ciudad, Constitucion, CP, Foto) values ('" + a.getEmail() + "','" + a.getContraseña() + "','" + a.getNick() + "'," + a.getEdad() + "," + a.getAltura() + "," + a.getPeso() + "," + a.isFemenino() + ",'" + a.getCiudad() + "','" + a.getConstitucion() + "','" + a.getCp() + "','" + a.getFoto() + "')");
         return total != 0;
     }
 
     public boolean eliminarUsuario(String email) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Usuario where Email='"+email+"'");
+        int total = st.executeUpdate("delete from Usuario where Email='" + email + "'");
         return total != 0;
     }
-    
-    public boolean modificarUsuario(Usuario u)throws SQLException{
+
+    public boolean modificarUsuario(Usuario u) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set Nick='"+u.getNick()+"',Password='"+u.getContraseña()+"',Genero="+u.isFemenino()+",Edad="+u.getEdad()+",Altura="+u.getAltura()+",Peso="+u.getPeso()+",Constitucion='"+u.getConstitucion()+"',Ciudad='"+u.getCiudad()+"',CP='"+u.getCp()+"'where nick ='"+u.getNick()+"'");
-        return total!=0;
+        int total = st.executeUpdate("update Usuario set Nick='" + u.getNick() + "',Password='" + u.getContraseña() + "',Genero=" + u.isFemenino() + ",Edad=" + u.getEdad() + ",Altura=" + u.getAltura() + ",Peso=" + u.getPeso() + ",Constitucion='" + u.getConstitucion() + "',Ciudad='" + u.getCiudad() + "',CP='" + u.getCp() + "'where nick ='" + u.getNick() + "'");
+        return total != 0;
     }
-    
-    public boolean actualizarAltura(Usuario u)throws SQLException{
+
+    public boolean actualizarAltura(Usuario u) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set altura='"+u.getAltura()+"' where nick='"+u.getNick()+"')");
-        return total!=0;       
+        int total = st.executeUpdate("update Usuario set altura='" + u.getAltura() + "' where nick='" + u.getNick() + "')");
+        return total != 0;
     }
-    public boolean actualizarPeso(Usuario u)throws SQLException{
+
+    public boolean actualizarPeso(Usuario u) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set peso='"+u.getPeso()+"' where nick='"+u.getNick()+"')");
-        return total!=0;       
+        int total = st.executeUpdate("update Usuario set peso='" + u.getPeso() + "' where nick='" + u.getNick() + "')");
+        return total != 0;
     }
-    
-    public String devuelveNick(String email)throws SQLException{
+
+    public String devuelveNick(String email) throws SQLException {
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("Select Nick from Usuario where Email='"+email+"'");
-        return rs.getString("Nick");
+        ResultSet rs = st.executeQuery("select Nick from Usuario where Email='" + email + "'");
+        String nick = rs.getString("Nick");
+        return nick;
     }
-    
+
 }

@@ -35,7 +35,7 @@ public class PremiumDAO {
 
     public boolean hacerPremium(Premium p) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Premium(Nick,CuentaTarjeta,Saldo,FechaHora,Pack) values ('" + p.getNick() + "','" + p.getCuentaTajeta() + "','" + p.getSaldo()+ "','" + p.getFechaHora() + "','" +  p.getPack()+ "')");
+        int total = st.executeUpdate("insert into Premium(Nick,CuentaTarjeta,Saldo,FechaHora,Pack) values ('"+p.getNick()+"','" + p.getCuentaTajeta() + "','" + p.getSaldo()+ "','" + p.getFechaHora() + "','" +  p.getPack()+ "')");
         return total!=0;
     }
 }

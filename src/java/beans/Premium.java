@@ -6,6 +6,7 @@
 package beans;
 
 import java.sql.Time;
+import java.util.Date;
 
 /**
  *
@@ -13,12 +14,12 @@ import java.sql.Time;
  */
 public class Premium {
     private String nick;
-    private long cuentaTajeta;
+    private String cuentaTajeta;
     private int saldo;
-    private Time fechaHora;
+    private Date fechaHora;
     private int pack;
     
-    public Premium(String nick, long cuentaTarjeta, int saldo, Time fechaHora, int pack){
+    public Premium(String nick, String cuentaTarjeta, int saldo, Date fechaHora, int pack){
         this.nick = nick;
         this.cuentaTajeta = cuentaTarjeta;
         this.saldo = saldo;
@@ -42,11 +43,11 @@ public class Premium {
         this.nick = nick;
     }
 
-    public long getCuentaTajeta() {
+    public String getCuentaTajeta() {
         return cuentaTajeta;
     }
 
-    public void setCuentaTajeta(long cuentaTajeta) {
+    public void setCuentaTajeta(String cuentaTajeta) {
         this.cuentaTajeta = cuentaTajeta;
     }
 
@@ -58,11 +59,11 @@ public class Premium {
         this.saldo = saldo;
     }
 
-    public Time getFechaHora() {
+    public Date getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(Time fechaHora) {
+    public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
     

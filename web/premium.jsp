@@ -4,7 +4,17 @@
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 
-        <form action="/Premium" method="post" id="premiumTabla">
+<%
+    if(request.getParameter("error")!=null){
+        %>
+        <script>
+            alert("El saldo de la cuenta no es suficiente para esta opción");
+        </script>
+        <%
+    }
+%>
+
+        <form action="Premium" method="post" id="premiumTabla">
             <table>
                 <tr>
                     <td>Número de tarjeta:  </td>
