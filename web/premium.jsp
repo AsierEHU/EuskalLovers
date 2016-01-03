@@ -36,7 +36,6 @@
                 </tr>    
             </table>
                <input type="submit" value="Convierteme en Premium">
-               <img id="Premium_precios" src="img/ESTRELLA.png"/>
         </form>
-
+        <img id="Premium_precios" src="img/ESTRELLA.png"/>
 <jsp:include page="/comun/logueado/pie.jsp"/>

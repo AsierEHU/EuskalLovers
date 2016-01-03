@@ -17,11 +17,6 @@ p#mensajes_numMensajesEntrada, p#mensajes_numMensajesSalida{
     display: inline;
 }
 
-
-div#mensajes_clear{
-    clear:both;
-}
-
 textarea#mensajes_text{
     width: 338px;
     height: 100px;

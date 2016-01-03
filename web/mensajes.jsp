@@ -38,7 +38,5 @@
     <p id="mensajes_numMensajesSalida">(0)</p>
     <hr><hr>
 </article>
-<div id="mensajes_clear"></div>
-
 
 <jsp:include page="/comun/logueado/pie.jsp"/>

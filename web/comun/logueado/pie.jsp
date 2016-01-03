@@ -1,3 +1,4 @@
+        <div id="logueado_clear"></div>
     </section>
     <footer id="logueado_footer">
         <h4>EuskalLovers | UPV-EHU</h4>

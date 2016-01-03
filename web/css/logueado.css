@@ -49,6 +49,10 @@ section#logueado_section{
     position:relative;
 }
 
+div#logueado_clear{
+    clear:both;
+}
+
 nav#logueado_nav{
 /*    border:1px solid green;*/
 }
