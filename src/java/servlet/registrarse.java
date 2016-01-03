@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import utils.BD;
+import utils.GMail;
 
 /**
  *
@@ -182,6 +184,7 @@ public class registrarse extends HttpServlet {
                     interD3.actualizarCPBusqueda(inter_usuario3);
                 }
 
+                //GMail.getMail().enviarMensaje(mail, "Nueva alta", "Enhorabuena! Se ha dado de alta en EuskalLovers.");
                 response.sendRedirect("index.jsp");
             } else {
                 response.sendRedirect("registro.jsp?error=usuario");
