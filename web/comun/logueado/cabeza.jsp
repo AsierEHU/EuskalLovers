@@ -27,6 +27,15 @@
             <h4>Bienvenido <%=u.getNick()%></h4>
             <br/>
             <a href="index.jsp?desconectar=true">Desconectar</a>
+                <%
+                    PremiumDAO pdao = new PremiumDAO(BD.getConexion());
+                    if (pdao.esPremium(u.getNick())) {
+                %>
+                <br>
+                <h4> Tiempo premium: <%=session.getAttribute("tiempoPremium")%></h4>
+                <%
+                    }
+                    %>
         </div>
     </header>
     <nav id="logueado_nav">
@@ -36,7 +45,6 @@
             <li><a href="mensajes.jsp">Mensajes</a></li>
             <li>
                 <%
-                    PremiumDAO pdao = new PremiumDAO(BD.getConexion());
                     if (pdao.esPremium(u.getNick())) {
                 %>
                     <a>¡Ya eres premium!</a></li>  

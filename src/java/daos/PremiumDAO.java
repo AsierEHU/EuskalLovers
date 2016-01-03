@@ -78,7 +78,7 @@ public class PremiumDAO {
     
     public boolean actualizarSaldo(int cantidad, String nick) throws SQLException{
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Premium set saldo=saldo-" +cantidad+"where nick ='"+nick+"'");
+        int total = st.executeUpdate("update Premium set saldo=saldo-" +cantidad+" where nick ='"+nick+"'");
         return total != 0;
     }
     
