@@ -18,10 +18,22 @@ div#logueado_header_user{
     border:1px solid orange;
     border-radius: 8px;
     padding: 10px;
-    width:200px; 
+    width:250px; 
     height:80px; 
     float:right;
     margin:10px;
+}
+
+div#logueado_header_user img{
+    float: right;
+    width: 100px;
+    height: 85px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+div#logueado_header_user h4{
+    display: inline;
 }
 
 img#logueado_header_logo{

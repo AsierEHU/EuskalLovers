@@ -13,10 +13,7 @@
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 
-<form action="Perfil" id="perfil_FORMULARIO" method="POST">
-<!--    <div id="perfil_foto">
-        Foto *
-    </div>-->
+<form action="Perfil" id="perfil_FORMULARIO" method="POST" enctype="multipart/form-data">
     <table>
 
         <%
@@ -24,7 +21,10 @@
             UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
             Usuario u = udao.cogerUsuario(email);
         %>
-
+        <tr>
+            <td>Foto:</td>
+            <td><input type="file" name="perfil_foto" accept="image/*"></td>
+        </tr>
         <tr>
             <td>Nombre de usuario: * </td>
             <td><input type="text" name="perfil_nick" id="perfil_nick" minlenght="3" maxlenght="15" required value="<%=u.getNick()%>" ></td>

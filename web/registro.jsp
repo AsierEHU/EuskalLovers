@@ -4,7 +4,6 @@
     <jsp:param name="includeLib" value="formularios"/>
 </jsp:include>
 
-
 <%
     if(request.getParameter("error")!=null){
         %>
@@ -17,13 +16,14 @@
 
 <div id="registro_center">
     <h1 id="registro_title"> ¡Regístrate en Euskal Lovers! </h1>
-    <form action="registro" id="registro_FORMULARIO" method="post">
-        <!--    <div id="registro_foto">
-        Foto *
-    </div>-->
+    <form action="registro" id="registro_FORMULARIO" method="post" enctype="multipart/form-data">
         <table>
             <tr>
-<!--                <td rowspan="9"><input type="file" name="registro_foto" required ></td>-->
+                <td>Foto : *</td>
+                <td><input type="file" name="registro_foto" accept="image/*" required ></td>
+            </tr>
+            <tr>
+                
                 <td>Nombre de usuario: * </td>
                 <td><input type="text" name="registro_nick" id="registro_nick" required ></td>
             </tr>

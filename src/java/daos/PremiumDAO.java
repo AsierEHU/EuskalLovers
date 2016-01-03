@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -35,7 +36,9 @@ public class PremiumDAO {
 
     public boolean hacerPremium(Premium p) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("insert into Premium(Nick,CuentaTarjeta,Saldo,FechaHora,Pack) values ('"+p.getNick()+"','" + p.getCuentaTajeta() + "'," + p.getSaldo()+ "," + p.getFechaHora() + "," +  p.getPack()+ ")");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = sdf.format(p.getFechaHora());
+        int total = st.executeUpdate("insert into Premium(Nick,CuentaTarjeta,Saldo,FechaHora,Pack) values ('"+p.getNick()+"','" + p.getCuentaTajeta() + "'," + p.getSaldo()+ ",'" + currentTime + "'," +  p.getPack()+ ")");
         return total!=0;
     }
 }

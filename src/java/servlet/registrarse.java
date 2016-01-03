@@ -13,26 +13,28 @@ import daos.AficionDAO;
 import daos.InteresDAO;
 import daos.PersonalidadDAO;
 import daos.UsuarioDAO;
-//import java.io.File;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import org.apache.tomcat.util.http.fileupload.FileItem;
-//import org.apache.tomcat.util.http.fileupload.FileItemIterator;
-//import org.apache.tomcat.util.http.fileupload.FileUploadException;
-//import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-//import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import javax.servlet.http.Part;
 import utils.BD;
 
 /**
  *
  * @author Adrián
  */
+@MultipartConfig
 public class registrarse extends HttpServlet {
 
     /**
@@ -56,6 +58,8 @@ public class registrarse extends HttpServlet {
             boolean peso_busqueda_si = false;
             boolean cp_busqueda_si = false;
 
+            
+            
             String nick = (String) request.getParameter("registro_nick");
             String mail = (String) request.getParameter("registro_email");
             UsuarioDAO ud = new UsuarioDAO(BD.getConexion());
@@ -86,37 +90,30 @@ public class registrarse extends HttpServlet {
                 caracter = request.getParameterValues("registro_carac");
                 String[] gustos;
                 gustos = request.getParameterValues("registro_gustos");
+                
+                Part foto = request.getPart("registro_foto");
+                String fotoName=new Date().getTime()+foto.getSubmittedFileName();
+                String path=getServletContext().getRealPath("/img/fotos")+"/"+fotoName;
+                OutputStream out = new FileOutputStream(new File(path));
+                InputStream filecontent = foto.getInputStream();
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+                while ((read = filecontent.read(bytes)) != -1) {
+                    out.write(bytes, 0, read);
+                }
 
-//            DiskFileItemFactory factory = new DiskFileItemFactory();
-//            ServletFileUpload upload = new ServletFileUpload(factory);
-//            FileItemIterator i = upload.getItemIterator(request);
-//            File imagen = null;
-//            while (i.hasNext() && imagen == null) {
-//                FileItem fi = (FileItem) i.next();
-//                if (!fi.isFormField()) {
-//                    // Get the uploaded file parameters
-//                    String fieldName = fi.getFieldName();
-//                    String fileName = fi.getName();
-//                    String contentType = fi.getContentType();
-//                    boolean isInMemory = fi.isInMemory();
-//                    long sizeInBytes = fi.getSize();
-//                    File uploadDir = new File("img/fotos");
-//                    imagen = File.createTempFile("perfil", "asd", uploadDir);
-//                    fi.write(imagen);
-//                }
-//            }
-                Usuario u = new Usuario(nick, mail, pass, fem_reg, consti, edad, ciudad, cp, "");
+                Usuario u = new Usuario(nick, mail, pass, fem_reg, consti, edad, ciudad, cp, fotoName);
 
                 ud.insertarUsuario(u);
 
                 if (alturaSi) {
-                    Usuario u1 = new Usuario(nick, mail, pass, fem_reg, edad, altura, peso, consti, ciudad, cp, "");
+                    Usuario u1 = new Usuario(nick, mail, pass, fem_reg, edad, altura, peso, consti, ciudad, cp, fotoName);
                     UsuarioDAO ud1 = new UsuarioDAO(BD.getConexion());
                     ud1.actualizarAltura(u1);
                 }
 
                 if (pesoSi) {
-                    Usuario u2 = new Usuario(nick, mail, pass, fem_reg, edad, altura, peso, consti, ciudad, cp, "");
+                    Usuario u2 = new Usuario(nick, mail, pass, fem_reg, edad, altura, peso, consti, ciudad, cp, fotoName);
                     UsuarioDAO ud2 = new UsuarioDAO(BD.getConexion());
                     ud2.actualizarPeso(u2);
                 }
@@ -193,11 +190,6 @@ public class registrarse extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*catch (FileUploadException ex) {
-            Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
 
     }
 

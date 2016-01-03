@@ -22,7 +22,9 @@
     <header id="logueado_header">
         <img id="logueado_header_logo" src="img/title.png"/>
         <div id="logueado_header_user">
+            <img src="img/fotos/<%=u.getFoto()%>"/>
             <h4>Bienvenido <%=u.getNick()%></h4>
+            <br/>
             <a href="index.jsp?desconectar=true">Desconectar</a>
         </div>
     </header>

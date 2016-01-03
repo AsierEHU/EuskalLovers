@@ -13,22 +13,29 @@ import daos.AficionDAO;
 import daos.InteresDAO;
 import daos.PersonalidadDAO;
 import daos.UsuarioDAO;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import utils.BD;
 
 /**
  *
  * @author Asier
  */
-
+@MultipartConfig
 public class modificarPerfil extends HttpServlet {
 
     /**
@@ -52,7 +59,7 @@ public class modificarPerfil extends HttpServlet {
             float altur_bus;
             int pes_bus;
 
-            String em = (String) request.getParameter("perfil_email");
+            String em = (String) request.getSession().getAttribute("usuario_email");
             String pass = (String) request.getParameter("perfil_password");
             String nk = (String) request.getParameter("perfil_nick");
             String gnero = (String) request.getParameter("perfil_genero");
@@ -76,9 +83,28 @@ public class modificarPerfil extends HttpServlet {
                 pso = Integer.parseInt(request.getParameter("perfil_peso"));
             }
             String asp = (String) request.getParameter("perfil_const");
-
-            Usuario u = new Usuario(nk, em, pass, fem, dad, alt, pso, asp, ciuad, Cpos, "");
+            String fotoName="";
+            Part foto = request.getPart("perfil_foto");
+                if(!foto.getSubmittedFileName().equals("")){
+                fotoName=new Date().getTime()+foto.getSubmittedFileName();
+                String path=getServletContext().getRealPath("/img/fotos")+"/"+fotoName;
+                OutputStream out2 = new FileOutputStream(new File(path));
+                InputStream filecontent = foto.getInputStream();
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+                while ((read = filecontent.read(bytes)) != -1) {
+                    out2.write(bytes, 0, read);
+                }
+            }
+            
+            
+            
             UsuarioDAO us = new UsuarioDAO(BD.getConexion());
+            if(fotoName.equals("")){
+                System.out.println(em);
+                fotoName=us.cogerUsuario(em).getFoto();
+            }
+            Usuario u = new Usuario(nk, em, pass, fem, dad, alt, pso, asp, ciuad, Cpos, fotoName);
             us.modificarUsuario(u);
 
             //Personalidad

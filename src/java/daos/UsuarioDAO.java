@@ -76,7 +76,7 @@ public class UsuarioDAO {
 
     public boolean modificarUsuario(Usuario u) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set Nick='" + u.getNick() + "',Password='" + u.getContraseña() + "',Genero=" + u.isFemenino() + ",Edad=" + u.getEdad() + ",Altura=" + u.getAltura() + ",Peso=" + u.getPeso() + ",Constitucion='" + u.getConstitucion() + "',Ciudad='" + u.getCiudad() + "',CP='" + u.getCp() + "'where nick ='" + u.getNick() + "'");
+        int total = st.executeUpdate("update Usuario set Nick='" + u.getNick() + "',Password='" + u.getContraseña() + "',Genero=" + u.isFemenino() + ",Edad=" + u.getEdad() + ",Altura=" + u.getAltura() + ",Peso=" + u.getPeso() + ",Constitucion='" + u.getConstitucion() + "',Ciudad='" + u.getCiudad() + "',CP='" + u.getCp() + "',Foto='"+u.getFoto()+"' where nick ='" + u.getNick() + "'");
         return total != 0;
     }
 
