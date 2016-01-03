@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import daos.PremiumDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,9 +41,27 @@ public class loguearse extends HttpServlet {
         String em = (String) request.getParameter("email_control");
         String pass = (String) request.getParameter("pass_control");
         UsuarioDAO us = new UsuarioDAO(BD.getConexion());
+        PremiumDAO pus = new PremiumDAO(BD.getConexion());
 
         if (us.esCorrecto(em, pass)) {
             request.getSession(true).setAttribute("usuario_email", em);
+            
+            String nk = us.devuelveNick(em);
+            if(pus.esPremium(nk)){
+                if(pus.getPack(nk)==1){
+                    if(pus.tiempoPremium(nk,30) < 0)
+                        pus.darBajaPremium(nk);
+                }
+                if(pus.getPack(nk)==3){
+                    if(pus.tiempoPremium(nk,90) < 0)
+                        pus.darBajaPremium(nk);
+                }
+                if(pus.getPack(nk)==6){
+                    if(pus.tiempoPremium(nk,180)<0)
+                        pus.darBajaPremium(nk);
+                }
+            }
+            
             response.sendRedirect("principal.jsp");
         } else {
             response.sendRedirect("index.jsp?error=login");
