@@ -50,14 +50,14 @@ public class PersonalidadDAO {
         return total != 0;
     }
 
-    public Iterator<Personalidad> cogerPersonalidades() throws SQLException {
-        ArrayList<Personalidad> personalidades = new ArrayList<>();
+    public ArrayList<String> cogerPersonalidades(String nick) throws SQLException {
+        ArrayList<String> personalidades = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Personalidad");
+        ResultSet rs = st.executeQuery("select * from Personalidad where Nick='"+nick+"'");
         while (rs.next()) {
-            personalidades.add(new Personalidad(rs.getString("Nick"), rs.getString("Nombre")));
+            personalidades.add(rs.getString("Nombre"));
         }
-        return personalidades.iterator();
+        return personalidades;
     }
 
     public boolean estaPersonalidad(String nombre, String usuario) throws SQLException {
@@ -70,4 +70,16 @@ public class PersonalidadDAO {
         return esta;
     }
 
+    public int numAficionesComun(String nicka, String nickb) throws SQLException{
+        int result = 0;
+        for(String c: cogerPersonalidades(nicka)){
+            for(String a: cogerPersonalidades(nickb)){
+                if(c.equals(a)){
+                    result ++;
+                }
+            }
+        }
+        return result;
+    }
+    
 }

@@ -43,14 +43,14 @@ public class AficionDAO {
         return total != 0;
     }
     
-    public Iterator<Aficion> cogerAficiones() throws SQLException {
-        ArrayList<Aficion> personalidades = new ArrayList<>();
+    public ArrayList<String> cogerAficiones(String nick) throws SQLException {
+        ArrayList<String> personalidades = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Aficion");
+        ResultSet rs = st.executeQuery("select * from Aficion where Nick='"+nick+"'");
         while(rs.next()){
-            personalidades.add(new Aficion(rs.getString("Nick"), rs.getString("Nombre")));
+            personalidades.add(rs.getString("Nombre"));
         }
-        return personalidades.iterator();
+        return personalidades;
     }
     
     public boolean estaAficion(String nombre,String usuario)throws SQLException{
@@ -66,6 +66,18 @@ public class AficionDAO {
         Statement st = cn.createStatement();
         int total = st.executeUpdate("delete from Aficion where Nick='"+nick+"'");
         return total != 0;
+    }
+    
+    public int numAficionesComun(String nicka, String nickb) throws SQLException{
+        int result = 0;
+        for(String c: cogerAficiones(nicka)){
+            for(String a: cogerAficiones(nickb)){
+                if(c.equals(a)){
+                    result ++;
+                }
+            }
+        }
+        return result;
     }
     
 }

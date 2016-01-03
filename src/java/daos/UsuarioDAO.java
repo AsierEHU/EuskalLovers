@@ -90,4 +90,11 @@ public class UsuarioDAO {
         int total = st.executeUpdate("update Usuario set peso='"+u.getPeso()+"' where nick='"+u.getNick()+"')");
         return total!=0;       
     }
+    
+    public String devuelveNick(String email)throws SQLException{
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("Select Nick from Usuario where Email='"+email+"'");
+        return rs.getString("Nick");
+    }
+    
 }
