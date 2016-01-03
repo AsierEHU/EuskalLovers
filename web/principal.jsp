@@ -14,12 +14,13 @@
             
         Busqueda básica:
         <br>
+        <br>
         <form>
             
-        Nick:<input type="text">
+        Nick: <input type="text" name="nick_busq">
         <br>
         <br>
-        <input type="submit" value="Buscar">
+        <input type="submit" class="busqueda_btn" value="Buscar por nick">
 
         </form>
         <br>
@@ -44,7 +45,7 @@
 
         <tr>
             <td>
-                Edad: *</td><td><input type="number" name="edad_busq" id="edad_busq" min="18" max="120" required value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
+                Edad: </td><td><input type="number" name="edad_busq" id="edad_busq" min="18" max="120" required value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
             <td> Altura: </td> <td> <input type="number" name="altura_busq" id="altura_busq" step="0.01" min="1" max="3" value="<%=iDAO.getAlturaInteres(u.getNick())%>"> </td> </tr>
@@ -100,6 +101,7 @@
 
                %>> Musculoso/Musculosa
     </fieldset>
-    <input type="submit" value="Buscar">
+    <br>
+    <input type="submit" class="busqueda_btn" value="Buscar">
         </form>
 <jsp:include page="/comun/logueado/pie.jsp"/>

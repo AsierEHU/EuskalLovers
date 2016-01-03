@@ -24,6 +24,10 @@
         <servlet-name>HacersePremium</servlet-name>
         <servlet-class>servlet.HacersePremium</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>busqueda</servlet-name>
+        <servlet-class>servlet.busqueda</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MailInterno</servlet-name>
         <url-pattern>/mail</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>modificarPerfil</servlet-name>
         <url-pattern>/Perfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busqueda</servlet-name>
+        <url-pattern>/buscar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
