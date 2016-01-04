@@ -33,11 +33,14 @@
             vdao.insertarVisita(new Visita(nickBuscador, nick));
 
         %>
-
+        <div id="busqueda_foto">
+            <img src="img/fotos/<%=u.getFoto()%>"/>
+        </div>
         <tr>
             <td><b>Nombre de usuario:</b> <%=u.getNick()%> </td>
         </tr>
         <tr>
+            
             <td><i>Email:</i> <%=u.getEmail()%></td>
         </tr>
         <tr>

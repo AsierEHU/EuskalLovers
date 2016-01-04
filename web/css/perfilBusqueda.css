@@ -11,3 +11,23 @@ and open the template in the editor.
      font-family: fantasy;
      font-size: 18px;
 }
+
+div#busqueda_foto{
+    border:1px solid red;
+    border-radius: 5px;
+    padding: 10px;
+    width:240px; 
+    height:248px; 
+    float:right;
+    margin:10px;
+    margin-left: 40px;
+    margin-right: 90px;
+}
+
+div#busqueda_foto img{
+    float: right;
+    width: 240px;
+    height: 248px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
