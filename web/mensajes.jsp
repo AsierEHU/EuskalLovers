@@ -26,8 +26,8 @@
             %>
         </select>
         <%
-            String email = (String) session.getAttribute("usuario_email");
-            Usuario u = udao.cogerUsuario(email);
+            String nick = (String) session.getAttribute("usuario_nick");
+            Usuario u = udao.cogerUsuario(nick);
             PremiumDAO pdao = new PremiumDAO(BD.getConexion());
             String disabled = "";
             if(!pdao.esPremium(u.getNick())){

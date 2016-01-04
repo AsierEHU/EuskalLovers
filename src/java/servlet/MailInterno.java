@@ -97,20 +97,19 @@ public class MailInterno extends HttpServlet {
             throws ServletException, IOException {
         
         
-        String  usuario_email=(String) request.getSession(true).getAttribute("usuario_email");
+        String  usuario_nick=(String) request.getSession(true).getAttribute("usuario_nick");
         
         UsuarioDAO udao= new UsuarioDAO(BD.getConexion());
                
         Usuario usuario=null;
         try {
-            usuario = udao.cogerUsuario(usuario_email);
+            usuario = udao.cogerUsuario(usuario_nick);
         } catch (SQLException ex) {
             Logger.getLogger(MailInterno.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String peticion = request.getParameter("peticion");
         if (peticion != null) {
-            String usuario_nick = usuario.getNick();
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             switch (peticion) {

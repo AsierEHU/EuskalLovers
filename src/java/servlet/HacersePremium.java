@@ -39,9 +39,7 @@ public class HacersePremium extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         boolean noMoney = false;
-        String ema = (String)request.getSession().getAttribute("usuario_email");
-        UsuarioDAO uda = new UsuarioDAO(BD.getConexion());
-        String nick = uda.devuelveNick(ema);
+        String nick = (String)request.getSession().getAttribute("usuario_nick");
         PremiumDAO dP = new PremiumDAO(BD.getConexion());
         java.util.Date fecha = new Date();
         

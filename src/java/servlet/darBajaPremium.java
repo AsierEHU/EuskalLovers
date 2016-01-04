@@ -38,9 +38,9 @@ public class darBajaPremium extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PremiumDAO uda = new PremiumDAO(BD.getConexion());
         UsuarioDAO u = new UsuarioDAO(BD.getConexion());
-           String ema = (String)request.getSession().getAttribute("usuario_email");
-           uda.darBajaPremium(u.devuelveNick(ema));
-           response.sendRedirect("principal.jsp");
+        String nick = (String) request.getSession().getAttribute("usuario_nick");
+        uda.darBajaPremium(nick);
+        response.sendRedirect("principal.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

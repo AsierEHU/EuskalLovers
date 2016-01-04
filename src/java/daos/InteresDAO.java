@@ -11,13 +11,11 @@ package daos;
  */
 
 import beans.Interes;
-import beans.Usuario;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class InteresDAO {
     
@@ -27,38 +25,13 @@ public class InteresDAO {
         this.cn = cn;
     }
     
-    public Iterator<String> recuperarIntereses(String nick) throws SQLException {
-        ArrayList<String> intereses = new ArrayList<>();
+    public Interes recuperarInteres(String nick) throws SQLException {
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select * from Interes where nick ='"+nick+"'");
-        while (rs.next()) {
-            if(rs.getString("ciudad")!=null){
-            intereses.add(rs.getString("email"));
-            }
-            if(!rs.getBoolean("genero")){
-            intereses.add("Femenino");
-            } else{ intereses.add("Masculino");}
-            
-            intereses.add(rs.getString("email").toString());
-            intereses.add(rs.getString("constitucion"));
-            intereses.add(((Integer)rs.getInt("Edad")).toString());
-            
-            if((Integer)rs.getInt("cp") != null){
-              Integer codigo = rs.getInt("cp");
-                intereses.add(codigo.toString());
-            }
-            if(rs.getString("ciudad")!=null){
-            intereses.add(rs.getString("email"));
-            }
-            
-            if((Double)rs.getDouble("altura")!=null){
-                intereses.add(((Double)rs.getDouble("altura")).toString());
-            }
-            if((Double)rs.getDouble("peso")!=null){
-                intereses.add(((Double)rs.getDouble("peso")).toString());
-            }
+        if (rs.next()) {
+            return new Interes(nick, rs.getBoolean("genero"), rs.getInt("Edad"), rs.getFloat("altura"), rs.getInt("peso"), rs.getString("constitucion"), rs.getString("ciudad"), rs.getString("cp"));
         }
-        return intereses.iterator();
+        return null;
     }
     
     public int getEdadInteres(String nick)throws SQLException{
@@ -123,12 +96,12 @@ public class InteresDAO {
         return res;
     }
     
-    public double getAlturaInteres(String nick)throws SQLException{
-        double res = 0.0;
+    public float getAlturaInteres(String nick)throws SQLException{
+        float res = 0.0f;
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select Altura from Interes where nick ='"+nick+"'");
         if(rs.next()){
-            res = rs.getDouble("Altura");
+            res = rs.getFloat("Altura");
         }
         return res;
     }
@@ -153,11 +126,11 @@ public class InteresDAO {
          return res!=0;
      }
           
-     public boolean insertarInteresUsuario(Usuario u, Interes a) throws SQLException{
-         Statement st = cn.createStatement();
-         int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,,Ciudad) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "','"+ a.getCiudad()+"') where Interes.Nick = '" + u.getNick() + "'");
-         return res !=0;
-     }
+//     public boolean insertarInteresUsuario(Usuario u, Interes a) throws SQLException{
+//         Statement st = cn.createStatement();
+//         int res = st.executeUpdate("insert into Interes(Genero,Edad,Cp,Peso,Altura,,Ciudad) values (" + a.isGenero() + "','" + a.getEdad() + "','" + a.getCp() + "','" +  a.getPeso() + "','" + a.getAltura() + "','" + a.getConstitucion() + "','"+ a.getCiudad()+"') where Interes.Nick = '" + u.getNick() + "'");
+//         return res !=0;
+//     }
      
      public boolean cambiarInteres(Interes a) throws SQLException {
         Statement st = cn.createStatement();
@@ -183,20 +156,20 @@ public class InteresDAO {
         return total != 0;
      }
      
-     public ArrayList<String> buscarUsuariosBasico(Interes a)throws SQLException{
-        ArrayList<String> usuariosBuscados = new ArrayList<>();
-        Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select nick from usuario where genero='"+a.isGenero()+"' and edad='"+a.getEdad()+"' and ciudad='"+a.getCiudad()+"' and constitucion='"+a.getConstitucion()+"'");
-        while (rs.next()) {
-            usuariosBuscados.add(rs.getString("Nick"));
-        }
-        return usuariosBuscados;
-    }
+//     public ArrayList<String> buscarUsuariosBasico(Interes a)throws SQLException{
+//        ArrayList<String> usuariosBuscados = new ArrayList<>();
+//        Statement st = cn.createStatement();
+//        ResultSet rs = st.executeQuery("select nick from usuario where genero='"+a.isGenero()+"' and edad='"+a.getEdad()+"' and ciudad='"+a.getCiudad()+"' and constitucion='"+a.getConstitucion()+"'");
+//        while (rs.next()) {
+//            usuariosBuscados.add(rs.getString("Nick"));
+//        }
+//        return usuariosBuscados;
+//    }
      
      public ArrayList<String> buscarUsuariosConcreto(Interes a)throws SQLException{
         ArrayList<String> usuariosBuscados = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select nick from usuario where genero='"+a.isGenero()+"' and edad='"+a.getEdad()+"' and altura='"+a.getAltura()+"' and peso='"+a.getPeso()+"' and ciudad='"+a.getCiudad()+"' and cp='"+a.getCp()+"' and constitucion='"+a.getConstitucion()+"'");
+        ResultSet rs = st.executeQuery("select nick from usuario where genero="+a.isGenero()+" or edad="+a.getEdad()+" or altura="+a.getAltura()+" or peso="+a.getPeso()+" or ciudad='"+a.getCiudad()+"' or cp='"+a.getCp()+"' or constitucion='"+a.getConstitucion()+"'");
         while (rs.next()) {
             usuariosBuscados.add(rs.getString("Nick"));
         }

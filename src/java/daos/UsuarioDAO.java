@@ -47,9 +47,9 @@ public class UsuarioDAO {
         return rs.next();
     }
 
-    public Usuario cogerUsuario(String email) throws SQLException {
+    public Usuario cogerUsuario(String nick) throws SQLException {
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Usuario where Email='" + email + "'");
+        ResultSet rs = st.executeQuery("select * from Usuario where Nick='" + nick + "'");
         if (rs.next()) {
             return new Usuario(rs.getString("Nick"), rs.getString("Email"), rs.getString("Password"), rs.getBoolean("Genero"), rs.getInt("Edad"), rs.getFloat("Altura"), rs.getInt("Peso"), rs.getString("Constitucion"), rs.getString("Ciudad"), rs.getString("CP"), rs.getString("Foto"));
         }
@@ -68,9 +68,9 @@ public class UsuarioDAO {
         return total != 0;
     }
 
-    public boolean eliminarUsuario(String email) throws SQLException {
+    public boolean eliminarUsuario(String nick) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("delete from Usuario where Email='" + email + "'");
+        int total = st.executeUpdate("delete from Usuario where Nick='" + nick + "'");
         return total != 0;
     }
 

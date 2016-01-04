@@ -76,6 +76,11 @@ nav#logueado_nav ul li a{
     font-weight: bold;
 }
 
+img#logueado_premiumStar{
+    width: 20px;
+    height: 20px;
+}
+
 footer#logueado_footer{
 /*    border: 1px solid yellow;*/
     text-align: right;

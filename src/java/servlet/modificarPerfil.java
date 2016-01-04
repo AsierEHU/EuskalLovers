@@ -60,7 +60,6 @@ public class modificarPerfil extends HttpServlet {
             float altur_bus;
             int pes_bus;
 
-            String em = (String) request.getSession().getAttribute("usuario_email");
             String pass = (String) request.getParameter("perfil_password");
             String nk = (String) request.getParameter("perfil_nick");
             String gnero = (String) request.getParameter("perfil_genero");
@@ -102,9 +101,9 @@ public class modificarPerfil extends HttpServlet {
             
             UsuarioDAO us = new UsuarioDAO(BD.getConexion());
             if(fotoName.equals("")){
-                fotoName=us.cogerUsuario(em).getFoto();
+                fotoName=us.cogerUsuario(nk).getFoto();
             }
-            Usuario u = new Usuario(nk, em, pass, fem, dad, alt, pso, asp, ciuad, Cpos, fotoName);
+            Usuario u = new Usuario(nk, "", pass, fem, dad, alt, pso, asp, ciuad, Cpos, fotoName);
             us.modificarUsuario(u);
 
             //Personalidad

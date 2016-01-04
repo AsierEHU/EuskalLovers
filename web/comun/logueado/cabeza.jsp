@@ -1,14 +1,14 @@
 <%@page import="daos.VisitaDAO"%>
 <%@page import="daos.PremiumDAO"%>
 <%
-    String email = (String) session.getAttribute("usuario_email");
-    if (email == null) {
+    String nick = (String) session.getAttribute("usuario_nick");
+    if (nick == null) {
         application.getRequestDispatcher("/index.jsp").forward(request, response);
         //esto hay que mejorar
     }
 
     UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
-    Usuario u = udao.cogerUsuario(email);
+    Usuario u = udao.cogerUsuario(nick);
     
 %>
 
@@ -48,11 +48,13 @@
                 <%
                     if (pdao.esPremium(u.getNick())) {
                 %>
-
             <li> 
                 <form method="post" action="noPremium" >
                     <input type="submit" value="Cancelar Premium">
                 </form>
+            </li>
+            <li>
+                <img src="img/premiumStar.jpg" id="logueado_premiumStar"/>
             </li>
             <%
             } else {

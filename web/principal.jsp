@@ -7,30 +7,39 @@
     <jsp:param name="include" value="principal"/>
 </jsp:include>
 
-        <%String email = (String) session.getAttribute("usuario_email");
-            UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
-            Usuario u = udao.cogerUsuario(email);
-            %>         
-        <%InteresDAO iDAO = new InteresDAO(BD.getConexion()); %>
-        
-        ¿Conoces a algún EuskalLover? <b>Visita los perfiles de los usuarios introduciendo aquí su nick:</b>
-        <br>
-        <br>
-        <form action="buscar" method="post">
-            <input type="text" name="nick_busq">           
-            <input type="submit" class="busqueda_btn" value="Visitar perfil" name="buscar">
-            <br>
-            <br>
-            <b> Busqueda básica:</b>
-        <br>         
-        <table>
+<%
+    if (request.getParameter("error") != null) {
+%>
+<script>
+    alert("El usuario <%=request.getParameter("error")%> no existe");
+</script>
+<%
+    }
+%>
+<%String nick = (String) session.getAttribute("usuario_nick");
+    UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
+    Usuario u = udao.cogerUsuario(nick);
+%>         
+<%InteresDAO iDAO = new InteresDAO(BD.getConexion()); %>
+
+¿Conoces a algún EuskalLover? <b>Visita los perfiles de los usuarios introduciendo aquí su nick:</b>
+<br>
+<br>
+<form action="buscar" method="post">
+    <input type="text" name="nick_busq">           
+    <input type="submit" class="busqueda_btn" value="Visitar perfil" name="buscar">
+    <br>
+    <br>
+    <b> Busqueda básica:</b>
+    <br>         
+    <table>
         <tr>
             <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq" value="Hombres" disabled <%
                 if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
                     out.print("checked");
                 }
 
-                                                  %>> Hombres
+                                                 %>> Hombres
             <input type="radio" name="genero_busq" value="Mujeres" disabled <% if (iDAO.getGeneroInteres(u.getNick()).equals("Femenino")) {
                     out.print("checked");
                 }
@@ -43,12 +52,12 @@
                 Edad: </td><td><input type="number" name="edad_busq" min="18" max="120" required disabled value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
-                    <%
+            <%
                 String altura;
-                if(iDAO.getAlturaInteres(u.getNick())==0f){
-                    altura="";
-                }else{
-                    altura=String.valueOf(iDAO.getAlturaInteres(u.getNick()));
+                if (iDAO.getAlturaInteres(u.getNick()) == 0f) {
+                    altura = "";
+                } else {
+                    altura = String.valueOf(iDAO.getAlturaInteres(u.getNick()));
                 }
             %>
             <td> Altura: </td> <td> <input type="number" name="altura_busq" step="0.01" min="1" max="3" disabled value="<%=altura%>"> </td> </tr>
@@ -56,10 +65,10 @@
         <tr>
             <%
                 String peso;
-                if(iDAO.getPesoInteres(u.getNick())==0){
-                    peso="";
-                }else{
-                    peso=String.valueOf(iDAO.getPesoInteres(u.getNick()));
+                if (iDAO.getPesoInteres(u.getNick()) == 0) {
+                    peso = "";
+                } else {
+                    peso = String.valueOf(iDAO.getPesoInteres(u.getNick()));
                 }
             %>
             <td>
@@ -112,20 +121,19 @@
 
                %>> Musculoso/Musculosa
     </fieldset>
-        <br>
-        <input type="submit" class="busqueda_btn" value="Busqueda basica" name="buscar">
+    <br>
+    <input type="submit" class="busqueda_btn" value="Busqueda basica" name="buscar">
 </form>
 <form action="buscar" method="post">
-        <br>
-        <b>Busqueda avanzada (Rellene todos los campos por favor):</b>         
-        <table>
+    <br>
+    <b>Busqueda avanzada (Rellene todos los campos por favor):</b>         
+    <table>
         <tr>
-            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" required <%
-                if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
+            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" required <%                if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
                     out.print("checked");
                 }
 
-                                                  %>> Hombres
+                                                 %>> Hombres
             <input type="radio" name="genero_busq1" value="Mujeres" <% if (iDAO.getGeneroInteres(u.getNick()).equals("Femenino")) {
                     out.print("checked");
                 }
@@ -170,7 +178,7 @@
     </table>
     <fieldset id="const_busq1">
         <legend><b>Aspecto: </b></legend>
-        <input type="radio" name="const_busq1" value="Delgado" required<%
+        <input type="radio" name="const_busq1" value="Delgado" <%
             if (iDAO.getConstitucionInteres(u.getNick()).equals("Delgado")) {
                 out.print("checked");
             }
@@ -193,5 +201,11 @@
     </fieldset>
     <br>
     <input type="submit" class="busqueda_btn" value="Busqueda avanzada" name="buscar">
-        </form>
+</form>
+
+<% if (request.getParameterValues("nicks") != null) {
+
+    String[]nicks =request.getParameterValues("nicks");
+    }
+%>
 <jsp:include page="/comun/logueado/pie.jsp"/>

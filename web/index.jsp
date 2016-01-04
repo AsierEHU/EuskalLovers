@@ -13,7 +13,7 @@
         <%
     }
     if(request.getParameter("desconectar")!=null){
-        session.removeAttribute("usuario_email");
+        session.removeAttribute("usuario_nick");
     }
 %>
 

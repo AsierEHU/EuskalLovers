@@ -14,14 +14,14 @@ public class Interes {
     private String nick;
     private boolean genero;
     private int edad;
-    private double altura;
-    private double peso;
+    private float altura;
+    private int peso;
     private String constitucion;
     private String ciudad;
     private String cp;
 
     // todos
-    public Interes(String nick, boolean genero, int edad, double altura, double peso, String constitucion, String ciudad, String cp) {
+    public Interes(String nick, boolean genero, int edad, float altura, int peso, String constitucion, String ciudad, String cp) {
         super();
         this.nick = nick;
         this.genero = genero;
@@ -68,19 +68,19 @@ public class Interes {
         this.edad = edad;
     }
 
-    public double getAltura() {
+    public float getAltura() {
         return altura;
     }
 
-    public void setAltura(double altura) {
+    public void setAltura(float altura) {
         this.altura = altura;
     }
 
-    public double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 

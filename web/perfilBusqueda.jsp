@@ -14,11 +14,11 @@
     <table>
 
         <%
-            String emailBuscador = (String)session.getAttribute("usuario_email");
-            String email = (String) session.getAttribute("email_perfil_busq");
+            String nickBuscador = (String)session.getAttribute("usuario_nick");
+            String nick = request.getParameter("nick");
             UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
-            Usuario u1 = udao.cogerUsuario(emailBuscador);
-            Usuario u = udao.cogerUsuario(email);
+            Usuario u1 = udao.cogerUsuario(nickBuscador);
+            Usuario u = udao.cogerUsuario(nick);
             PersonalidadDAO pdao = new PersonalidadDAO(BD.getConexion());
             AficionDAO adao = new AficionDAO(BD.getConexion());
         %>

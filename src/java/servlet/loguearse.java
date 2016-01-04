@@ -42,13 +42,11 @@ public class loguearse extends HttpServlet {
         String pass = (String) request.getParameter("pass_control");
         UsuarioDAO us = new UsuarioDAO(BD.getConexion());
         PremiumDAO pus = new PremiumDAO(BD.getConexion());
-        double tim = 0.00;
 
         if (us.esCorrecto(em, pass)) {
-            request.getSession(true).setAttribute("usuario_email", em);
+            
             String nk = us.devuelveNick(em);
-            tim = pus.tiempoPremium(nk);
-
+            request.getSession(true).setAttribute("usuario_nick", nk);
             if (pus.esPremium(nk)) {
                 if(pus.tiempoQuedaPremium(nk)<0){
                     pus.darBajaPremium(nk);

@@ -37,8 +37,8 @@ public class eliminarUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            UsuarioDAO uda = new UsuarioDAO(BD.getConexion());
-           String ema = (String)request.getSession().getAttribute("usuario_email");
-           uda.eliminarUsuario(ema);
+           String nk = (String)request.getSession().getAttribute("usuario_nick");
+           uda.eliminarUsuario(nk);
            response.sendRedirect("index.jsp");
         }
     }

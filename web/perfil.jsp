@@ -17,9 +17,9 @@
     <table>
 
         <%
-            String email = (String) session.getAttribute("usuario_email");
+            String nick = (String) session.getAttribute("usuario_nick");
             UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
-            Usuario u = udao.cogerUsuario(email);
+            Usuario u = udao.cogerUsuario(nick);
         %>
         <tr>
             <td>Foto:</td>
