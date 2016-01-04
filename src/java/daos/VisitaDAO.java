@@ -53,6 +53,14 @@ public class VisitaDAO {
         return visitas.iterator();
     }
     
+    public int numeroVisitantes(String nickV) throws SQLException{
+
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select count(nick1) from Visita where nick2='"+nickV+"'");
+        rs.next();
+        return rs.getInt(1);
+    }
+    
     public boolean insertarVisita(Visita v) throws SQLException {
         Statement st= cn.createStatement();
         int total = st.executeUpdate("insert into Visita values('"+v.getNick1()+"','"+v.getNick2()+"')");       
