@@ -1,3 +1,5 @@
+<%@page import="beans.Visita"%>
+<%@page import="daos.VisitaDAO"%>
 <%@page import="daos.InteresDAO"%>
 <%@page import="daos.AficionDAO"%>
 <%@page import="daos.PersonalidadDAO"%>
@@ -21,6 +23,10 @@
             Usuario u = udao.cogerUsuario(nick);
             PersonalidadDAO pdao = new PersonalidadDAO(BD.getConexion());
             AficionDAO adao = new AficionDAO(BD.getConexion());
+            VisitaDAO vdao = new VisitaDAO(BD.getConexion());
+            vdao.insertarVisita(new Visita(nickBuscador, nick)); 
+
+            
         %>
         
         <tr>

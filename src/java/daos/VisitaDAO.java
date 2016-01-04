@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -61,10 +63,15 @@ public class VisitaDAO {
         return rs.getInt(1);
     }
     
-    public boolean insertarVisita(Visita v) throws SQLException {
-        Statement st= cn.createStatement();
-        int total = st.executeUpdate("insert into Visita values('"+v.getNick1()+"','"+v.getNick2()+"')");       
-        return 0 != total;
+    public boolean insertarVisita(Visita v){
+        try {
+            Statement st= cn.createStatement();
+            int total = st.executeUpdate("insert into Visita values('"+v.getNick1()+"','"+v.getNick2()+"')");
+            return 0 != total;
+        } catch (SQLException ex) {
+            //Visita ya insertada
+        }
+        return false;
     }
     
     public boolean eliminarVisita (Visita v)throws SQLException {

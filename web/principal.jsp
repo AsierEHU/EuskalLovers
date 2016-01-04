@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="beans.Usuario"%>
 <%@page import="daos.UsuarioDAO"%>
 <%@page import="daos.InteresDAO"%>
@@ -204,8 +205,13 @@
 </form>
 
 <% if (request.getParameterValues("nicks") != null) {
-
-    String[]nicks =request.getParameterValues("nicks");
+        String[]nicks =request.getParameterValues("nicks");
+        for(int i=0;i<nicks.length;i++){
+            %>
+            <a href="perfilBusqueda.jsp?nick=<%=nicks[i]%>"> perfil de <%=nicks[i]%> </a>
+            <br>
+            <%
+        }
     }
 %>
 <jsp:include page="/comun/logueado/pie.jsp"/>
