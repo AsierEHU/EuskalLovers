@@ -204,14 +204,4 @@
     <input type="submit" class="busqueda_btn" value="Busqueda avanzada" name="buscar">
 </form>
 
-<% if (request.getParameterValues("nicks") != null) {
-        String[]nicks =request.getParameterValues("nicks");
-        for(int i=0;i<nicks.length;i++){
-            %>
-            <a href="perfilBusqueda.jsp?nick=<%=nicks[i]%>"> perfil de <%=nicks[i]%> </a>
-            <br>
-            <%
-        }
-    }
-%>
 <jsp:include page="/comun/logueado/pie.jsp"/>

@@ -70,7 +70,7 @@ public class busqueda extends HttpServlet {
                 }
                 encontrados=encontrados.substring(0, encontrados.length()-1);
 
-                response.sendRedirect("principal.jsp"+encontrados);
+                response.sendRedirect("perfilBusqueda.jsp"+encontrados);
             }
             //si pulsa el boton de busqueda avanzada
             if (avanzado.equals(request.getParameter("buscar"))) {
@@ -96,7 +96,7 @@ public class busqueda extends HttpServlet {
                 }
                 encontrados=encontrados.substring(0, encontrados.length()-1);
 
-                response.sendRedirect("principal.jsp"+encontrados);
+                response.sendRedirect("perfilBusqueda.jsp"+encontrados);
             }
 
         }
