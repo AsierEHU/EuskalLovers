@@ -11,10 +11,22 @@
             UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
             Usuario u = udao.cogerUsuario(email);
             %>         
-        <%InteresDAO iDAO = new InteresDAO(BD.getConexion()); %>   
+        <%InteresDAO iDAO = new InteresDAO(BD.getConexion()); %>
+        
+        Visita los perfiles de los usuarios introduciendo aquí su nick:
+        <br>
+        <br>
+        <form>
+            <input type="text" name="nick_busq">           
+            <input type="submit" class="busqueda_btn" value="Visitar perfil" name="visita">
+            <br>
+            <br>
+        </form>
+        
+        
         Busqueda básica:
         <br>
-        <form action="buscar">           
+        <form action="buscar" method="post">           
         <table>
         <tr>
             <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq" value="Hombres" disabled <%
@@ -89,18 +101,13 @@
                %>> Musculoso/Musculosa
     </fieldset>
         <br>
-        <input type="submit" class="busqueda_btn" value="Buscar">
+        <input type="submit" class="busqueda_btn" value="Busqueda básica" name="basico">
 
         </form>
         <br>
         Busqueda avanzada (Rellene todos los campos por favor):
-        <form>
-        
-            
+        <form action="buscar" method="post">           
         <table>
-        <tr>
-            <td>
-                Nick: </td><td><input type="text" name="nick_busq"> </td> </tr>
         <tr>
             <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" required  <%
                 if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
@@ -174,6 +181,6 @@
                %>> Musculoso/Musculosa
     </fieldset>
     <br>
-    <input type="submit" class="busqueda_btn" value="Busqueda avanzada">
+    <input type="submit" class="busqueda_btn" value="Busqueda avanzada" name="avanzado">
         </form>
 <jsp:include page="/comun/logueado/pie.jsp"/>

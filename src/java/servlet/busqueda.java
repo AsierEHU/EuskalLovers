@@ -40,10 +40,14 @@ public class busqueda extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String basico="Busqueda básica";
+            String avanzado = "Busqueda avanzada";
             boolean gen = true;
             boolean alturaSi = false;
             boolean pesoSi = false;
-            String nick = (String) request.getSession().getAttribute("usuario_nick");
+            boolean cpSi = false;
+            //si pulsa el boton de busqueda basica
+            if(basico.equals(request.getParameter("basico"))){                       
             String genero = (String) request.getParameter("genero_busq");
                 if (genero.equals("Masculino")) {
                     gen = false;
@@ -62,19 +66,51 @@ public class busqueda extends HttpServlet {
                     peso = Integer.parseInt(request.getParameter("peso_busq"));
                 }
             String ciudad = (String) request.getParameter("ciudad_busq");
-            String cp = request.getParameter("cp_busq");
+            String cp = "";
+            if(request.getParameter("cp_busq").equals("")){    
+            }
+            else{
+                cpSi = true;
+                cp = request.getParameter("cp_busq");}
             String consti = (String) request.getParameter("const_busq");
             
-            Interes inter1 = new Interes(nick, gen, edad, altura, peso,consti, ciudad,cp);
+            if(pesoSi && alturaSi && cpSi){
+            Interes inter1 = new Interes("", gen, edad, altura, peso,consti, ciudad,cp);
             InteresDAO interD1 = new InteresDAO(BD.getConexion());
-            
             ArrayList<String> buscados = interD1.buscarUsuariosConcreto(inter1);
-            
-            if(buscados == null){
-                inter1 = new Interes(nick,gen,edad,consti,ciudad);
-                interD1 = new InteresDAO(BD.getConexion());
-                buscados = interD1.buscarUsuariosBasico(inter1);
+            request.setAttribute("listaBuscados", buscados); 
             }
+            
+            else{
+                Interes inter2 = new Interes("",gen,edad,consti,ciudad);
+                InteresDAO interD2 = new InteresDAO(BD.getConexion());
+                ArrayList<String> buscados = interD2.buscarUsuariosBasico(inter2);
+                request.setAttribute("listaBuscados", buscados);
+            }
+            }
+            //si pulsa el boton de busqueda avanzada
+            else if (avanzado.equals(request.getParameter("avanzado"))){
+                String genero = (String) request.getParameter("genero_busq1");
+                if (genero.equals("Masculino")) {
+                    gen = false;
+                }
+                int edad = Integer.parseInt(request.getParameter("edad_busq1"));
+                float altura = Float.parseFloat(request.getParameter("altura_busq1"));
+                int peso = Integer.parseInt(request.getParameter("peso_busq1"));
+                String ciudad = (String) request.getParameter("ciudad_busq1");
+                String cp = request.getParameter("cp_busq1");
+                String consti = (String) request.getParameter("const_busq1");
+                Interes inter1 = new Interes("", gen, edad, altura, peso,consti, ciudad,cp);
+                InteresDAO interD1 = new InteresDAO(BD.getConexion());
+                ArrayList<String> buscados = interD1.buscarUsuariosConcreto(inter1);
+                if (buscados==null){
+                    Interes inter2 = new Interes("",gen,edad,consti,ciudad);
+                    InteresDAO interD2 = new InteresDAO(BD.getConexion());
+                    buscados = interD2.buscarUsuariosBasico(inter2);
+                }
+                    request.setAttribute("listaBuscados", buscados);
+            }
+                      
             response.sendRedirect("principal.jsp");
         }
     }
