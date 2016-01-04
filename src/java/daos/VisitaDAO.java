@@ -27,18 +27,28 @@ public class VisitaDAO {
     public boolean haVisitado (String nickV) throws SQLException {
         boolean visitado = false;
         Statement st= cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Visita where nick2 =" + nickV + "'");
+        ResultSet rs = st.executeQuery("select * from Visita where nick1 =" + nickV + "'");
         if(rs.next()){
             visitado = true;
         }       
         return visitado;  
     }
-    public Iterator<String> recuperarVisitas (String nickV) throws SQLException {
+    public Iterator<String> recuperarVisitasRealizadas (String nickV) throws SQLException {
         ArrayList<String> visitas = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select * from Visita where nick1 = " + nickV);
+        ResultSet rs = st.executeQuery("select * from Visita where nick1 ='"+nickV+"'");
         while (rs.next()) {
             visitas.add(rs.getString("nick2"));
+        }       
+        return visitas.iterator();
+    }
+    
+    public Iterator<String> recuperarVisitasRecibidas (String nickV) throws SQLException {
+        ArrayList<String> visitas = new ArrayList<>();
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery("select * from Visita where nick2='"+nickV+"'");
+        while (rs.next()) {
+            visitas.add(rs.getString("nick1"));
         }       
         return visitas.iterator();
     }
