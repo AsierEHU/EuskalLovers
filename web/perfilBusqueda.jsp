@@ -7,19 +7,17 @@
 <%@page import="beans.Usuario"%>
 <%@page import="daos.UsuarioDAO"%>
 <jsp:include page="/comun/logueado/cabeza.jsp">
-    <jsp:param name="title" value="Perfil"/>
-    <jsp:param name="include" value="perfil"/>
-    <jsp:param name="includeLib" value="formularios"/>
+    <jsp:param name="title" value="PerfilBusqueda"/>
+    <jsp:param name="include" value="perfilBusqueda"/>
 </jsp:include>
 
-<form id="perfil_busqueda" method="POST" enctype="multipart/form-data">
     <table>
 
         <% if (request.getParameterValues("nicks") != null) {
                 String[] nicks = request.getParameterValues("nicks");
                 for (int i = 0; i < nicks.length; i++) {
         %>
-        <a href="perfilBusqueda.jsp?nick=<%=nicks[i]%>"> perfil de <%=nicks[i]%> </a>
+        <a class="perfilBusqueda_buscados" href="perfilBusqueda.jsp?nick=<%=nicks[i]%>"> Perfil de <%=nicks[i]%> </a>
         <br>
         <%
             }
@@ -142,7 +140,6 @@
     <b>Numero de aficiones en comun:</b> <%=adao.numAficionesComun(u.getNick(), u1.getNick())%>
     <br>
     <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
-</form>
 <%
     }
 %>
