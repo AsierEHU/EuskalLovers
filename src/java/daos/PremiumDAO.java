@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -54,15 +55,13 @@ public class PremiumDAO {
         long tiempo = 0;
         Calendar hoy = Calendar.getInstance();
         hoy.add(Calendar.DATE, -pk);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        sdf.setCalendar(hoy);
+        java.sql.Date HOY = new java.sql.Date(hoy.getTimeInMillis());
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("Select FechaHora from Premium where Nick='"+nk+"'");
         if(rs.next()){
-        SimpleDateFormat rgf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        rgf.format(rs.getDate("FechaHora"));
-        tiempo = (sdf.getCalendar().getTimeInMillis() - rgf.getCalendar().getTimeInMillis());
-        }
+        java.sql.Date reg = rs.getDate("FechaHora");
+        tiempo = HOY.getTime() - reg.getTime(); }
+        
         return tiempo;        
     }
     
@@ -78,7 +77,7 @@ public class PremiumDAO {
     
     public boolean actualizarSaldo(int cantidad, String nick) throws SQLException{
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Premium set saldo=saldo-" +cantidad+" where nick ='"+nick+"'");
+        int total = st.executeUpdate("update Premium set saldo=saldo-"+cantidad+" where nick ='"+nick+"'");
         return total != 0;
     }
     
