@@ -274,7 +274,7 @@
         <tr>
             <td>Que viva en:  </td>
             <td>        
-                <select name="perfil_ciudad" id="ciudad_busqueda">
+                <select name="ciudad_busqueda" id="ciudad_busqueda">
                     <option value="Vitoria-Gasteiz" <% if (idao.getCiudadInteres(u.getNick()).equals("Vitoria-Gasteiz")) {
                             out.print("selected");
                         }

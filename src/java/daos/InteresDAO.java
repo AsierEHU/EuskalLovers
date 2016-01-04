@@ -134,7 +134,7 @@ public class InteresDAO {
      
      public boolean cambiarInteres(Interes a) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("Update Interes set Genero="+a.isGenero()+",Edad="+a.getEdad()+",Cp='"+a.getCp()+"', Peso=" +a.getPeso()+", Altura=" +a.getAltura()+", Constitucion='"+a.getConstitucion()+"' where Interes.Nick = '"+a.getNick()+"'");
+        int total = st.executeUpdate("Update Interes set Ciudad='"+a.getCiudad()+"',Genero="+a.isGenero()+",Edad="+a.getEdad()+",Cp='"+a.getCp()+"', Peso=" +a.getPeso()+", Altura=" +a.getAltura()+", Constitucion='"+a.getConstitucion()+"' where Interes.Nick = '"+a.getNick()+"'");
         return total != 0;
     }
      
