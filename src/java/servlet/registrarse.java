@@ -184,13 +184,15 @@ public class registrarse extends HttpServlet {
                     interD3.actualizarCPBusqueda(inter_usuario3);
                 }
 
-                //GMail.getMail().enviarMensaje(mail, "Nueva alta", "Enhorabuena! Se ha dado de alta en EuskalLovers.");
+                GMail.getMail().enviarMensaje(mail, "Nueva alta", "Enhorabuena! Se ha dado de alta en EuskalLovers.");
                 response.sendRedirect("index.jsp");
             } else {
                 response.sendRedirect("registro.jsp?error=usuario");
             }
 
         } catch (SQLException ex) {
+            Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
             Logger.getLogger(registrarse.class.getName()).log(Level.SEVERE, null, ex);
         }
 

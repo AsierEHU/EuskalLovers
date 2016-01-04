@@ -40,50 +40,65 @@ public class PremiumDAO {
 
     public boolean hacerPremium(Premium p) throws SQLException {
         Statement st = cn.createStatement();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = sdf.format(p.getFechaHora());
-        int total = st.executeUpdate("insert into Premium(Nick,CuentaTarjeta,Saldo,FechaHora,Pack) values ('"+p.getNick()+"','" + p.getCuentaTajeta() + "'," + p.getSaldo()+ ",'" + currentTime + "'," +  p.getPack()+ ")");
-        return total!=0;
+        int total = st.executeUpdate("insert into Premium(Nick,CuentaTarjeta,Saldo,FechaHora,Pack) values ('" + p.getNick() + "','" + p.getCuentaTajeta() + "'," + p.getSaldo() + ",'" + currentTime + "'," + p.getPack() + ")");
+        return total != 0;
     }
-    
+
     public boolean darBajaPremium(String nk) throws SQLException {
         Statement st = cn.createStatement();
         int total = st.executeUpdate("delete from Premium where Nick='" + nk + "'");
         return total != 0;
     }
-    
-    public double tiempoPremium(String nk)throws SQLException, ParseException{
-        double tiempo = 0;
-        Date HOY = new Date();
-        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
-        String formateadaHoy = formateador.format(HOY);
-        Date fecha = formateador.parse(formateadaHoy);
+
+    public long tiempoPremium(String nk) throws SQLException, ParseException {
+        long tiempo = 0;
+        long hoy = new Date().getTime();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("Select FechaHora from Premium where Nick='"+nk+"'");
-        if(rs.next()){
-        Date reg = (Date) rs.getDate("FechaHora");
-//        formateador.format(reg);
-        tiempo = (double) fecha.getTime() - reg.getTime();
-        tiempo = (tiempo)/(1000 * 60 * 60 * 24);
+        ResultSet rs = st.executeQuery("Select FechaHora from Premium where Nick='" + nk + "'");
+        if (rs.next()) {
+            long reg = rs.getDate("FechaHora").getTime();
+            tiempo = hoy - reg;
+            tiempo = (tiempo) / (1000 * 60 * 60 * 24);
         }
-        
-        return tiempo;        
+        return tiempo;
     }
     
-    public int getPack(String nk)throws SQLException{
+    public long tiempoQuedaPremium(String nk) throws SQLException, ParseException{
+        long tiempo = tiempoPremium(nk);
+        int pack =getPack(nk);
+
+        switch (pack) {
+            case 1:
+                tiempo=30-tiempo;
+                break;
+            case 3:
+                tiempo=90-tiempo;
+                break;
+            case 6:
+                tiempo=180-tiempo;
+                break;
+            default:
+                break;
+        }
+            return tiempo;
+    }
+
+    public int getPack(String nk) throws SQLException {
         int pck = 0;
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("Select Pack from Premium where nick='"+nk+"'");
-        if(rs.next()){
+        ResultSet rs = st.executeQuery("Select Pack from Premium where nick='" + nk + "'");
+        if (rs.next()) {
             pck = rs.getInt("Pack");
         }
         return pck;
     }
-    
-    public boolean actualizarSaldo(int cantidad, String nick) throws SQLException{
+
+    public boolean actualizarSaldo(int cantidad, String nick) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Premium set saldo=saldo-"+cantidad+" where nick ='"+nick+"'");
+        int total = st.executeUpdate("update Premium set saldo=saldo-" + cantidad + " where nick ='" + nick + "'");
         return total != 0;
     }
-    
+
 }

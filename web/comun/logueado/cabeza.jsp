@@ -27,15 +27,15 @@
             <h4>Bienvenido <%=u.getNick()%></h4>
             <br/>
             <a href="index.jsp?desconectar=true">Desconectar</a>
-                <%
-                    PremiumDAO pdao = new PremiumDAO(BD.getConexion());
-                    if (pdao.esPremium(u.getNick())) {
-                %>
-                <br>
-                <h4> Tiempo premium: <%=session.getAttribute("tiempoPremium")%></h4>
-                <%
-                    }
-                    %>
+            <%
+                PremiumDAO pdao = new PremiumDAO(BD.getConexion());
+                if (pdao.esPremium(u.getNick())) {
+            %>
+            <br>
+            <h4> Premium restante: <%=pdao.tiempoQuedaPremium(u.getNick())%> dias</h4>
+            <%
+                }
+            %>
         </div>
     </header>
     <nav id="logueado_nav">
@@ -47,17 +47,19 @@
                 <%
                     if (pdao.esPremium(u.getNick())) {
                 %>
-                    <a>¡Ya eres premium!</a></li>  
-            <li> <form method="post" action="noPremium" >
-    <input type="submit" class="perfil_btn" value="Cancelar Premium">
-        </form></li>
-                <%
-                } else {
-                %>
-                <a href="premium.jsp">¡Hazte premium!</a></li>  
-                <%
-                    }
-                %>
+                <a>¡Ya eres premium!</a></li>  
+            <li> 
+                <form method="post" action="noPremium" >
+                    <input type="submit" value="Cancelar Premium">
+                </form>
+            </li>
+            <%
+            } else {
+            %>
+            <a href="premium.jsp">¡Hazte premium!</a></li>  
+            <%
+                }
+            %>
 
         </ul>
     </nav>

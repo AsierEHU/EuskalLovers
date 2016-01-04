@@ -50,29 +50,10 @@ public class loguearse extends HttpServlet {
             tim = pus.tiempoPremium(nk);
 
             if (pus.esPremium(nk)) {
-                if (pus.getPack(nk) == 1) {
-                    if (pus.tiempoPremium(nk) > 30) {
-                        pus.darBajaPremium(nk);
-
-                    }
-                }
-                if (pus.getPack(nk) == 3) {
-                    if (pus.tiempoPremium(nk) > 90) {
-                        pus.darBajaPremium(nk);
-
-                    }
-                }
-                if (pus.getPack(nk) == 6) {
-                    if (pus.tiempoPremium(nk) > 180) {
-                        pus.darBajaPremium(nk);
-
-                    }
-
-                    request.getSession(true).setAttribute("tiempoPremium", tim);
-
+                if(pus.tiempoQuedaPremium(nk)<0){
+                    pus.darBajaPremium(nk);
                 }
             }
-
             response.sendRedirect("principal.jsp");
         } else {
             response.sendRedirect("index.jsp?error=login");
