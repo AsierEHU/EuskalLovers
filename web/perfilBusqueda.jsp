@@ -14,8 +14,10 @@
     <table>
 
         <%
+            String emailBuscador = (String)session.getAttribute("usuario_email");
             String email = (String) session.getAttribute("email_perfil_busq");
             UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
+            Usuario u1 = udao.cogerUsuario(emailBuscador);
             Usuario u = udao.cogerUsuario(email);
         %>
         
@@ -189,6 +191,9 @@
                %>> Tecnología
     </fieldset>
     <br>
+    Numero de personalidades en comun: <%=pdao.numPersonalidadesComun(u.getNick(), u1.getNick())%>
+    <br>
+    Numero de aficiones en comun: <%=adao.numAficionesComun(u.getNick(), u1.getNick())%>
     <br>
     <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
 </form>
