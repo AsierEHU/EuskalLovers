@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Calendar;
@@ -39,7 +40,7 @@ public class PremiumDAO {
 
     public boolean hacerPremium(Premium p) throws SQLException {
         Statement st = cn.createStatement();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentTime = sdf.format(p.getFechaHora());
         int total = st.executeUpdate("insert into Premium(Nick,CuentaTarjeta,Saldo,FechaHora,Pack) values ('"+p.getNick()+"','" + p.getCuentaTajeta() + "'," + p.getSaldo()+ ",'" + currentTime + "'," +  p.getPack()+ ")");
         return total!=0;
@@ -51,17 +52,18 @@ public class PremiumDAO {
         return total != 0;
     }
     
-    public double tiempoPremium(String nk)throws SQLException{
+    public double tiempoPremium(String nk)throws SQLException, ParseException{
         double tiempo = 0;
         Date HOY = new Date();
-//        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
-//        formateador.format(HOY);
+        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+        String formateadaHoy = formateador.format(HOY);
+        Date fecha = formateador.parse(formateadaHoy);
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("Select FechaHora from Premium where Nick='"+nk+"'");
         if(rs.next()){
         Date reg = (Date) rs.getDate("FechaHora");
 //        formateador.format(reg);
-        tiempo = (double) HOY.getTime() - reg.getTime();
+        tiempo = (double) fecha.getTime() - reg.getTime();
         tiempo = (tiempo)/(1000 * 60 * 60 * 24);
         }
         
