@@ -13,7 +13,7 @@
             %>         
         <%InteresDAO iDAO = new InteresDAO(BD.getConexion()); %>
         
-        Visita los perfiles de los usuarios introduciendo aquí su nick:
+        ¿Conoces a algún EuskalLover? <b>Visita los perfiles de los usuarios introduciendo aquí su nick:</b>
         <br>
         <br>
         <form action="buscar" method="post">
@@ -21,7 +21,7 @@
             <input type="submit" class="busqueda_btn" value="Visitar perfil" name="buscar">
             <br>
             <br>
-        Busqueda básica:
+            <b> Busqueda básica:</b>
         <br>         
         <table>
         <tr>
@@ -114,12 +114,13 @@
     </fieldset>
         <br>
         <input type="submit" class="busqueda_btn" value="Busqueda basica" name="buscar">
-
+</form>
+<form action="buscar" method="post">
         <br>
-        Busqueda avanzada (Rellene todos los campos por favor):         
+        <b>Busqueda avanzada (Rellene todos los campos por favor):</b>         
         <table>
         <tr>
-            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" <%
+            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" required <%
                 if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
                     out.print("checked");
                 }
@@ -134,19 +135,19 @@
 
         <tr>
             <td>
-                Edad: </td><td><input type="number" name="edad_busq1" id="edad_busq1" min="18" max="120" value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
+                Edad: </td><td><input type="number" required name="edad_busq1" id="edad_busq1" min="18" max="120" value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
-            <td> Altura: </td> <td> <input type="number" name="altura_busq1" id="altura_busq1" step="0.01" min="1" max="3" value="<%=altura%>"> </td> </tr>
+            <td> Altura: </td> <td> <input type="number" required name="altura_busq1" id="altura_busq1" step="0.01" min="1" max="3" value="<%=altura%>"> </td> </tr>
 
         <tr>
             <td>
-                Peso: </td> <td> <input type="number" min="30" max="200" name="peso_busq1" id="peso_busq" value="<%=peso%>"> </td></tr>
+                Peso: </td> <td> <input type="number" required min="30" max="200" name="peso_busq1" id="peso_busq" value="<%=peso%>"> </td></tr>
 
         <tr>
             <td>Lugar de residencia:  </td>
             <td>        
-                <select name="ciudad_busq1" id="ciudad_busqueda">
+                <select name="ciudad_busq1" id="ciudad_busqueda" required>
                     <option value="Vitoria-Gasteiz" <% if (iDAO.getCiudadInteres(u.getNick()).equals("Vitoria-Gasteiz")) {
                             out.print("selected");
                         }
@@ -164,12 +165,12 @@
 
         <tr>
             <td>
-                Código Postal: </td> <td> <input type="text" name="cp_busq1" placeholder="00000" minlength="5" maxlength="5" value="<%=iDAO.getCPInteres(u.getNick())%>"> </td></tr>
+                Código Postal: </td> <td> <input type="text" name="cp_busq1" placeholder="00000" minlength="5" required maxlength="5" value="<%=iDAO.getCPInteres(u.getNick())%>"> </td></tr>
 
     </table>
     <fieldset id="const_busq1">
         <legend><b>Aspecto: </b></legend>
-        <input type="radio" name="const_busq1" value="Delgado" <%
+        <input type="radio" name="const_busq1" value="Delgado" required<%
             if (iDAO.getConstitucionInteres(u.getNick()).equals("Delgado")) {
                 out.print("checked");
             }
