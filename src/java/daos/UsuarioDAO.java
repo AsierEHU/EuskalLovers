@@ -104,7 +104,7 @@ public class UsuarioDAO {
     public String devuelveEmail(String nick)throws SQLException{
         Statement st = cn.createStatement();
         String email = "";
-        ResultSet rs = st.executeQuery("select email from usuario where nick='"+nick+"'");
+        ResultSet rs = st.executeQuery("select Email from Usuario where Nick='"+nick+"'");
         if(rs.next()){
             email=rs.getString("Email");
         }
