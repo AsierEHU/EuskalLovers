@@ -48,6 +48,16 @@ public class busqueda extends HttpServlet {
             boolean alturaSi = false;
             boolean pesoSi = false;
             boolean cpSi = false;
+            
+            //Si pulsa el boton de busqueda de perfil
+            if(buscarPerfil.equals(request.getParameter("visita"))){
+                    String nick = request.getParameter("nick_busq");
+                    UsuarioDAO uDAO = new UsuarioDAO(BD.getConexion());
+                    String email = uDAO.devuelveEmail(nick);
+                    request.setAttribute("email_perfil_busq", email);
+                    response.sendRedirect("perfilBusqueda.jsp");
+                    }
+            
             //si pulsa el boton de busqueda basica
             if(basico.equals(request.getParameter("basico"))){                       
             String genero = (String) request.getParameter("genero_busq");
@@ -114,13 +124,7 @@ public class busqueda extends HttpServlet {
             }
                       
             response.sendRedirect("principal.jsp");
-            
-            if(buscarPerfil.equals(request.getParameter("visita"))){
-                    String nick = request.getParameter("nick_busq");
-                    UsuarioDAO uDAO = new UsuarioDAO(BD.getConexion());
-                    String email = uDAO.devuelveEmail(nick);
-                    request.setAttribute("email_perfil_busq", email);
-                    }
+                       
         }
     }
 

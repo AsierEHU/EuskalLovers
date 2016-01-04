@@ -16,17 +16,13 @@
         Visita los perfiles de los usuarios introduciendo aquí su nick:
         <br>
         <br>
-        <form>
+        <form action="buscar" method="post">
             <input type="text" name="nick_busq">           
             <input type="submit" class="busqueda_btn" value="Visitar perfil" name="visita">
             <br>
             <br>
-        </form>
-        
-        
         Busqueda básica:
-        <br>
-        <form action="buscar" method="post">           
+        <br>         
         <table>
         <tr>
             <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq" value="Hombres" disabled <%
@@ -103,13 +99,11 @@
         <br>
         <input type="submit" class="busqueda_btn" value="Busqueda basica" name="basico">
 
-        </form>
         <br>
-        Busqueda avanzada (Rellene todos los campos por favor):
-        <form action="buscar" method="post">           
+        Busqueda avanzada (Rellene todos los campos por favor):         
         <table>
         <tr>
-            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" required  <%
+            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" <%
                 if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
                     out.print("checked");
                 }
@@ -124,10 +118,10 @@
 
         <tr>
             <td>
-                Edad: </td><td><input type="number" name="edad_busq1" id="edad_busq" min="18" max="120" required value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
+                Edad: </td><td><input type="number" name="edad_busq1" id="edad_busq1" min="18" max="120" value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
-            <td> Altura: </td> <td> <input type="number" name="altura_busq1" id="altura_busq" step="0.01" min="1" max="3" value="<%=iDAO.getAlturaInteres(u.getNick())%>"> </td> </tr>
+            <td> Altura: </td> <td> <input type="number" name="altura_busq1" id="altura_busq1" step="0.01" min="1" max="3" value="<%=iDAO.getAlturaInteres(u.getNick())%>"> </td> </tr>
 
         <tr>
             <td>
