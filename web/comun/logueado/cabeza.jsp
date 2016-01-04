@@ -36,6 +36,9 @@
                 <%
                     }
                     %>
+        <form method="post" action="Delete" >
+    <input type="submit" class="perfil_btn" value="Cancelar premium">
+        </form>
         </div>
     </header>
     <nav id="logueado_nav">
