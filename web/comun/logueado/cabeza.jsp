@@ -1,3 +1,4 @@
+<%@page import="daos.VisitaDAO"%>
 <%@page import="daos.PremiumDAO"%>
 <%
     String email = (String) session.getAttribute("usuario_email");
@@ -8,7 +9,7 @@
 
     UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
     Usuario u = udao.cogerUsuario(email);
-
+    
 %>
 
 <%@page import="beans.Usuario"%>
@@ -36,6 +37,7 @@
             <%
                 }
             %>
+            <p>Te visitaron : <%=new VisitaDAO(BD.getConexion()).numeroVisitantes(u.getNick())%> pers.</p>
         </div>
     </header>
     <nav id="logueado_nav">
@@ -43,11 +45,10 @@
             <li><a href="principal.jsp">Principal</a></li>
             <li><a href="perfil.jsp">Perfil</a></li>
             <li><a href="mensajes.jsp">Mensajes</a></li>
-            <li>
                 <%
                     if (pdao.esPremium(u.getNick())) {
                 %>
-                <a>¡Ya eres premium!</a></li>  
+
             <li> 
                 <form method="post" action="noPremium" >
                     <input type="submit" value="Cancelar Premium">
@@ -56,11 +57,12 @@
             <%
             } else {
             %>
-            <a href="premium.jsp">¡Hazte premium!</a></li>  
+            <li><a href="premium.jsp">¡Hazte premium!</a></li>  
             <%
                 }
             %>
-
+            
         </ul>
+            
     </nav>
     <section id="logueado_section">
