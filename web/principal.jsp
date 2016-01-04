@@ -18,7 +18,7 @@
         <br>
         <form action="buscar" method="post">
             <input type="text" name="nick_busq">           
-            <input type="submit" class="busqueda_btn" value="Visitar perfil" name="visita">
+            <input type="submit" class="busqueda_btn" value="Visitar perfil" name="buscar">
             <br>
             <br>
         Busqueda básica:
@@ -97,7 +97,7 @@
                %>> Musculoso/Musculosa
     </fieldset>
         <br>
-        <input type="submit" class="busqueda_btn" value="Busqueda basica" name="basico">
+        <input type="submit" class="busqueda_btn" value="Busqueda basica" name="buscar">
 
         <br>
         Busqueda avanzada (Rellene todos los campos por favor):         
@@ -175,6 +175,6 @@
                %>> Musculoso/Musculosa
     </fieldset>
     <br>
-    <input type="submit" class="busqueda_btn" value="Busqueda avanzada" name="avanzado">
+    <input type="submit" class="busqueda_btn" value="Busqueda avanzada" name="buscar">
         </form>
 <jsp:include page="/comun/logueado/pie.jsp"/>

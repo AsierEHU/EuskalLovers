@@ -50,7 +50,7 @@ public class busqueda extends HttpServlet {
             boolean cpSi = false;
             
             //Si pulsa el boton de busqueda de perfil
-            if(buscarPerfil.equals(request.getParameter("visita"))){
+            if(buscarPerfil.equals(request.getParameter("buscar"))){
                     String nick = request.getParameter("nick_busq");
                     UsuarioDAO uDAO = new UsuarioDAO(BD.getConexion());
                     String email = uDAO.devuelveEmail(nick);
@@ -59,7 +59,7 @@ public class busqueda extends HttpServlet {
                     }
             
             //si pulsa el boton de busqueda basica
-            if(basico.equals(request.getParameter("basico"))){                       
+            if(basico.equals(request.getParameter("buscar"))){                       
             String genero = (String) request.getParameter("genero_busq");
                 if (genero.equals("Masculino")) {
                     gen = false;
@@ -99,9 +99,10 @@ public class busqueda extends HttpServlet {
                 ArrayList<String> buscados = interD2.buscarUsuariosBasico(inter2);
                 request.setAttribute("listaBuscados", buscados);
             }
+            response.sendRedirect("principal.jsp");
             }
             //si pulsa el boton de busqueda avanzada
-            if (avanzado.equals(request.getParameter("avanzado"))){
+            if (avanzado.equals(request.getParameter("buscar"))){
                 String genero = (String) request.getParameter("genero_busq1");
                 if (genero.equals("Masculino")) {
                     gen = false;
@@ -121,9 +122,10 @@ public class busqueda extends HttpServlet {
                     buscados = interD2.buscarUsuariosBasico(inter2);
                 }
                     request.setAttribute("listaBuscados", buscados);
+                    response.sendRedirect("principal.jsp");
             }
                       
-            response.sendRedirect("principal.jsp");
+            
                        
         }
     }
