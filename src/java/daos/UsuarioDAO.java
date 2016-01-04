@@ -100,5 +100,16 @@ public class UsuarioDAO {
         nick = rs.getString("Nick");}
         return nick;
     }
+    
+    public String devuelveEmail(String nick)throws SQLException{
+        Statement st = cn.createStatement();
+        String email = "";
+        ResultSet rs = st.executeQuery("select email from usuario where nick='"+nick+"'");
+        if(rs.next()){
+            nick=rs.getString("Email");
+        }
+        return email;
+        
+    }
 
 }

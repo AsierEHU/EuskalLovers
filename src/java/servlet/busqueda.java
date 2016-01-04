@@ -7,6 +7,7 @@ package servlet;
 
 import beans.Interes;
 import daos.InteresDAO;
+import daos.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -40,8 +41,9 @@ public class busqueda extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String basico="Busqueda básica";
+            String basico = "Busqueda basica";
             String avanzado = "Busqueda avanzada";
+            String buscarPerfil = "Visitar perfil";
             boolean gen = true;
             boolean alturaSi = false;
             boolean pesoSi = false;
@@ -89,7 +91,7 @@ public class busqueda extends HttpServlet {
             }
             }
             //si pulsa el boton de busqueda avanzada
-            else if (avanzado.equals(request.getParameter("avanzado"))){
+            if (avanzado.equals(request.getParameter("avanzado"))){
                 String genero = (String) request.getParameter("genero_busq1");
                 if (genero.equals("Masculino")) {
                     gen = false;
@@ -112,6 +114,13 @@ public class busqueda extends HttpServlet {
             }
                       
             response.sendRedirect("principal.jsp");
+            
+            if(buscarPerfil.equals(request.getParameter("visita"))){
+                    String nick = request.getParameter("nick_busq");
+                    UsuarioDAO uDAO = new UsuarioDAO(BD.getConexion());
+                    String email = uDAO.devuelveEmail(nick);
+                    request.setAttribute("email_perfil_busq", email);
+                    }
         }
     }
 

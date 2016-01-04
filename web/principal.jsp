@@ -101,7 +101,7 @@
                %>> Musculoso/Musculosa
     </fieldset>
         <br>
-        <input type="submit" class="busqueda_btn" value="Busqueda básica" name="basico">
+        <input type="submit" class="busqueda_btn" value="Busqueda basica" name="basico">
 
         </form>
         <br>
