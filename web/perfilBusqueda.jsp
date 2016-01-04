@@ -141,6 +141,8 @@
     <br>
     <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
 <%
-    }
+    }else{
+            response.sendRedirect("principal.jsp");
+        }
 %>
 <jsp:include page="/comun/logueado/pie.jsp"/>
