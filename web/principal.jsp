@@ -35,13 +35,13 @@
     <br>         
     <table>
         <tr>
-            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq" value="Hombres" disabled <%
+            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq" value="Masculino" disabled <%
                 if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
                     out.print("checked");
                 }
 
                                                  %>> Hombres
-            <input type="radio" name="genero_busq" value="Mujeres" disabled <% if (iDAO.getGeneroInteres(u.getNick()).equals("Femenino")) {
+            <input type="radio" name="genero_busq" value="Femenino" disabled <% if (iDAO.getGeneroInteres(u.getNick()).equals("Femenino")) {
                     out.print("checked");
                 }
 
@@ -130,12 +130,12 @@
     <b>Busqueda avanzada (Rellene todos los campos por favor):</b>         
     <table>
         <tr>
-            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Hombres" required <%                if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
+            <td> Genero: </td> <br /> <td><input type="radio" name="genero_busq1" value="Masculino" required <%                if (iDAO.getGeneroInteres(u.getNick()).equals("Masculino")) {
                     out.print("checked");
                 }
 
                                                  %>> Hombres
-            <input type="radio" name="genero_busq1" value="Mujeres" <% if (iDAO.getGeneroInteres(u.getNick()).equals("Femenino")) {
+            <input type="radio" name="genero_busq1" value="Femenino" <% if (iDAO.getGeneroInteres(u.getNick()).equals("Femenino")) {
                     out.print("checked");
                 }
 
