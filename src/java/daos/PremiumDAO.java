@@ -51,16 +51,19 @@ public class PremiumDAO {
         return total != 0;
     }
     
-    public long tiempoPremium(String nk,int pk)throws SQLException{
-        long tiempo = 0;
-        Calendar hoy = Calendar.getInstance();
-        hoy.add(Calendar.DATE, -pk);
-        java.sql.Date HOY = new java.sql.Date(hoy.getTimeInMillis());
+    public double tiempoPremium(String nk)throws SQLException{
+        double tiempo = 0;
+        Date HOY = new Date();
+//        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+//        formateador.format(HOY);
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("Select FechaHora from Premium where Nick='"+nk+"'");
         if(rs.next()){
-        java.sql.Date reg = rs.getDate("FechaHora");
-        tiempo = HOY.getTime() - reg.getTime(); }
+        Date reg = (Date) rs.getDate("FechaHora");
+//        formateador.format(reg);
+        tiempo = (double) HOY.getTime() - reg.getTime();
+        tiempo = (tiempo)/(1000 * 60 * 60 * 24);
+        }
         
         return tiempo;        
     }

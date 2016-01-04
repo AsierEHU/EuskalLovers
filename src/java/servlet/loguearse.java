@@ -21,7 +21,6 @@ import java.util.logging.Logger;
  *
  * @author Asier
  */
-
 public class loguearse extends HttpServlet {
 
     /**
@@ -42,36 +41,37 @@ public class loguearse extends HttpServlet {
         String pass = (String) request.getParameter("pass_control");
         UsuarioDAO us = new UsuarioDAO(BD.getConexion());
         PremiumDAO pus = new PremiumDAO(BD.getConexion());
-        long tim = (long) 0.00;
+        double tim = 0.00;
 
         if (us.esCorrecto(em, pass)) {
             request.getSession(true).setAttribute("usuario_email", em);
-            
             String nk = us.devuelveNick(em);
-            if(pus.esPremium(nk)){
-                if(pus.getPack(nk)==1){
-                    if(pus.tiempoPremium(nk,30) < 0){            
+            tim = pus.tiempoPremium(nk);
+
+            if (pus.esPremium(nk)) {
+                if (pus.getPack(nk) == 1) {
+                    if (pus.tiempoPremium(nk) > 30) {
                         pus.darBajaPremium(nk);
-                        tim = pus.tiempoPremium(nk,30);
-                         }
-                }
-                if(pus.getPack(nk)==3){
-                    if(pus.tiempoPremium(nk,90) < 0){
-                        pus.darBajaPremium(nk);
-                        tim = pus.tiempoPremium(nk,90);
+
                     }
                 }
-                if(pus.getPack(nk)==6){
-                    if(pus.tiempoPremium(nk,180)<0){
+                if (pus.getPack(nk) == 3) {
+                    if (pus.tiempoPremium(nk) > 90) {
                         pus.darBajaPremium(nk);
-                        tim = pus.tiempoPremium(nk,180);
+
                     }
-                    
+                }
+                if (pus.getPack(nk) == 6) {
+                    if (pus.tiempoPremium(nk) > 180) {
+                        pus.darBajaPremium(nk);
+
+                    }
+
                     request.getSession(true).setAttribute("tiempoPremium", tim);
-                    
+
                 }
             }
-            
+
             response.sendRedirect("principal.jsp");
         } else {
             response.sendRedirect("index.jsp?error=login");
