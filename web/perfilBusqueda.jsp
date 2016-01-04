@@ -24,13 +24,13 @@
         %>
         
         <tr>
-            <td>Nombre de usuario: <%=u.getNick()%> </td>
+            <td><b>Nombre de usuario:</b> <%=u.getNick()%> </td>
         </tr>
         <tr>
-            <td>Email: <%=u.getEmail()%></td>
+            <td><i>Email:</i> <%=u.getEmail()%></td>
         </tr>
         <tr>
-            <td>Género: <% if (!u.isFemenino()) {
+            <td><b>Género:</b> <% if (!u.isFemenino()) {
                         out.print("Masculino");
                     }else{
                 out.print("Femenino");
@@ -39,7 +39,7 @@
             </td>           
         </tr>
         <tr>
-            <td>Ciudad: <% if (u.getCiudad().equals("Vitoria-Gasteiz")) {
+            <td><b>Ciudad: </b><% if (u.getCiudad().equals("Vitoria-Gasteiz")) {
                             out.print("Vitoria-Gasteiz");
                         }else if(u.getCiudad().equals("Bilbao")){
                             out.print("Bilbao");
@@ -49,19 +49,27 @@
                             %> </td>
         </tr>
         <tr>
-            <td>Código Postal: <%=u.getCp()%></td>
+            <td><b>Código Postal:</b> <%=u.getCp()%></td>
         </tr>
         <tr>
-            <td>Edad: <%=u.getEdad()%> </td>
+            <td><b>Edad: </b><%=u.getEdad()%> </td>
         </tr>
         <tr>
-            <td>Altura: <%=u.getAltura()%></td>
+            <td><b>Altura:</b> <%if(u.getAltura()==0.0){
+                out.print("N/D");
+            }else{
+                out.print(u.getAltura());
+            }%></td>
         </tr>
         <tr>
-            <td>Peso: <%=u.getPeso()%></td>
+            <td><b>Peso:</b> <%if(u.getPeso()==0){
+                out.print("N/D");
+            }else{
+                out.print(u.getPeso());
+            }%></td>
         </tr>
         <tr>
-            <td>Aspecto: <% if (u.getConstitucion().equals("Delgado")) {
+            <td><b>Aspecto:</b> <% if (u.getConstitucion().equals("Delgado")) {
                 out.print("Delgada/o");
             }else if(u.getConstitucion().equals("Fornido")){
                 out.print("Fornida/o");
@@ -71,7 +79,7 @@
                %> </td>
         </tr>
         <tr>
-            <td>Personalidad: <%
+            <td><b>Personalidad:</b> <%
                    if (pdao.estaPersonalidad("Simpatico", u.getNick())) {
                        out.println("Simpatica/o");
                    }
@@ -93,7 +101,7 @@
                %></td>
         </tr>
         <tr>
-            <td>Aficiones: <%
+            <td><b>Aficiones:</b> <%
                    if (adao.estaAficion("Deportes", u.getNick())) {
                        out.println("Deportes");
                    }
@@ -116,9 +124,9 @@
         </tr>
     </table>
     <br>
-    Numero de personalidades en comun: <%=pdao.numPersonalidadesComun(u.getNick(), u1.getNick())%>
+    <b>Numero de personalidades en comun: </b><%=pdao.numPersonalidadesComun(u.getNick(), u1.getNick())%>
     <br>
-    Numero de aficiones en comun: <%=adao.numAficionesComun(u.getNick(), u1.getNick())%>
+    <b>Numero de aficiones en comun:</b> <%=adao.numAficionesComun(u.getNick(), u1.getNick())%>
     <br>
     <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
 </form>
