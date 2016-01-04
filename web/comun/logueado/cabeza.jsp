@@ -36,9 +36,6 @@
                 <%
                     }
                     %>
-        <form method="post" action="Delete" >
-    <input type="submit" class="perfil_btn" value="Cancelar premium">
-        </form>
         </div>
     </header>
     <nav id="logueado_nav">
@@ -51,6 +48,9 @@
                     if (pdao.esPremium(u.getNick())) {
                 %>
                     <a>¡Ya eres premium!</a></li>  
+            <li> <form method="post" action="noPremium" >
+    <input type="submit" class="perfil_btn" value="Cancelar Premium">
+        </form></li>
                 <%
                 } else {
                 %>
