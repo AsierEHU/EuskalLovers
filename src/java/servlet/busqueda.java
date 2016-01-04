@@ -75,9 +75,9 @@ public class busqueda extends HttpServlet {
             //si pulsa el boton de busqueda avanzada
             if (avanzado.equals(request.getParameter("buscar"))) {
                 String genero = (String) request.getParameter("genero_busq1");
-                boolean gen=true;
+                boolean gen=false;
                 if (genero.equals("Masculino")) {
-                    gen = false;
+                    gen = true;
                 }
                 int edad = Integer.parseInt(request.getParameter("edad_busq1"));
                 float altura = Float.parseFloat(request.getParameter("altura_busq1"));

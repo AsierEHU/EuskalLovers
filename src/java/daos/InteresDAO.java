@@ -169,7 +169,7 @@ public class InteresDAO {
      public ArrayList<String> buscarUsuariosConcreto(Interes a)throws SQLException{
         ArrayList<String> usuariosBuscados = new ArrayList<>();
         Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select nick from usuario where genero="+a.isGenero()+" or edad="+a.getEdad()+" or altura="+a.getAltura()+" or peso="+a.getPeso()+" or ciudad='"+a.getCiudad()+"' or cp='"+a.getCp()+"' or constitucion='"+a.getConstitucion()+"'");
+        ResultSet rs = st.executeQuery("select nick from usuario where genero="+!a.isGenero()+" and( edad="+a.getEdad()+" or altura="+a.getAltura()+" or peso="+a.getPeso()+" or ciudad='"+a.getCiudad()+"' or cp='"+a.getCp()+"' or constitucion='"+a.getConstitucion()+"')");
         while (rs.next()) {
             usuariosBuscados.add(rs.getString("Nick"));
         }
