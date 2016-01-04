@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import utils.BD;
 import daos.UsuarioDAO;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +35,7 @@ public class loguearse extends HttpServlet {
      * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
 
         String em = (String) request.getParameter("email_control");
@@ -96,6 +97,8 @@ public class loguearse extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(loguearse.class
                     .getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(loguearse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -116,6 +119,8 @@ public class loguearse extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(loguearse.class
                     .getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(loguearse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
