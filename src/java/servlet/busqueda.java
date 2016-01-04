@@ -90,14 +90,14 @@ public class busqueda extends HttpServlet {
             Interes inter1 = new Interes("", gen, edad, altura, peso,consti, ciudad,cp);
             InteresDAO interD1 = new InteresDAO(BD.getConexion());
             ArrayList<String> buscados = interD1.buscarUsuariosConcreto(inter1);
-            request.setAttribute("listaBuscados", buscados); 
+            request.getSession().setAttribute("listaBuscados", buscados); 
             }
             
             else{
                 Interes inter2 = new Interes("",gen,edad,consti,ciudad);
                 InteresDAO interD2 = new InteresDAO(BD.getConexion());
                 ArrayList<String> buscados = interD2.buscarUsuariosBasico(inter2);
-                request.setAttribute("listaBuscados", buscados);
+                request.getSession().setAttribute("listaBuscados", buscados);
             }
             response.sendRedirect("principal.jsp");
             }
@@ -121,7 +121,7 @@ public class busqueda extends HttpServlet {
                     InteresDAO interD2 = new InteresDAO(BD.getConexion());
                     buscados = interD2.buscarUsuariosBasico(inter2);
                 }
-                    request.setAttribute("listaBuscados", buscados);
+                    request.getSession().setAttribute("listaBuscados", buscados);
                     response.sendRedirect("principal.jsp");
             }
                       

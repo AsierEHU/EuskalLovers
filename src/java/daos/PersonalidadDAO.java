@@ -70,7 +70,7 @@ public class PersonalidadDAO {
         return esta;
     }
 
-    public int numAficionesComun(String nicka, String nickb) throws SQLException{
+    public int numPersonalidadesComun(String nicka, String nickb) throws SQLException{
         int result = 0;
         for(String c: cogerPersonalidades(nicka)){
             for(String a: cogerPersonalidades(nickb)){
