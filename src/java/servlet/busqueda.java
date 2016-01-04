@@ -54,7 +54,7 @@ public class busqueda extends HttpServlet {
                     String nick = (String)request.getParameter("nick_busq");
                     UsuarioDAO uDAO = new UsuarioDAO(BD.getConexion());
                     String email = uDAO.devuelveEmail(nick);
-                    request.setAttribute("email_perfil_busq", email);
+                    request.getSession().setAttribute("email_perfil_busq", email);
                     response.sendRedirect("perfilBusqueda.jsp");
                     }
             
