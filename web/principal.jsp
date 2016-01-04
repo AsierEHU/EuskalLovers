@@ -43,11 +43,27 @@
                 Edad: </td><td><input type="number" name="edad_busq" min="18" max="120" required disabled value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
-            <td> Altura: </td> <td> <input type="number" name="altura_busq" step="0.01" min="1" max="3" disabled value="<%=iDAO.getAlturaInteres(u.getNick())%>"> </td> </tr>
+                    <%
+                String altura;
+                if(iDAO.getAlturaInteres(u.getNick())==0f){
+                    altura="";
+                }else{
+                    altura=String.valueOf(iDAO.getAlturaInteres(u.getNick()));
+                }
+            %>
+            <td> Altura: </td> <td> <input type="number" name="altura_busq" step="0.01" min="1" max="3" disabled value="<%=altura%>"> </td> </tr>
 
         <tr>
+            <%
+                String peso;
+                if(iDAO.getPesoInteres(u.getNick())==0){
+                    peso="";
+                }else{
+                    peso=String.valueOf(iDAO.getPesoInteres(u.getNick()));
+                }
+            %>
             <td>
-                Peso: </td> <td> <input type="number" min="30" max="200" name="peso_busq" disabled value="<%=iDAO.getPesoInteres(u.getNick())%>"> </td></tr>
+                Peso: </td> <td> <input type="number" min="30" max="200" name="peso_busq" disabled value="<%=peso%>"> </td></tr>
 
         <tr>
             <td>Lugar de residencia:  </td>
@@ -121,11 +137,11 @@
                 Edad: </td><td><input type="number" name="edad_busq1" id="edad_busq1" min="18" max="120" value="<%=iDAO.getEdadInteres(u.getNick())%>" > </td> </tr>
 
         <tr>
-            <td> Altura: </td> <td> <input type="number" name="altura_busq1" id="altura_busq1" step="0.01" min="1" max="3" value="<%=iDAO.getAlturaInteres(u.getNick())%>"> </td> </tr>
+            <td> Altura: </td> <td> <input type="number" name="altura_busq1" id="altura_busq1" step="0.01" min="1" max="3" value="<%=altura%>"> </td> </tr>
 
         <tr>
             <td>
-                Peso: </td> <td> <input type="number" min="30" max="200" name="peso_busq1" id="peso_busq" value="<%=iDAO.getPesoInteres(u.getNick())%>"> </td></tr>
+                Peso: </td> <td> <input type="number" min="30" max="200" name="peso_busq1" id="peso_busq" value="<%=peso%>"> </td></tr>
 
         <tr>
             <td>Lugar de residencia:  </td>
