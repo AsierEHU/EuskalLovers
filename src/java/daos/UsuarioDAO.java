@@ -106,7 +106,7 @@ public class UsuarioDAO {
         String email = "";
         ResultSet rs = st.executeQuery("select email from usuario where nick='"+nick+"'");
         if(rs.next()){
-            nick=rs.getString("Email");
+            email=rs.getString("Email");
         }
         return email;
         

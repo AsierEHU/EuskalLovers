@@ -14,7 +14,7 @@
     <table>
 
         <%
-            String email = (String) session.getAttribute("usuario_email");
+            String email = (String) session.getAttribute("email_perfil_busq");
             UsuarioDAO udao = new UsuarioDAO(BD.getConexion());
             Usuario u = udao.cogerUsuario(email);
         %>
@@ -230,7 +230,7 @@
                 }
 
                                                   %>> Hombres
-            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" disabled<%                if (idao.getGeneroInteres(u.getNick()).equals("Femenino")) {
+            <input type="radio" name="genero_busqueda" id="genero_busqueda" value="Mujeres" disabled<% if (idao.getGeneroInteres(u.getNick()).equals("Femenino")) {
                     out.print("checked");
                 }
 
