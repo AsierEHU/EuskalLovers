@@ -73,10 +73,10 @@ public class PremiumDAO {
             case 1:
                 tiempo=30-tiempo;
                 break;
-            case 3:
+            case 2:
                 tiempo=90-tiempo;
                 break;
-            case 6:
+            case 3:
                 tiempo=180-tiempo;
                 break;
             default:
