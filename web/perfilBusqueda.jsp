@@ -142,10 +142,12 @@
     <br>
     <b>Numero de aficiones en comun:</b> <%=adao.numAficionesComun(u.getNick(), u1.getNick())%>
     <br>
-    <input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
 <%
     }else{
             response.sendRedirect("principal.jsp");
         }
 %>
+<br>
+<br>
+<input id="perfil_ENLACEVOLVER" class="perfil_btn" type="button" value="Volver a principal">
 <jsp:include page="/comun/logueado/pie.jsp"/>
