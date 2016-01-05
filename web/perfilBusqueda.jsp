@@ -11,7 +11,7 @@
     <jsp:param name="include" value="perfilBusqueda"/>
 </jsp:include>
 
-    <table>
+    
 
         <% if (request.getParameterValues("nicks") != null) {
                 String[] nicks = request.getParameterValues("nicks");
@@ -33,6 +33,7 @@
             vdao.insertarVisita(new Visita(nickBuscador, nick));
 
         %>
+        <table>
         <div id="busqueda_foto">
             <img src="img/fotos/<%=u.getFoto()%>"/>
         </div>
