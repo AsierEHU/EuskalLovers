@@ -82,13 +82,13 @@ public class UsuarioDAO {
 
     public boolean actualizarAltura(Usuario u) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set altura='" + u.getAltura() + "' where nick='" + u.getNick() + "')");
+        int total = st.executeUpdate("update Usuario set altura=" + u.getAltura() + " where nick='" + u.getNick() + "'");
         return total != 0;
     }
 
     public boolean actualizarPeso(Usuario u) throws SQLException {
         Statement st = cn.createStatement();
-        int total = st.executeUpdate("update Usuario set peso='" + u.getPeso() + "' where nick='" + u.getNick() + "')");
+        int total = st.executeUpdate("update Usuario set peso=" + u.getPeso() + " where nick='" + u.getNick() + "'");
         return total != 0;
     }
 
